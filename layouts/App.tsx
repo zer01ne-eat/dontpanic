@@ -25,7 +25,7 @@ const App = () => {
     return (
         <div>
             <NavBar />
-        	{/* <Lottie options={lottieOptions} /> */}
+        	<Lottie options={lottieOptions} />
             <Modal show={showCreateWorkspaceModal} onCloseModal={onCloseModal}>
                 캐릭터 선택
                 blahsdf
