@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import loadable from '@loadable/component';
 const NavBar = loadable(() => import('@layouts/navbar'));
 const SignUp = loadable(() => import('@components/signup'));
@@ -10,6 +10,7 @@ const App = () => {
     const onCloseModal = useCallback(() => {
         setShowCreateWorkspaceModal(false);
       }, []);
+
     return (
         <div>
             {/* <NavBar /> */}
