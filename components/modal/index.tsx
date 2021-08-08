@@ -1,5 +1,5 @@
 import React, { FC, useCallback } from 'react';
-import { CreateModal, CloseModalButton } from './styles';
+import { Rectangle, Title, CreateModal, CloseModalButton } from './styles';
 
 interface Props {
     show: boolean;
@@ -19,10 +19,13 @@ const Modal: FC<Props> = ({ show, children, onCloseModal }) => {
     }
 
     return (
-    <CreateModal onClick={onCloseModal}>
+    // <CreateModal onClick={onCloseModal}>
+    <Rectangle onClick={onCloseModal}>
       <div onClick={stopPropagation}>
+          <Title>DON'T PANIC</Title>
           <CloseModalButton onClick={onCloseModal}>&times;</CloseModalButton>{children}</div>
-    </CreateModal>
+    {/* </CreateModal> */}
+    </Rectangle>
   );
 };
 
