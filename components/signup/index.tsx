@@ -1,12 +1,12 @@
 import React, { FC, useCallback } from 'react';
-import { Rectangle, Title, CreateModal, CloseModalButton } from './styles';
+import { CreateModal, CloseModalButton } from './styles';
 
 interface Props {
     show: boolean;
     onCloseModal: () => void;
 }
 
-const Modal: FC<Props> = ({ show, children, onCloseModal }) => {
+const SignUp: FC<Props> = ({ show, children, onCloseModal }) => {
     const stopPropagation = useCallback(
         (e) => {
             e.stopPropagation();
@@ -19,14 +19,11 @@ const Modal: FC<Props> = ({ show, children, onCloseModal }) => {
     }
 
     return (
-    // <CreateModal onClick={onCloseModal}>
-    <Rectangle onClick={onCloseModal}>
+    <CreateModal onClick={onCloseModal}>
       <div onClick={stopPropagation}>
-          <Title>DON'T PANIC</Title>
           <CloseModalButton onClick={onCloseModal}>&times;</CloseModalButton>{children}</div>
-    {/* </CreateModal> */}
-    </Rectangle>
+    </CreateModal>
   );
 };
 
-export default Modal;
+export default SignUp;

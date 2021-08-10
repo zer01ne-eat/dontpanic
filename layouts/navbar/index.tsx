@@ -4,7 +4,7 @@ import { NavLink, Switch, Route } from "react-router-dom";
 import { LeftNavBar } from "./styles";
 
 const NavBar = () => {
-    const [showNavBar, setShowNavBar] = useState(false);
+    const [showNavBar, setShowNavBar] = useState(true);
     const onClickNavBar = useCallback(() => {
         setShowNavBar((prev) => !prev);
     }, []);
