@@ -1,5 +1,9 @@
-import React, { FC, useCallback } from 'react';
-import { Rectangle, Title, CreateModal, CloseModalButton } from './styles';
+import React, { FC, useCallback, useState } from 'react';
+import { Rectangle } from './styles';
+import { Link, Route } from 'react-router-dom';
+import UserCreation from '@pages/Modal/UserCreation';
+import Intro from '@pages/Modal/Intro';
+import Map from '@pages/Map';
 
 interface Props {
     show: boolean;
@@ -7,24 +11,22 @@ interface Props {
 }
 
 const Modal: FC<Props> = ({ show, children, onCloseModal }) => {
-    const stopPropagation = useCallback(
-        (e) => {
-            e.stopPropagation();
-        },
-        []
-    );
+    const [viewUserCreation, setUserCreation] = useState(true)
 
     if (!show) {
         return null;
     }
 
     return (
-    // <CreateModal onClick={onCloseModal}>
-    <Rectangle onClick={onCloseModal}>
-      <div onClick={stopPropagation}>
-          <Title>DON'T PANIC</Title>
-          <CloseModalButton onClick={onCloseModal}>&times;</CloseModalButton>{children}</div>
-    {/* </CreateModal> */}
+    <Rectangle>
+        <div>
+            {children}
+            <div>
+                {viewUserCreation ? <Intro /> : <UserCreation /> }
+            </div>
+            {viewUserCreation ? <button onClick={() => setUserCreation(false)}>NEXT</button> : <Link to='/map'><button onClick={onCloseModal}>OK</button></Link>}
+        </div>
+        <Route path='/map' component={Map} />
     </Rectangle>
   );
 };

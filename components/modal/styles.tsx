@@ -1,5 +1,6 @@
 
 import styled from '@emotion/styled';
+
 export const Rectangle = styled.div `
   border-radius: 60px;
   background-color: #272727;
@@ -25,20 +26,6 @@ export const Rectangle = styled.div `
   //   z-index: 1012;
   //   position: relative;
   }
-`
-export const Title = styled.div `
-  // width: 1383px;
-  // height: 340px;
-  // margin: 0 475px 100px 435px;
-  font-family: NotoSansDisplay;
-  font-size: 250px;
-  font-weight: 900;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #fff;
 `
 
 export const CreateModal = styled.div`
