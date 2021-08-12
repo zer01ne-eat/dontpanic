@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 // import { Switch, Route } from "react-router";
 import { NavLink, Switch, Route } from 'react-router-dom';
-import { LeftNavBar, UserInfo, Menus, WorkSpace } from './styles';
+import { LeftNavBar, UserInfo, Menus, WorkSpace, ClosedNavBar } from './styles';
 import Chat from '@pages/NavBar/chat';
 import Goal from '@pages/NavBar/goal';
 import Profile from '@pages/NavBar/profile';
@@ -14,9 +14,13 @@ const NavBar = () => {
 
     return (
         <div>
-            <button onClick={onClickNavBar}>X</button>
-            {showNavBar && (
+            {showNavBar ? (
                 <LeftNavBar>
+                    <div className='back-selected-btn'>
+                        <button onClick={onClickNavBar}>
+                            <img src='imgs/navbar/btn-close.svg' />
+                        </button>
+                    </div>
                     <UserInfo>userinfo</UserInfo>
                     <Menus>
                         <NavLink exact to="/">
@@ -40,7 +44,41 @@ const NavBar = () => {
                         </Switch>
                     </WorkSpace>
                 </LeftNavBar>
-            )}
+            ) :
+                (<ClosedNavBar>
+                    <div className='open-selected-btn'>
+                        <button onClick={onClickNavBar}>
+                            <img src='imgs/navbar/btn-open.svg' />
+                        </button>
+                    </div>
+                    <div className='home-btn'>
+                        <button onClick={onClickNavBar}>
+                            <img src='imgs/navbar/ic-home-default.svg' />
+                        </button>
+                    </div>
+                    <div className='profile-btn'>
+                        <button onClick={onClickNavBar}>
+                            <img src='imgs/navbar/ic-profile-default.svg' />
+                        </button>
+                    </div>
+                    <div className='goal-btn'>
+                        <button onClick={onClickNavBar}>
+                            <img src='imgs/navbar/ic-goal-default.svg' />
+                        </button>
+                    </div>
+                    <div className='chat-btn'>
+                        <button onClick={onClickNavBar}>
+                            <img src='imgs/navbar/ic-chat-default.svg' />
+                        </button>
+                    </div>
+                    <div className='setting-btn'>
+                        <button onClick={onClickNavBar}>
+                            <img src='imgs/navbar/ic-setting-default.svg' />
+                        </button>
+                    </div>
+
+                </ClosedNavBar>)
+            }
         </div>
     );
 };

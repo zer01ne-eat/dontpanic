@@ -1,9 +1,22 @@
 import styled from "@emotion/styled";
 
 export const LeftNavBar = styled.div`
-    border: 5px solid black;
-    width: 450px;
-    height: 100vh;
+    // border: 5px solid black;
+    // width: 450px;
+    // height: 100vh;
+    width: 1200px;
+    height: 2680px;
+    margin: 0 93px 0 0;
+    padding: 93px 0 0;
+    border-radius: 60px;
+    background-color: #1e1e1e;
+    & .back-selected-btn {
+      width: 135px;
+      height: 135px;
+      margin: 0 65px 39px 1000px;
+      object-fit: contain;
+      background-color: #fff;
+    }
 `;
 
 export const UserInfo = styled.div`
@@ -75,3 +88,49 @@ align-items: center;
 text-align: center;
 padding: 15px 0 0;
 `;
+
+export const ClosedNavBar = styled.div `
+  width: 205px;
+  height: 2680px;
+  margin: 0 1088px 0 0;
+  padding: 100px 0 0;
+  object-fit: contain;
+  border-radius: 60px;
+  background-color: #1e1e1e;
+  & .open-selected-btn {
+    width: 135px;
+    height: 135px;
+    margin: 0 35px 32px;
+    object-fit: contain;
+  }
+  & .home-btn {
+    width: 135px;
+    height: 135px;
+    margin: 0 0 50px;
+    object-fit: contain;
+  }
+  & .profile-btn {
+    width: 135px;
+    height: 135px;
+    margin: 50px 0;
+    object-fit: contain;
+  }
+  & .goal-btn {
+    width: 135px;
+    height: 135px;
+    margin: 50px 0;
+    object-fit: contain;
+  }
+  & .chat-btn {
+    width: 135px;
+    height: 135px;
+    margin: 50px 0 0;
+    object-fit: contain;
+  }
+  & .setting-btn {
+    width: 135px;
+    height: 135px;
+    margin: 1029px 35px 0;
+    object-fit: contain;
+  }
+`
