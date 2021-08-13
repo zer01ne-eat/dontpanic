@@ -15,7 +15,15 @@ export const LeftNavBar = styled.div`
       height: 135px;
       margin: 0 65px 39px 1000px;
       object-fit: contain;
-      background-color: #fff;
+      background-color: #1e1e1e;
+    }
+    & button {
+      background-color: transparent;
+      border: 0;
+      outline: 0;
+    }
+    & img {
+      background-color: #1e1e1e;
     }
 `;
 
