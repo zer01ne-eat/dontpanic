@@ -19,13 +19,11 @@ const Modal: FC<Props> = ({ show, children, onCloseModal }) => {
 
     return (
     <Rectangle>
-        <div>
-            {children}
-            <div>
-                {viewUserCreation ? <Intro /> : <UserCreation /> }
-            </div>
-            {viewUserCreation ? <button onClick={() => setUserCreation(false)}>NEXT</button> : <Link to='/map'><button onClick={onCloseModal}>OK</button></Link>}
-        </div>
+        {/* <div> */}
+            {/* {children} */}
+                {viewUserCreation ? <div id="intro"><Intro /></div> : <UserCreation /> }
+            {/* {viewUserCreation ? <button onClick={() => setUserCreation(false)}>NEXT</button> : <Link to='/map'><button onClick={onCloseModal}>OK</button></Link>} */}
+        {/* </div> */}
         <Route path='/map' component={Map} />
     </Rectangle>
   );
