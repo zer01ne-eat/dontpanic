@@ -1,33 +1,105 @@
 import styled from "@emotion/styled";
 
 export const LeftNavBar = styled.div`
-    // border: 5px solid black;
-    // width: 450px;
-    // height: 100vh;
-    width: 23.4%;
-    height: 93.1%;
-    margin: 3.5% 74.6% 3.5% 2%;
-    // display: flex;
-    // padding: 93px 0 0;
-    border-radius: 60px;
+    border-radius: 2rem;
+    width: 20vw;
+    height: 80vh;
+    text-align: center;
+    margin: 5vh 5vw;
     background-color: #1e1e1e;
-    & .back-selected-btn {
-      width: 2.6%;
-      height: 4.7%;
-      margin: 6.7% auto 21.5% 88.6%;
-      object-fit: contain;
+    & #top {
+      text-align: center;
+      margin-top: 20px;
+      width: 100%;
+      height: 30%;
+    }
+    & .middle {
+      display: flex;
+      width: 100%;
+      height: 70%;
+      border: 1px solid red;
+    }
+    & .middle #left {
+      width: 50%;
+      height: 100%;
+      // background-color: #00D8FF;
+    }
+    & li {
+      list-style: none;
+      font-size: 1em;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+    }
+    & li img {
+      right: 12px;
+      top: 12px;
+      width: 48px;
+      height: 48px;
+      margin-top: 20px;
+      border-radius: 16px;
       background-color: #1e1e1e;
+      padding: 4px;
+      cursor: pointer;
+    }
+    & #right {
+      // position: absolute;
+      top: 0px;
+      left: 620px;
+      width: 50%;
+      height: 100%;
+      background-color: #fff;
+    }
+    & .back-selected-btn {
+      display: inline-block;
+      margin-left: 88%;
+    }
+    & .back-selected-btn img {
+      right: 12px;
+      top: 12px;
+      width: 48px;
+      height: 48px;
+      margin-top: 20px;
+      border-radius: 16px;
+      background-color: #1e1e1e;
+      padding: 4px;
+      cursor: pointer;
     }
     // & button {
     //   background-color: transparent;
     //   border: 0;
     //   outline: 0;
     // }
-    & img {
-      background-color: #1e1e1e;
-    }
 `;
 
+export const ClosedNavBar = styled.div `
+  width: 4%;
+  height: 80vh;
+  margin: 5vh 5vw;
+  // padding: 100px 25px 0;
+  object-fit: contain;
+  border-radius: 2rem;
+  background-color: #1e1e1e;
+  
+  & #top {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    height: 30%;
+  }
+
+  & img {
+    right: 12px;
+    top: 12px;
+    width: 48px;
+    height: 48px;
+    margin-top: 20px;
+    border-radius: 16px;
+    background-color: #1e1e1e;
+    padding: 4px;
+    cursor: pointer;
+  }
+`
 export const UserInfo = styled.div`
     height: calc(100vh - 900px);
     overflow-y: auto;
@@ -98,57 +170,3 @@ text-align: center;
 padding: 15px 0 0;
 `;
 
-export const ClosedNavBar = styled.div `
-  width: 4%;
-  height: 93.1%;
-  margin: 3.5% 94% 3.5% 2%;
-  padding: 100px 0 0;
-  object-fit: contain;
-  border-radius: 20px;
-  background-color: #1e1e1e;
-  & .open-selected-btn {
-    width: 0.7%;
-    height: 0.7%;
-    margin: 3.7% 17.1%;
-    object-fit: contain;
-  }
-  & .home-btn {
-    width: 135px;
-    height: 135px;
-    // margin: 0 0 50px;
-    object-fit: contain;
-  }
-  & .profile-btn {
-    width: 135px;
-    height: 135px;
-    margin: 50px 0;
-    object-fit: contain;
-  }
-  & .goal-btn {
-    width: 135px;
-    height: 135px;
-    margin: 50px 0;
-    object-fit: contain;
-  }
-  & .chat-btn {
-    width: 135px;
-    height: 135px;
-    margin: 50px 0 0;
-    object-fit: contain;
-  }
-  & .setting-btn {
-    width: 135px;
-    height: 135px;
-    margin: 1029px 35px 0;
-    object-fit: contain;
-  }
-  & button {
-    width: 7%;
-    height: 7%
-  }
-  & img {
-    // width: 7%;
-    // height: 7%
-    background-color: #1e1e1e;
-  }
-`

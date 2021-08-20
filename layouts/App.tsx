@@ -13,7 +13,7 @@ const App = () => {
     }, []);
 
     return (
-        <div style={{"width":"100%","height":"100%","backgroundColor":"rgb(32, 37, 64)","display":"flex","WebkitBoxAlign":"center","alignItems":"center","WebkitBoxPack":"center","justifyContent":"center","overflowY":"auto","padding":"20px"}}>
+        <div style={{"width":"100%","height":"100%","backgroundColor":"rgb(32, 37, 64)","WebkitBoxAlign":"center","alignItems":"center","WebkitBoxPack":"center","justifyContent":"center","overflowY":"auto","padding":"20px"}}>
             <Modal show={showCreateWorkspaceModal} onCloseModal={onCloseModal} />
             { !showCreateWorkspaceModal && <Map />}
         </div>
