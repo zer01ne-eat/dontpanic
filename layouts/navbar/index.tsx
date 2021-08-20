@@ -19,11 +19,9 @@ const NavBar = () => {
         <div>
             {showNavBar ? (
                 <LeftNavBar>
-                    <div className='back-selected-btn'>
-                        <button onClick={onClickNavBar}>
-                            <img src='imgs/navbar/btn-close.svg' />
+                        <button className='back-selected-btn' onClick={onClickNavBar}>
+                            {/* <img src='imgs/navbar/btn-close.svg' /> */}
                         </button>
-                    </div>
                     <UserInfo>userinfo</UserInfo>
                     <Menus>
                     <div className='home-btn'>
