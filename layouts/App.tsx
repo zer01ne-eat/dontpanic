@@ -13,11 +13,8 @@ const App = () => {
     }, []);
 
     return (
-        <div>
-            <Modal show={showCreateWorkspaceModal} onCloseModal={onCloseModal}>
-                intro 멘트
-                캐릭터 선택
-            </Modal>
+        <div style={{"width":"100%","height":"100%","backgroundColor":"rgb(32, 37, 64)","WebkitBoxAlign":"center","alignItems":"center","WebkitBoxPack":"center","justifyContent":"center","overflowY":"auto","padding":"20px"}}>
+            <Modal show={showCreateWorkspaceModal} onCloseModal={onCloseModal} />
             { !showCreateWorkspaceModal && <Map />}
         </div>
     );

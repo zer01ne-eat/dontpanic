@@ -16,81 +16,42 @@ const NavBar = () => {
     }, []);
 
     return (
-        <div>
+        <>
             {showNavBar ? (
                 <LeftNavBar>
-                    <div className='back-selected-btn'>
-                        <button onClick={onClickNavBar}>
+                    <div id="top">
+                        <div className='back-selected-btn' onClick={onClickNavBar}>
                             <img src='imgs/navbar/btn-close.svg' />
-                        </button>
+                        </div>
+                        <div>
+                            <UserInfo>userinfo</UserInfo>
+                        </div>
                     </div>
-                    <UserInfo>userinfo</UserInfo>
-                    <Menus>
-                    <div className='home-btn'>
-                        <button onClick={onClickNavBar}>
-                            <img src='imgs/navbar/ic-home-default.svg' />
-                        </button>
+                    <div className="middle">
+                        <div id="left">
+                            <ul>
+                                <li onClick={() => {setSelected('home');}}><img src='imgs/navbar/ic-home-default.svg' />home</li>
+                                <li onClick={() => {setSelected('profile');}}><img src='imgs/navbar/ic-profile-default.svg' />profile</li>
+                                <li onClick={() => {setSelected('goal');}}><img src='imgs/navbar/ic-goal-default.svg' />goal</li>
+                                <li onClick={() => {setSelected('chat');}}><img src='imgs/navbar/ic-chat-default.svg' />chat</li>
+                            </ul>
+                        </div>
+                        <div id="right">
+                            <NavBarContent selected={selected} />
+                        </div>
                     </div>
-                    <div className='profile-btn'>
-                        <button onClick={() => {setSelected('profile')}}>
-                            <img src='imgs/navbar/ic-profile-default.svg' />
-                        </button>
-                    </div>
-                    <div className='goal-btn'>
-                        <button onClick={() => {setSelected('goal')}}>
-                            <img src='imgs/navbar/ic-goal-default.svg' />
-                        </button>
-                    </div>
-                    <div className='chat-btn'>
-                        <button onClick={() => {setSelected('chat')}}>
-                            <img src='imgs/navbar/ic-chat-default.svg' />
-                        </button>
-                    </div>
-                    <div className='setting-btn'>
-                        <button onClick={() => {setSelected('setting')}}>
-                            <img src='imgs/navbar/ic-setting-default.svg' />
-                        </button>
-                    </div>
-                    </Menus>
-                    <WorkSpace>
-                        <NavBarContent selected={selected} />
-                    </WorkSpace>
+                
                 </LeftNavBar>
             ) :
                 (<ClosedNavBar>
-                    <div className='open-selected-btn'>
-                        <button onClick={onClickNavBar}>
-                            <img src='imgs/navbar/btn-open.svg' />
-                        </button>
-                    </div>
-                    <div className='home-btn'>
-                        <button onClick={onClickNavBar}>
-                            <img src='imgs/navbar/ic-home-default.svg' />
-                        </button>
-                    </div>
-                    <div className='profile-btn'>
-                        <button onClick={() => {setShowNavBar((prev) => !prev); setSelected('profile');}}>
-                            <img src='imgs/navbar/ic-profile-default.svg' />
-                        </button>
-                    </div>
-                    <div className='goal-btn'>
-                        <button onClick={() => {setShowNavBar((prev) => !prev); setSelected('goal');}}>
-                            <img src='imgs/navbar/ic-goal-default.svg' />
-                        </button>
-                    </div>
-                    <div className='chat-btn'>
-                        <button onClick={() => {setShowNavBar((prev) => !prev); setSelected('chat');}}>
-                            <img src='imgs/navbar/ic-chat-default.svg' />
-                        </button>
-                    </div>
-                    <div className='setting-btn'>
-                        <button onClick={() => {setShowNavBar((prev) => !prev); setSelected('setting');}}>
-                            <img src='imgs/navbar/ic-setting-default.svg' />
-                        </button>
-                    </div>
+                    <div id="top" onClick={onClickNavBar}><img src='imgs/navbar/btn-open.svg' /></div>
+                    <div onClick={() => {setShowNavBar((prev) => !prev); setSelected('home');}}><img src='imgs/navbar/ic-home-default.svg' /></div>
+                    <div onClick={() => {setShowNavBar((prev) => !prev); setSelected('profile');}}><img src='imgs/navbar/ic-profile-default.svg' /></div>
+                    <div onClick={() => {setShowNavBar((prev) => !prev); setSelected('goal');}}><img src='imgs/navbar/ic-goal-default.svg' /></div>
+                    <div onClick={() => {setShowNavBar((prev) => !prev); setSelected('chat');}}><img src='imgs/navbar/ic-chat-default.svg' /></div>
                 </ClosedNavBar>)
             }
-        </div>
+        </>
     );
 };
 
