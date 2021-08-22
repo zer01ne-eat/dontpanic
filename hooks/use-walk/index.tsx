@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function useWalk(maxSteps: number) {
-    const [position, setPos] = useState( {x: 0, y: 0} )
+    const [position, setPos] = useState( {x: 1300, y: 700} ) //캐릭터 initial position
     const [dir, setDir] = useState(0)
     const [step, setStep] = useState(0)
     const directions:any = {
