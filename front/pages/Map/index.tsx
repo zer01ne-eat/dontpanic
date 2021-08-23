@@ -16,7 +16,7 @@ const Map = () => {
     return (
         <>
             <NavBar />
-            <Player skin="m1" />
+            <Player skin="character-00" />
             {/* <canvas ref={canvasRef} width={"100%"} height={"100%"}></canvas> */}
         </>
   );

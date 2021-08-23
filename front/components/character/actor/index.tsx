@@ -20,7 +20,7 @@ const Actor: FC<Props> = ({     sprite,
         image={ sprite }
         position={position}
         data={{
-          x: step * w,
+          x: step,
           y: dir * h,
           w,
           h,

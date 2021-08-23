@@ -6,8 +6,8 @@ export default function useWalk(maxSteps: number) {
     const [step, setStep] = useState(0)
     const directions:any = {
         down: 0,
-        left: 1,
-        right: 2,
+        right: 1,
+        left: 2,
         up: 3,
     };
     const stepSize = 16;

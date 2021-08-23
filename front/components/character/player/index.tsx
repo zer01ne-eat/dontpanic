@@ -9,8 +9,8 @@ interface Props {
 const Player: FC<Props> = ({ skin }) => {
     const { dir, step, walk, position } = useWalk(3)
     const data = {
-        h: 32,
-        w: 32,
+        h: 50,
+        w: 50,
       };
 
     useKeyPress((e) => {
