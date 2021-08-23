@@ -1,10 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import loadable from '@loadable/component';
 
-const NavBar = loadable(() => import('@layouts/navbar'));
 const Modal = loadable(() => import('@components/modal'));
 const Map = loadable(() => import('@pages/Map'));
-
 
 const App = () => {
     const [showCreateWorkspaceModal, setShowCreateWorkspaceModal] = useState(true);
