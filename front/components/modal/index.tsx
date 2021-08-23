@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Rectangle } from './styles';
 import { Link, Route } from 'react-router-dom';
 import UserCreation from '@pages/Modal/UserCreation';
