@@ -5,7 +5,8 @@ export const LeftNavBar = styled.div`
     width: 20vw;
     height: 80vh;
     text-align: center;
-    margin: 5vh 5vw;
+    margin: 1vh 1vw;
+    display: inline-block;
     background-color: #1e1e1e;
     & #top {
       text-align: center;
@@ -76,6 +77,7 @@ export const ClosedNavBar = styled.div `
   width: 4%;
   height: 80vh;
   margin: 5vh 5vw;
+  display: inline-block;
   // padding: 100px 25px 0;
   object-fit: contain;
   border-radius: 2rem;
