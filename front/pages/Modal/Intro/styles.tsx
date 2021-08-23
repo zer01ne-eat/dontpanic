@@ -1,4 +1,23 @@
 import styled from '@emotion/styled';
+import { injectGlobal } from '@emotion/css';
+
+injectGlobal`
+    @font-face {
+        font-family: 'Noto Sans';
+        // font-style: normal;
+        font-weight: 400;
+        src:
+        url('../fonts/NotoSansDisplay-Black.woff') format('woff')
+    }
+    
+    @font-face {
+        font-family: 'Noto Sans KR';
+        // font-style: normal;
+        font-weight: 400;
+        src:
+        url('../fonts/NotoSansKR-Regular.woff2') format('woff2')
+    }
+`
 
 export const Title = styled.div `
     display: flex;
@@ -6,7 +25,7 @@ export const Title = styled.div `
     // position: absolute;
     font-size: 9em;
     color: #fff;
-    font-family: NotoSansDisplay;
+    font-family: 'Noto Sans';
     margin-top: 1em;
     margin-left: 4em;
     // margin-right: 2em;
@@ -16,6 +35,7 @@ export const Title = styled.div `
 
 export const Content = styled.div `
     display: flex;
+    font-family: 'Noto Sans KR';
     // border: 2px solid black;
     position: absolute;
     color: #b0b0b0;
@@ -27,6 +47,7 @@ export const Content = styled.div `
 
 export const Choose = styled.div `
     display: flex;
+    font-family: 'Noto Sans KR';
     // border: 2px solid black;
     position: absolute;
     font-size: 2rem;

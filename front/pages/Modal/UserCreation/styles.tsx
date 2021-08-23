@@ -17,11 +17,12 @@ export const Slime = styled.div `
 `
 export const CharacterCreation = styled.div`
   margin-left: 80px;
+  font-family: 'Noto Sans KR';
   // border: 1px solid blue;
   & #title {
     display: flex;
+    font-family: 'Noto Sans';
     margin: 0 0 95px 0;
-    font-family: NotoSansDisplay;
     font-size: 75px;
     font-weight: bold;
     color: #fff;

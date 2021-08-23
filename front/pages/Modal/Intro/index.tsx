@@ -1,6 +1,5 @@
 import React from 'react';
 import { Title, Content, Choose } from './styles';
-// import { Fontsss } from '../../../fonts/fonts';
 
 const Intro = () => {
     return (
