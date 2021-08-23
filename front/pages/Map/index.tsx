@@ -1,5 +1,4 @@
-import React, { FC, useState } from 'react';
-import NavBar from '@layouts/navbar';
+import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import CodeShare from '@pages/CodeShare';
 import Player from '@components/character/player';
