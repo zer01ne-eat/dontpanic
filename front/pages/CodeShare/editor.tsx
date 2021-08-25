@@ -36,7 +36,7 @@ const Editor: FC<EditorProps> = ({ mode, onChange, value, title, height }) => {
       <div className={styles.editorTitle}>{title}</div>
       <AceEditor
         mode={mode}
-        theme="mode-lucene"
+        theme="mode-lua"
         name={title}
         onChange={onChange}
         fontSize={18}
