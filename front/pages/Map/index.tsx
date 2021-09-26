@@ -7,7 +7,7 @@ const Map = () => {
 
     return (
         <>
-            <Player skin="character-00" />
+            {/* <Player skin="character-00" /> */}
             <button><Link style={{"textDecoration": "none"}} to='/codeshare'>dd</Link></button>
             <Route path='/codeshare' component={CodeShare} />
         </>

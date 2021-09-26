@@ -18,12 +18,12 @@ export const LeftNavBar = styled.div`
       display: flex;
       width: 100%;
       height: 70%;
-      border: 1px solid red;
+      // border: 1px solid red;
     }
     & .middle #left {
       width: 50%;
       height: 100%;
-      // background-color: #00D8FF;
+      background-color: #272727;
     }
     & li {
       list-style: none;
@@ -39,7 +39,7 @@ export const LeftNavBar = styled.div`
       height: 48px;
       margin-top: 20px;
       border-radius: 16px;
-      background-color: #1e1e1e;
+      background-color: #272727;
       padding: 4px;
       cursor: pointer;
     }
@@ -106,4 +106,5 @@ export const UserInfo = styled.div`
     height: calc(100vh - 900px);
     overflow-y: auto;
     border: 5px solid red;
+    background-image: url(../imgs/navbar/bg.svg)
 `;
