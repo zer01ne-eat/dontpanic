@@ -7,9 +7,18 @@ import { UsersModule } from './users/users.module';
 import { DmsService } from './dms/dms.service';
 import { DmsController } from './dms/dms.controller';
 import { DmsModule } from './dms/dms.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import * as ormconfig from './ormconfig';
 
 @Module({
-  imports: [ConfigModule.forRoot(), UsersModule, DmsModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true
+    }),
+    UsersModule,
+    DmsModule,
+    TypeOrmModule.forRoot(ormconfig)
+  ],
   controllers: [AppController, DmsController],
   providers: [AppService, DmsService],
 })

@@ -21,7 +21,7 @@ injectGlobal`
 
 export const Title = styled.div `
     display: flex;
-    // border: 2px solid black;
+    border: 2px solid black;
     // position: absolute;
     font-size: 9em;
     color: #fff;
@@ -36,24 +36,24 @@ export const Title = styled.div `
 export const Content = styled.div `
     display: flex;
     font-family: 'Noto Sans KR';
-    // border: 2px solid black;
-    position: absolute;
+    border: 2px solid black;
+    // position: absolute;
     color: #b0b0b0;
     font-size: 2rem;
     width: 40em;
-    margin-top: 13em;
-    margin-left: 15em;
+    // margin-top: 13em;
+    // margin-left: 15em;
 `
 
 export const Choose = styled.div `
     display: flex;
     font-family: 'Noto Sans KR';
     // border: 2px solid black;
-    position: absolute;
+    // position: absolute;
     font-size: 2rem;
     width: 40em;
-    margin-top: 20em;
-    margin-left: 22em;
+    // margin-top: 20em;
+    // margin-left: 22em;
     font-weight: bold;
     line-height: 1.43;
     text-align: center;

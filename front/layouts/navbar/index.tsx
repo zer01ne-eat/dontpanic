@@ -19,7 +19,9 @@ const NavBar = () => {
                             <img src='imgs/navbar/btn-close.svg' />
                         </div>
                         <div>
-                            <UserInfo>userinfo</UserInfo>
+                            <UserInfo>
+                                <img style={{"display":"flex","width": "90px"}} src='imgs/slimes/red.svg' />
+                            </UserInfo>
                         </div>
                     </div>
                     <div className="middle">

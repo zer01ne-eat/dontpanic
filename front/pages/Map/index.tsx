@@ -1,7 +1,10 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
-import CodeShare from '@pages/CodeShare';
 import Player from '@components/character/player';
+import { Link, Route } from 'react-router-dom';
+import loadable from '@loadable/component';
+
+const NavBar = loadable(() => import('@layouts/navbar'));
+const CodeShare = loadable(() => import('@pages/CodeShare'));
 
 const Map = () => {
 

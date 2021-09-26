@@ -1,17 +1,16 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Rectangle } from './styles';
-import { Link, Route } from 'react-router-dom';
-import UserCreation from '@pages/Modal/UserCreation';
-import Intro from '@pages/Modal/Intro';
-import Map from '@pages/Map';
+import { Link } from 'react-router-dom';
 
 interface Props {
     show: boolean;
-    onCloseModal: () => void;
+    showConfirmCallToAction: boolean;
+    close: () => void;
+    confirmButtonText: string | JSX.Element;
+    confirmButtonAction: () => void;
 }
 
-const Modal: FC<Props> = ({ show, children, onCloseModal }) => {
-    const [viewUserCreation, setUserCreation] = useState(true)
+const Modal: FC<Props> = ({ show, children, showConfirmCallToAction, close, confirmButtonText, confirmButtonAction}) => {
 
     if (!show) {
         return null;
@@ -19,13 +18,14 @@ const Modal: FC<Props> = ({ show, children, onCloseModal }) => {
 
     return (
     <Rectangle>
-        {/* <div> */}
-            {/* {children} */}
-            {viewUserCreation ? <div id="intro"><Intro /></div> : <div id="intro"><UserCreation /></div> }
-            {viewUserCreation ? <div id="buttons"><button onClick={() => setUserCreation(false)}>CONTINUE</button></div> : <div id="buttons"><Link style={{"textDecoration": "none"}} to='/map'><button onClick={onCloseModal}>NEXT</button></Link></div>}
-        {/* </div> */}
-        <Route path='/map' component={Map} />
+        {children}
+        { confirmButtonText == 'START' ? 
+        <Link style={{"textDecoration": "none"}} to='/map'>
+            <div id="buttons"><button className="ModalButton" onClick={confirmButtonAction}>{confirmButtonText}</button></div>
+        </Link> :
+        <div id="buttons"><button className="ModalButton" onClick={confirmButtonAction}>{confirmButtonText}</button></div>}
     </Rectangle>
+    
   );
 };
 

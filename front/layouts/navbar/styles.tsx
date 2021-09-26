@@ -8,6 +8,8 @@ export const LeftNavBar = styled.div`
     margin: 1vh 1vw;
     display: inline-block;
     background-color: #1e1e1e;
+  font-family: 'Noto Sans KR';
+
     & #top {
       text-align: center;
       margin-top: 20px;
@@ -18,11 +20,11 @@ export const LeftNavBar = styled.div`
       display: flex;
       width: 100%;
       height: 70%;
-      // border: 1px solid red;
+      border: 1px solid red;
     }
     & .middle #left {
       width: 50%;
-      height: 100%;
+      height: 90%;
       background-color: #272727;
     }
     & li {
@@ -48,7 +50,7 @@ export const LeftNavBar = styled.div`
       top: 0px;
       left: 620px;
       width: 50%;
-      height: 100%;
+      height: 90%;
       background-color: #fff;
     }
     & .back-selected-btn {
