@@ -37,7 +37,7 @@ const UserCreation = () => {
             setSignUpError(false);
             setSignUpSuccess(false);
             axios
-              .post('/api/users', { nickname, slimeColor })
+              .post('/api/users', { nickname, slimeColor }, {withCredentials: true})
               .then(() => {
                 console.log("axios post");
                 setSignUpSuccess(true);

@@ -1,11 +1,12 @@
 import React from 'react';
+import { ChatZone, Section } from './styles';
 
 const ChatList = () => {
 
     return (
-        <div>
-            ChatList
-        </div>
+        <ChatZone>
+            <Section>ChatList</Section>
+        </ChatZone>
   );
 };
 
