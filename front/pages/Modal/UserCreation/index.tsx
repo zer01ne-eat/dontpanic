@@ -1,9 +1,13 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, VFC } from 'react';
 import useInput from '@hooks/useInput';
-import { Slime, CharacterCreation, Error } from './styles';
+import { Slime, CharacterCreation, Error, Button } from './styles';
 import axios from 'axios';
 
-const UserCreation = () => {
+interface Props {
+    dispatchModalAction: () => void;
+}
+
+const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
     const [signUpError, setSignUpError] = useState(false);
     const [signUpSuccess, setSignUpSuccess] = useState(false);
     const [mismatchError, setMismatchError] = useState(false);
@@ -33,20 +37,22 @@ const UserCreation = () => {
           if (!nickname || !nickname.trim()) {
             return;
           }
-          if (!mismatchError) {
-            setSignUpError(false);
-            setSignUpSuccess(false);
-            axios
-              .post('/api/users', { nickname, slimeColor }, {withCredentials: true})
-              .then(() => {
-                console.log("axios post");
-                setSignUpSuccess(true);
-              })
-              .catch((error) => {
-                console.log(error.response?.data);
-                setSignUpError(error.response?.data?.code === 403);
-              });
-          }
+        //   if (!mismatchError) {
+        //     setSignUpError(false);
+        //     setSignUpSuccess(false);
+        //     axios
+        //       .post('/api/users', { nickname, slimeColor }, {withCredentials: true})
+        //       .then(() => {
+        //         console.log("axios post");
+        //         setSignUpSuccess(true);
+        //         // dispatchModalAction();
+        //       })
+        //       .catch((error) => {
+        //         console.log(error.response?.data);
+        //         setSignUpError(error.response?.data?.code === 403);
+        //       });
+        //   }
+          dispatchModalAction();
         },
         [nickname, slimeColor, mismatchError],
       );
@@ -54,7 +60,7 @@ const UserCreation = () => {
     return (
         <>
             <form onSubmit={onSubmit}>
-                <div style={{"display":"flex"}}>
+                <div style={{"display":"inline-block"}}>
                     <Slime><img src={`imgs/slimes/${currentClick}.svg`} /></Slime>
                 </div>
                 <CharacterCreation>
@@ -80,7 +86,9 @@ const UserCreation = () => {
                 {mismatchError && <Error>비밀번호가 일치하지 않습니다.</Error>}
                 {!nickname && <Error>닉네임을 입력해주세요.</Error>}
                 {signUpError && <Error>이미 가입된 이메일입니다.</Error>}
-                <button type="submit">next</button>
+                <Button>
+                    <div id="buttons"><button type="submit">next</button></div>
+                </Button>
             </form>
         </>
     );

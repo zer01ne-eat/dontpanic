@@ -23,7 +23,7 @@ const Modal: FC<Props> = ({ show, children, showConfirmCallToAction, close, conf
         <Link style={{"textDecoration": "none"}} to='/map'>
             <div id="buttons"><button className="ModalButton" onClick={confirmButtonAction}>{confirmButtonText}</button></div>
         </Link> :
-        <div id="buttons"><button className="ModalButton" onClick={confirmButtonAction}>{confirmButtonText}</button></div>}
+        confirmButtonText == '' ? <></> : <div id="buttons"><button className="ModalButton" onClick={confirmButtonAction}>{confirmButtonText}</button></div>}
     </Rectangle>
     
   );

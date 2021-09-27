@@ -16,11 +16,11 @@ const onSubmitForm = useCallback(
     (e) => {
         e.preventDefault();
         if (chat?.trim()) {
-            axios.post('/api/dms', {
+            axios.post('/api/dms/chats', {
                 content: chat,
             })
             .then(() => {
-                // revalidate();
+                mutateChat;
                 setChat('');
             })
             .catch(console.error);

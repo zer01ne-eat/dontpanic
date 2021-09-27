@@ -721,6 +721,7 @@ let DmsController = class DmsController {
         console.log(query.perPage, query.page);
     }
     postChat(body) {
+        console.log(body);
     }
 };
 __decorate([
@@ -877,7 +878,7 @@ module.exports = require("dotenv");
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("4364c71e794c916e599f")
+/******/ 		__webpack_require__.h = () => ("0f1750f99a0711d7b348")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */

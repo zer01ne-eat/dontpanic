@@ -108,5 +108,5 @@ export const UserInfo = styled.div`
     height: calc(100vh - 900px);
     overflow-y: auto;
     border: 5px solid red;
-    background-image: url(../imgs/navbar/bg.svg)
+    background-image: url(../imgs/navbar/bg.svg);
 `;

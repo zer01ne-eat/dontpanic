@@ -9,6 +9,7 @@ export class DmsController {
 
     @Post('chats')
     postChat(@Body() body) {
+        console.log(body);
         
     }
 }

@@ -27,9 +27,9 @@ const ModalPage: FC<Props> = ({ onCloseModal }) => {
                     
               case USER_CREATION:
                     return { 
-                      content: <UserCreation />,
-                      confirmButtonText: 'NEXT',
-                      confirmButtonAction: () => dispatchModalAction(SKILL),
+                      content: <UserCreation dispatchModalAction={() => dispatchModalAction(SKILL)}/>,
+                      confirmButtonText: '',
+                      confirmButtonAction: () => console.log('next.'),
                       show: true
                     }
               case SKILL:
