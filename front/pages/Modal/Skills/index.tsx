@@ -11,21 +11,34 @@ const Skills = () => {
     const [currentClick, setCurrentClick] = useState("");
 
     const GetClick = (e: any) => {
-        // if (currentClick !== "" ) {
-        //     let prev = document.getElementById(currentClick!)
-        //     // prev!.style.border = "";
-        // }
-        let prev = document.getElementById(currentClick!)
         setCurrentClick(e.target.id);
+        if (currentClick !== "") {
+            console.log(currentClick)
+            let current = document.getElementById(currentClick!);
+            if (current?.className == "unselected") {
+                current!.className = "selected"
+            }
+            else {
+                current!.className = "unselected"
+            }
+        }
         };
 
     useEffect(() => {
             if (currentClick !== "") {
                 let current = document.getElementById(currentClick!);
-                console.log(current)
-                current!.id = "selected";
-                current!.style.border = "solid 9px #fff";
-                current!.style.color = "#fff";
+
+                if (current?.className == "unselected") {
+                    current!.style.border = "solid 9px #fff";
+                    current!.style.color = "#fff";
+                    // current.className = "selected"
+                }
+                else {
+                    current!.style.border = "solid 9px #6c6c6c";
+                    current!.style.color = "#6c6c6c";
+                    // current!.className = "unselected";
+                }
+
             }
         }, [currentClick]);
     // axios
@@ -38,20 +51,20 @@ const Skills = () => {
     return (
         <>
 
-                <div style={{"display":"inline-block"}}>
+                {/* <div style={{"display":"inline-block"}}> */}
                     <Slime><img src={`imgs/slimes/${datas[0].slimeColor}.svg`} /></Slime>
-                </div>
+                {/* </div> */}
                 <CharacterCreation>
-                    <label id="nickname">
                         <div id="title">Preferred skills (select)</div>
                         <ul style={{listStyle: "none", "display": "flex"}}>
                             {skills.map(skill => (
-                            <li style={{"paddingRight": "10px"}}>
-                                <Skill id={skill} onClick={GetClick}><div className='name'>{skill}</div></Skill>
+                            <li key={skill} style={{"paddingRight": "10px"}}>
+                                <Skill>
+                                    <div className="unselected" id={skill} onClick={GetClick} style={{padding: "15px 55px", "borderRadius": "60.8px", "cursor": "pointer", border: "solid 9px #6c6c6c", color: "#6c6c6c"}}>{skill}</div>
+                                </Skill>
                             </li>
                             ))}
                         </ul>
-                    </label>
                 </CharacterCreation>
         </>
     );
