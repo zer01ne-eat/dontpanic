@@ -37,22 +37,22 @@ const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
           if (!nickname || !nickname.trim()) {
             return;
           }
-        //   if (!mismatchError) {
-        //     setSignUpError(false);
-        //     setSignUpSuccess(false);
-        //     axios
-        //       .post('/api/users', { nickname, slimeColor }, {withCredentials: true})
-        //       .then(() => {
-        //         console.log("axios post");
-        //         setSignUpSuccess(true);
-        //         // dispatchModalAction();
-        //       })
-        //       .catch((error) => {
-        //         console.log(error.response?.data);
-        //         setSignUpError(error.response?.data?.code === 403);
-        //       });
-        //   }
-          dispatchModalAction();
+          if (!mismatchError) {
+            setSignUpError(false);
+            setSignUpSuccess(false);
+            axios
+              .post('/api/users', { nickname, slimeColor }, {withCredentials: true})
+              .then(() => {
+                console.log("axios post");
+                setSignUpSuccess(true);
+                dispatchModalAction();
+              })
+              .catch((error) => {
+                console.log(error.response?.data);
+                setSignUpError(error.response?.data?.code === 403);
+              });
+          }
+        //   dispatchModalAction();
         },
         [nickname, slimeColor, mismatchError],
       );

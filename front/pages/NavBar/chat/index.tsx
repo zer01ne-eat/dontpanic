@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import ChatList from '@components/chat/ChatList';
+// import ChatList from '@components/chat/ChatList';
 import ChatBox from '@components/chat/ChatBox';
 import useInput from '@hooks/useInput';
 import axios from 'axios';
@@ -15,16 +15,18 @@ const {data: chatData, mutate: mutateChat } = useSWR<IDM[]>(
 const onSubmitForm = useCallback(
     (e) => {
         e.preventDefault();
-        if (chat?.trim()) {
-            axios.post('/api/dms/chats', {
-                content: chat,
-            })
-            .then(() => {
-                mutateChat;
-                setChat('');
-            })
-            .catch(console.error);
-        }
+        mutateChat;
+        setChat('');
+        // if (chat?.trim()) {
+        //     axios.post('/api/dms/chats', {
+        //         content: chat,
+        //     })
+        //     .then(() => {
+        //         mutateChat;
+        //         setChat('');
+        //     })
+        //     .catch(console.error);
+        // }
     },
     [chat]
 );
@@ -32,7 +34,8 @@ const onSubmitForm = useCallback(
         <div>
         {/* // <div style={{width:"100%", height:"100%", padding: "20px", backgroundColor: "#1e1e1e"}}>
         //     <div style={{border:"2px solid blue", height:"70%"}}> */}
-                <ChatList />
+                {/* <ChatList /> */}
+                {chat}
             {/* </div> */}
             <ChatBox chat={chat} onChangeChat={onChangeChat} onSubmitForm={onSubmitForm} />
             {/* <div style={{height:"30%", border:"2px solid green",}}>

@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import { Slime, CharacterCreation, Skill } from './styles';
 
 const Skills = () => {
-    // const {data, error} = useSWR('/api/users', fetcher);
+    const {data, error} = useSWR('/api/users', fetcher);
     const datas = [{nickname: 'ddd', slimeColor: 'red'}]
     const skills = ['html', 'css', 'javascript']
     const [currentClick, setCurrentClick] = useState("");
-
     const GetClick = (e: any) => {
         setCurrentClick(e.target.id);
         if (currentClick !== "") {
@@ -23,7 +22,6 @@ const Skills = () => {
             }
         }
         };
-
     useEffect(() => {
             if (currentClick !== "") {
                 let current = document.getElementById(currentClick!);

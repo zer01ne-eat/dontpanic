@@ -9,6 +9,7 @@ import { DmsController } from './dms/dms.controller';
 import { DmsModule } from './dms/dms.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as ormconfig from './ormconfig';
+import { UsersService } from './users/users.service';
 
 @Module({
   imports: [

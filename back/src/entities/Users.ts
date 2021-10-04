@@ -1,4 +1,5 @@
 import {
+  BaseEntity,
     Column,
     CreateDateColumn,
     DeleteDateColumn,
@@ -19,7 +20,7 @@ import {
 //   import { Workspaces } from './Workspaces';
   
 //   @Index('nickname', ['nickname'], { unique: true })
-  @Entity({ schema: 'dontpanic', name: 'nickname' })
+  @Entity()
   export class Users {
     @PrimaryGeneratedColumn({ type: 'int', name: 'id' })
     id: number;
@@ -27,17 +28,17 @@ import {
     @Column('varchar', { name: 'nickname', length: 30 })
     nickname: string;
   
-    @Column('varchar', { name: 'slimeColor', length: 100, select: false })
+    @Column('varchar', { name: 'slimeColor', length: 100 })
     slimeColor: string;
   
-    @CreateDateColumn()
-    createdAt: Date;
+    // @CreateDateColumn()
+    // createdAt: Date;
   
-    @UpdateDateColumn()
-    updatedAt: Date;
+    // @UpdateDateColumn()
+    // updatedAt: Date;
   
-    @DeleteDateColumn()
-    deletedAt: Date | null;
+    // @DeleteDateColumn()
+    // deletedAt: Date | null;
   
     // @OneToMany(() => ChannelChats, (channelchats) => channelchats.User)
     // ChannelChats: ChannelChats[];
@@ -45,11 +46,11 @@ import {
     // @OneToMany(() => ChannelMembers, (channelmembers) => channelmembers.User)
     // ChannelMembers: ChannelMembers[];
   
-    @OneToMany(() => DMs, (dms) => dms.Sender)
-    DMs: DMs[];
+    // @OneToMany(() => DMs, (dms) => dms.Sender)
+    // DMs: DMs[];
   
-    @OneToMany(() => DMs, (dms) => dms.Receiver)
-    DMs2: DMs[];
+    // @OneToMany(() => DMs, (dms) => dms.Receiver)
+    // DMs2: DMs[];
   
     // @OneToMany(() => Mentions, (mentions) => mentions.Sender)
     // Mentions: Mentions[];
