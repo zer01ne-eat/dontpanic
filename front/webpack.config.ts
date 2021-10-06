@@ -17,7 +17,7 @@ const config: Configuration = {
   mode: isDevelopment ? 'development' : 'production',
   devtool: isDevelopment ? 'hidden-source-map' : 'eval', //'inline-source-map'
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css'],
     alias: {
       '@hooks': path.resolve(__dirname, 'hooks'),
       '@components': path.resolve(__dirname, 'components'),
@@ -49,16 +49,26 @@ const config: Configuration = {
           ],
           env: {
             development: {
-              plugins: [require.resolve('react-refresh/babel')],
+              // plugins: [require.resolve('react-refresh/babel')],
+              plugins: [['@emotion', { sourceMap: true}], require.resolve('react-refresh/babel')],
             },
+            production: {
+              plugins: ['@emotion'],
+            }
           },
         },
         exclude: path.join(__dirname, 'node_modules'),
       },
-      {
-        test: /\.css?$/,
-        use: ['style-loader', 'css-loader'],
-      },
+      { test: /\.css$/, use: [ 
+        { loader: "style-loader" },
+        { loader: "css-loader"},
+       
+    ] },
+    {
+      test: /\.(eot|ttf|woff|woff2)$/,
+      exclude: /node_modules/,
+      loader: "file-loader"
+  }
     ],
   },
   plugins: [
@@ -79,6 +89,12 @@ const config: Configuration = {
     historyApiFallback: true,
     port: 4200,
     publicPath: '/dist/',
+    proxy: {
+      '/api/': {
+        target: 'http://localhost:4242',
+        changeOrigin: true,
+      }
+    }
   },
 };
 

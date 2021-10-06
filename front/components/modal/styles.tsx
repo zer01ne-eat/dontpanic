@@ -38,7 +38,7 @@ export const Rectangle = styled.div`
       align-items: center;
       -webkit-box-pack: center;
       justify-content: center;
-      font-family: inherit;
+      font-family: 'Noto Sans';
       font-size: 2em;
       font-weight: 700;
       transition: background-color 200ms ease 0s, border-color 200ms ease 0s;
