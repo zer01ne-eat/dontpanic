@@ -3,6 +3,7 @@ import { LeftNavBar, UserInfo, ClosedNavBar } from './styles';
 import NavBarContent from '@pages/NavBar/navbarContent';
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
+import Info from '@pages/NavBar/info';
 
 const NavBar = () => {
     const [showNavBar, setShowNavBar] = useState(true);
@@ -18,11 +19,10 @@ const NavBar = () => {
                 <LeftNavBar>
                     <div id="top">
                         <div className='back-selected-btn' onClick={onClickNavBar}>
-                            <img src='imgs/navbar/btn-close.svg' />
                         </div>
                         <div>
                             <UserInfo>
-                                <img style={{"display":"flex","width": "90px"}} src='imgs/slimes/red.svg' />
+                                <Info />
                             </UserInfo>
                         </div>
                     </div>
