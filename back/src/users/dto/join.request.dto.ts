@@ -1,5 +1,4 @@
-export class JoinRequestDto {
-    public email: string;
+export class UserDto {
     public nickname: string;
-    public password: string;
+    public slimeColor: string;
 }

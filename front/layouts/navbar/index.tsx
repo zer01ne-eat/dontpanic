@@ -1,11 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import { LeftNavBar, UserInfo, ClosedNavBar } from './styles';
 import NavBarContent from '@pages/NavBar/navbarContent';
+import useSWR from 'swr';
+import fetcher from '@utils/fetcher';
 
 const NavBar = () => {
     const [showNavBar, setShowNavBar] = useState(true);
     const [selected, setSelected] = useState('goal');
-
+    const {data, error} = useSWR('/api/users', fetcher);
     const onClickNavBar = useCallback(() => {
         setShowNavBar((prev) => !prev);
     }, []);
@@ -19,7 +21,9 @@ const NavBar = () => {
                             <img src='imgs/navbar/btn-close.svg' />
                         </div>
                         <div>
-                            <UserInfo>userinfo</UserInfo>
+                            <UserInfo>
+                                <img style={{"display":"flex","width": "90px"}} src='imgs/slimes/red.svg' />
+                            </UserInfo>
                         </div>
                     </div>
                     <div className="middle">
