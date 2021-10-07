@@ -25,11 +25,14 @@ import {
     @PrimaryGeneratedColumn({ type: 'int', name: 'id' })
     id: number;
   
-    @Column('varchar', { name: 'nickname', length: 30 })
+    @Column('varchar', { name: 'nickname', length: 45 })
     nickname: string;
   
-    @Column('varchar', { name: 'slimeColor', length: 100 })
-    slimeColor: string;
+    @Column('varchar', { name: 'slime_color', length: 45 })
+    slime_color: string;
+
+    @Column('int', { name: 'level', default: 0 })
+    level: number;
   
     // @CreateDateColumn()
     // createdAt: Date;

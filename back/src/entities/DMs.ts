@@ -19,16 +19,16 @@ import {
     @PrimaryGeneratedColumn({ type: 'int', name: 'id' })
     id: number;
   
-    @Column('text', { name: 'content' })
+    @Column('longtext', { name: 'content' })
     content: string;
   
     @CreateDateColumn()
     created_at: Date;
   
-    @Column('int', { name: 'SenderId', nullable: true })
+    @Column('int', { name: 'users_id', nullable: true })
     users_id: number | null;
   
-    @Column('int', { name: 'ReceiverId', nullable: true })
+    @Column('int', { name: 'members_id', nullable: true })
     members_id: number | null;
   
     // @ManyToOne(() => Workspaces, (workspaces) => workspaces.DMs, {

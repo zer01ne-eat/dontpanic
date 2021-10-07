@@ -1,4 +1,7 @@
+import internal from "stream";
+
 export class UserDto {
     public nickname: string;
-    public slimeColor: string;
+    public slime_color: string;
+    public level: number;
 }
