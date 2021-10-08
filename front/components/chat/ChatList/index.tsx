@@ -2,15 +2,16 @@ import { ChatZone, Section, StickyHeader } from './styles';
 import { IChat, IDM } from '@typings/db';
 import React, { FC, RefObject, useCallback } from 'react';
 
-interface Props {
+// interface Props {
 
-  chatSections: { [key: string]: (IDM | IChat)[] };
-}
-const ChatList: FC<Props> = ({ chatSections }) => {
+//   chatSections: { [key: string]: (IDM | IChat)[] };
+// }
+// const ChatList: FC<Props> = ({ chatSections }) => {
+const ChatList = () => {
 
     return (
         <ChatZone>
-             {Object.entries(chatSections).map(([date, chats]) => {
+             {/* {Object.entries(chatSections).map(([date, chats]) => {
           return (
             <Section className={`section-${date}`} key={date}>
               <StickyHeader>
@@ -24,7 +25,7 @@ const ChatList: FC<Props> = ({ chatSections }) => {
               ))}
             </Section>
           );
-        })}
+        })} */}
         </ChatZone>
   );
 };

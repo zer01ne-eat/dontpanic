@@ -28,8 +28,8 @@ import {
     @Column('varchar', { name: 'nickname', length: 45 })
     nickname: string;
   
-    @Column('varchar', { name: 'slime_color', length: 45 })
-    slime_color: string;
+    @Column('varchar', { name: 'slimeColor', length: 45 })
+    slimeColor: string;
 
     @Column('int', { name: 'level', default: 0 })
     level: number;

@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const LeftNavBar = styled.div`
     border-radius: 2rem;
-    width: 20vw;
+    width: 30vw;
     height: 80vh;
     text-align: center;
     margin: 1vh 1vw;
@@ -58,14 +58,15 @@ export const LeftNavBar = styled.div`
       margin-left: 88%;
     }
     & .back-selected-btn img {
-      right: 12px;
+      right: 120px;
       top: 12px;
       width: 48px;
       height: 48px;
       margin-top: 20px;
+      margin-right: 10px;
       border-radius: 16px;
       background-color: #1e1e1e;
-      padding: 4px;
+      padding: 4px 0;
       cursor: pointer;
     }
     // & button {
@@ -105,8 +106,8 @@ export const ClosedNavBar = styled.div `
   }
 `
 export const UserInfo = styled.div`
-    height: calc(100vh - 900px);
+    height: calc(100vh - 750px);
     overflow-y: auto;
-    border: 5px solid red;
+    // border: 5px solid red;
     background-image: url(../imgs/navbar/bg.svg);
 `;

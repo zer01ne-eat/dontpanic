@@ -17,9 +17,8 @@ const NavBar = () => {
         <>
             {showNavBar ? (
                 <LeftNavBar>
+                    <div className='back-selected-btn' onClick={onClickNavBar}><img src='imgs/navbar/btn-close.svg' /></div>
                     <div id="top">
-                        <div className='back-selected-btn' onClick={onClickNavBar}>
-                        </div>
                         <div>
                             <UserInfo>
                                 <Info />

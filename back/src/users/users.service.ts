@@ -10,10 +10,10 @@ export class UsersService {
         @InjectRepository(UsersRepository)
         private userRepository: UsersRepository, ) {}
     async postUsers(userDto: UserDto): Promise<Users> {
-        const {nickname, slime_color, level} = userDto;
+        const {nickname, slimeColor, level} = userDto;
         const user = this.userRepository.create({
             nickname,
-            slime_color,
+            slimeColor,
             level
         })
 

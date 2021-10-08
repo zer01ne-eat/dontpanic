@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-// import ChatList from '@components/chat/ChatList';
+import ChatList from '@components/chat/ChatList';
 import ChatBox from '@components/chat/ChatBox';
 import useInput from '@hooks/useInput';
 import axios from 'axios';
@@ -53,7 +53,9 @@ const onSubmitForm = useCallback(
         {/* // <div style={{width:"100%", height:"100%", padding: "20px", backgroundColor: "#1e1e1e"}}>
         //     <div style={{border:"2px solid blue", height:"70%"}}> */}
                 {/* <ChatList /> */}
+            {/* <ChatList> */}
                 {chat}
+            {/* </ChatList> */}
             {/* </div> */}
             <ChatBox chat={chat} onChangeChat={onChangeChat} onSubmitForm={onSubmitForm} />
             {/* <div style={{height:"30%", border:"2px solid green",}}>
