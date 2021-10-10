@@ -1,23 +1,23 @@
 import styled from '@emotion/styled';
-import { injectGlobal } from '@emotion/css';
+// import { injectGlobal } from '@emotion/css';
 
-injectGlobal`
-    @font-face {
-        font-family: 'Noto Sans';
-        // font-style: normal;
-        font-weight: 400;
-        src:
-        url('../fonts/NotoSansDisplay-Black.woff') format('woff')
-    }
+// injectGlobal`
+//     @font-face {
+//         font-family: 'Noto Sans';
+//         // font-style: normal;
+//         font-weight: 400;
+//         src:
+//         url('../fonts/NotoSansDisplay-Black.woff') format('woff')
+//     }
     
-    @font-face {
-        font-family: 'Noto Sans KR';
-        // font-style: normal;
-        font-weight: 400;
-        src:
-        url('../fonts/NotoSansKR-Regular.woff2') format('woff2')
-    }
-`
+//     @font-face {
+//         font-family: 'Noto Sans KR';
+//         // font-style: normal;
+//         font-weight: 400;
+//         src:
+//         url('../fonts/NotoSansKR-Regular.woff2') format('woff2')
+//     }
+// `
 
 export const Title = styled.div `
     font-size: 9em;
