@@ -6,138 +6,155 @@ export const FullNavbar = styled.div `
   border-radius: 2rem;
   margin: 1.9% 1.9% 0;
   display: inline-block;
-  border: 2px solid red;
   background-color: #1e1e1e;
   overflow: hidden;
-  & .content {
-    // background-color: white;
-    background-image: url(../imgs/navbar/bg.svg);
-    margin-top: 20%;
-    height: 100%;
-    overflow: hidden;
-    // display: flex;
-    // flex-direction: column;
-    $ #user-data {
-      // width:20%;
-      height: 20%;
-      background-color: green;
+  font-family: 'Noto Sans';
+  & .back-selected-btn {
+    height: 8%;
+    cursor: pointer;
+    padding: 10px;
+    & img {
+      float: right;
+      width: 15%;
     }
-    & #right-content {
-      // width:20%;
-      height: 20%;
+  }
+  & .content {
+    background-image: url(../imgs/navbar/bg.svg);
+    overflow: hidden;
+
+    & ul {
+      padding: 0;
+      list-style: none;
+    }
+    
+    & .user-info {
+      height: 15%;
+
+      & .slime {
+        width: 37%;
+        float: left;
+        height: 100%;
+        padding: 5%;
+        & #slime-img {
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+
+      & .user-data {
+        width: 63%;
+        height: 100%;
+        float: right;
+        padding : 10px;
+
+        & #level {
+          color: #5b5b5b;
+          font-size: 1em;
+        }
+
+        & #nickname {
+          color: #fff;
+          font-size: 2em;
+        }
+
+        & ul {
+          display: flex;
+        }
+
+        & li {
+          margin-right: 10px;
+        }
+        
+        & #skills {
+          padding: 0.5px 17px ;
+          border-radius: 30px;
+          border: solid 2px #6c6c6c;
+          color: #6c6c6c;
+          font-size: 1em;
+          display: flex;
+        }
+      }
+    }
+
+    & .slime img {
+      width: 70%;
+    }
+
+    & .left-content {
+      width: 37.5%;
+      height: 100%;
+      float: left;
+
+      & li {
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        padding-left: 10%;
+
+        &:hover{
+          background-color: #5485ff;
+        }
+        &:active {
+          background-color #1e1e1e: 
+        }
+      }
+      & img {
+        width: 35%;
+      }
+      & #menu-title {
+        padding: 20% 10%;
+        font-size: 1.5em;
+      }
+    }
+
+    & .right-content {
+      width: 62.5%;
+      height: 100%;
+      float: right;
       background-color: white;
     }
   }
 `;
 
-// export const LeftNavBar = styled.div`
-//     border-radius: 2rem;
-//     width: 30vw;
-//     height: 80vh;
-//     text-align: center;
-//     margin: 1vh 1vw;
-//     display: inline-block;
-//     background-color: #1e1e1e;
-//     font-family: 'Noto Sans KR';
+export const ShrinkNavbar = styled.div `
+  width: 4%;
+  height: 93%;
+  border-radius: 2rem;
+  margin: 1.9% 1.9% 0;
+  display: inline-block;
+  background-color: #1e1e1e;
+  overflow: hidden;
+  & img {
+    width: 80%;
+    cursor: pointer;
+  }
 
-//     & #top {
-//       text-align: center;
-//       margin-top: 20px;
-//       width: 100%;
-//       height: 30%;
-//     }
-//     & .middle {
-//       display: flex;
-//       width: 100%;
-//       height: 70%;
-//       border: 1px solid pink;
-//     }
-//     & .middle #left {
-//       width: 30%;
-//       height: 90%;
-//       background-color: #272727;
-//     }
-//     & li {
-//       list-style: none;
-//       font-size: 1em;
-//       font-weight: bold;
-//       color: #fff;
-//       cursor: pointer;
-//     }
-//     & li img {
-//       right: 12px;
-//       top: 12px;
-//       width: 48px;
-//       height: 48px;
-//       margin-top: 20px;
-//       border-radius: 16px;
-//       background-color: #272727;
-//       padding: 4px;
-//       cursor: pointer;
-//     }
-//     & #right {
-//       // position: absolute;
-//       top: 0px;
-//       left: 620px;
-//       width: 50%;
-//       height: 90%;
-//       background-color: #fff;
-//     }
-//     & .back-selected-btn {
-//       display: inline-block;
-//       margin-left: 88%;
-//     }
-//     & .back-selected-btn img {
-//       right: 120px;
-//       top: 12px;
-//       width: 48px;
-//       height: 48px;
-//       margin-top: 20px;
-//       margin-right: 10px;
-//       border-radius: 16px;
-//       background-color: #1e1e1e;
-//       padding: 4px 0;
-//       cursor: pointer;
-//     }
-//     // & button {
-//     //   background-color: transparent;
-//     //   border: 0;
-//     //   outline: 0;
-//     // }
-// `;
-
-// export const ClosedNavBar = styled.div `
-//   width: 4%;
-//   height: 80vh;
-//   margin: 5vh 5vw;
-//   display: inline-block;
-//   // padding: 100px 25px 0;
-//   object-fit: contain;
-//   border-radius: 2rem;
-//   background-color: #1e1e1e;
+  & .open-selected-btn {
+    height: 10%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+  }
   
-//   & #top {
-//     text-align: center;
-//     margin-top: 20px;
-//     width: 100%;
-//     height: 30%;
-//   }
-
-//   & img {
-//     right: 12px;
-//     top: 12px;
-//     width: 48px;
-//     height: 48px;
-//     margin-top: 20px;
-//     border-radius: 16px;
-//     background-color: #1e1e1e;
-//     padding: 4px;
-//     cursor: pointer;
-//   }
-// `
-// export const UserInfo = styled.div`
-//     height: calc(100vh - 750px);
-//     overflow-y: auto;
-//     border: 5px solid red;
-//     background-image: url(../imgs/navbar/bg.svg);
-// `;
+  & .content {
+    background-image: url(../imgs/navbar/bg.svg);
+    height: 100%;
+    padding-top: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+    & #icons {
+      margin-top: 30px;
+      // align-items: center;
+      // border-radius: 16px;
+      cursor: pointer;
+      display: flex;
+      // flex-direction: column;
+      width: 80px;
+      justify-content: center;
+    }
+  }
+`;
