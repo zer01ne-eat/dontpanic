@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Contents, Skills } from './styles';
 import { Radar, Chart } from 'react-chartjs-2';
 
 const Profile = () => {
+    const [closeList, setCloseList] = useState(false);
+    const listRef = useRef<any>(null);
+
+    function foldList() {
+        if (!listRef || !listRef.current) {
+            return;
+        }
+        const style = listRef.current.style!;
+        console.log(style.maxHeight);
+
+        if (closeList) {
+            style.maxHeight = '0';
+        }
+        else if (!closeList) {
+            // style.maxHeight = `${listRef.current.scrollHeight}px`;
+            style.maxHeight = '10px';
+        }
+        setCloseList(!closeList);
+    }
     
+
+    const projects = [
+        {name: 'project1', position: {x: 1550, y: 500}, type: 'html', list: 'Quiz1'},
+        {name: 'project2', position: {x: 850, y: 700}, type: 'css'},
+        {name: 'project3', position: {x: 1300, y: 1000}, type: 'js'}
+    ]
+
     const data = {
         labels: [
             'HTML',
@@ -14,6 +40,7 @@ const Profile = () => {
             data: [80, 70, 80],
         }]
     };
+
     return (
         <Contents>
             <Skills>
@@ -26,7 +53,6 @@ const Profile = () => {
                     width={10}
                     height={5}
                     options={{ 
-                        // maintainAspectRatio: false,
                         plugins: {
                             legend: {
                                 display: false,
@@ -54,6 +80,21 @@ const Profile = () => {
                 <div className="title">Marks</div>
                 <div className="description">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum turpis sed pretium sodales.
+                </div>
+                <div className="project-lists">
+                    {projects.map(project => 
+                    <ul key={project.name}>
+                        <li>
+                            <div id="project-name">{project.name}</div>
+                            <div id="project-status"></div>
+                            <div className={`${closeList ? 'close' : 'open'}`} style={{ cursor: "pointer" }} onClick={foldList}>
+                                <img src="imgs/projects/ic-dropdwon-selected.png" />
+                            <div className="contents" ref={listRef}>{project.list}</div>
+
+                            </div>
+                        </li>
+                    </ul>
+                        )}
                 </div>
             </Skills>
         </Contents>

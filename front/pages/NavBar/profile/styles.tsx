@@ -16,4 +16,27 @@ export const Skills = styled.div`
         color: #b0b0b0;
         font-size: 1rem;
     }
+    & .project-lists{
+        font-family: 'Noto Sans';
+        color: #b0b0b0;
+        font-size: 1rem;
+        list-style: none;
+    }
+    & li {
+        display: flex;
+    }
+    & button {
+        border: none;
+        butt
+    }
+    & img {
+        width: 10%;
+    }
+    & .open img {
+        transform: rotate(180deg);
+    }
+    & .contents {
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
 `;
