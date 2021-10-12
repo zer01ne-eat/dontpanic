@@ -25,6 +25,14 @@ injectGlobal`
         src:
         url('../fonts/NotoSansKR-Regular.woff2') format('woff2')
     }
+
+    @font-face {
+        font-family: 'Noto San KR Bold';
+        // font-style: normal;
+        font-weight: 400;
+        src:
+        url('../fonts/NotoSansKR-Bold.woff') format('woff2')
+    }
 `
 
 export const BackGround = styled.div `

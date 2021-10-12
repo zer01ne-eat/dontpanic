@@ -7,7 +7,7 @@ export const Rectangle = styled.div`
     border-radius: 3rem;
     width: 80vw;
     height: 80vh;
-    text-align: center;
+    // text-align: center;
     margin: 10vh 10vw;
     & > #intro {
       display: flex;

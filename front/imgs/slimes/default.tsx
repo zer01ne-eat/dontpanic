@@ -1,3 +1,7 @@
+import React from 'react';
+
+const SlimeCharacterDefault = () => {
+    return (
 <svg xmlns="http://www.w3.org/2000/svg" width="500" height="620" viewBox="0 0 518 629">
     <g fill="none" fill-rule="evenodd">
         <g>
@@ -17,3 +21,5 @@
         </g>
     </g>
 </svg>
+    )}
+export default SlimeCharacterDefault
