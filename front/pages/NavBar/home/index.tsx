@@ -1,10 +1,11 @@
 import React from 'react';
+import { HomeContent, HomeTitle } from './styles';
 
 const Home = () => {
     return (
-        <div>
-            <h1>Home</h1>
-        </div>
+        <HomeContent>
+            <HomeTitle>Home</HomeTitle>
+        </HomeContent>
   );
 };
 

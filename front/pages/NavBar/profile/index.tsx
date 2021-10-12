@@ -1,35 +1,27 @@
-import React, { useRef, useState } from 'react';
-import { Contents, Skills } from './styles';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
+import { Contents, Skills, Oval } from './styles';
 import { Radar, Chart } from 'react-chartjs-2';
+import Projects from './projects';
 
 const Profile = () => {
     const [closeList, setCloseList] = useState(false);
-    const listRef = useRef<any>(null);
-
-    function foldList() {
-        if (!listRef || !listRef.current) {
-            return;
-        }
-        const style = listRef.current.style!;
-        console.log(style.maxHeight);
-
-        if (closeList) {
-            style.maxHeight = '0';
-        }
-        else if (!closeList) {
-            // style.maxHeight = `${listRef.current.scrollHeight}px`;
-            style.maxHeight = '10px';
-        }
-        setCloseList(!closeList);
-    }
+    const [display, setDisplay] = useState('');
     
+    const chartRef = useRef<Chart | null>(null);
+
 
     const projects = [
-        {name: 'project1', position: {x: 1550, y: 500}, type: 'html', list: 'Quiz1'},
-        {name: 'project2', position: {x: 850, y: 700}, type: 'css'},
-        {name: 'project3', position: {x: 1300, y: 1000}, type: 'js'}
+        {name: 'project1', position: {x: 1550, y: 500}, type: 'html', list: [{name: 'Quiz1', marked: 100}, {name: 'Quiz2', marked: 10}]},
+        {name: 'project2', position: {x: 850, y: 700}, type: 'css', list: [{name: 'Quiz1', marked: 100}, {name: 'Quiz2', marked: 10}]},
+        {name: 'project3', position: {x: 1300, y: 1000}, type: 'js', list: [{name: 'Quiz1', marked: 100}, {name: 'Quiz2', marked: 10}]}
     ]
-
+    const canvas = document.getElementsByTagName('canvas')[0] as HTMLCanvasElement
+    console.log(canvas);
+    // const ctx = canvas!.getContext('2d');
+    // const gradient = ctx!.createLinearGradient(20,0, 220,0);
+    // gradient.addColorStop(0, 'green');
+    // gradient.addColorStop(.5, 'cyan');
+    // gradient.addColorStop(1, 'green');
     const data = {
         labels: [
             'HTML',
@@ -38,9 +30,10 @@ const Profile = () => {
         ],
         datasets: [{
             data: [80, 70, 80],
+            backgroundColor: '#20f08b',
+            
         }]
     };
-
     return (
         <Contents>
             <Skills>
@@ -48,7 +41,7 @@ const Profile = () => {
                 <div className="description">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum turpis sed pretium sodales.
                 </div>
-                <Radar
+                <Radar ref={chartRef}
                     data={data}
                     width={10}
                     height={5}
@@ -60,6 +53,15 @@ const Profile = () => {
                         },
                         scales: {
                             r: {
+                                angleLines: {
+                                    display: false,
+                                },
+                                pointLabels: {
+                                    color: "white",
+                                    font: {
+                                        size: 14,
+                                    }
+                                },
                                 suggestedMin: 0,
                                 suggestedMax: 100,
                                 ticks: {
@@ -68,6 +70,7 @@ const Profile = () => {
                                 },
                                 grid: {
                                     circular: true,
+                                    color: "black",
                                     z: 5,
                                 }
                             }
@@ -81,22 +84,27 @@ const Profile = () => {
                 <div className="description">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum turpis sed pretium sodales.
                 </div>
-                <div className="project-lists">
-                    {projects.map(project => 
-                    <ul key={project.name}>
-                        <li>
-                            <div id="project-name">{project.name}</div>
-                            <div id="project-status"></div>
-                            <div className={`${closeList ? 'close' : 'open'}`} style={{ cursor: "pointer" }} onClick={foldList}>
-                                <img src="imgs/projects/ic-dropdwon-selected.png" />
-                            <div className="contents" ref={listRef}>{project.list}</div>
-
-                            </div>
-                        </li>
-                    </ul>
-                        )}
-                </div>
             </Skills>
+
+                <Oval>
+                    <div className="oval-descp" style={{backgroundColor: "#1799b8"}} />
+                    <div className="oval-name">Great</div>
+                    <div className="oval-descp" style={{backgroundColor: "#17b84c"}} />
+                    <div className="oval-name">Good</div>
+                    <div className="oval-descp" style={{backgroundColor: "#f4cc1b"}} />
+                    <div className="oval-name">Normal</div>
+                    <div className="oval-descp" style={{backgroundColor: "#e64715"}} />
+                    <div className="oval-name">Bad</div>
+                </Oval>
+
+                    {/* {projects.map((project, index) => 
+                    console.log(project)
+                        )} */}
+                        <div className="project-lists">
+                        {projects.map((project, index) =>{
+                            return <Projects project={project} key={index}/>;}
+                        )}
+                        </div>
         </Contents>
     );
 };

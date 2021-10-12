@@ -3,10 +3,16 @@ import styled from '@emotion/styled';
 export const Contents = styled.div`
     background-color: #1e1e1e;
     height: 100%;
+    & .project-lists{
+        margin-top: 10.8%;
+        font-family: 'Noto Sans';
+        color: #b0b0b0;
+        font-size: 1rem;
+    }
 `;
 export const Skills = styled.div`
     padding: 12% 10%;
-
+    padding-bottom: 0;
     & .title {
         color: #fff;
         font-size: 3em;
@@ -16,27 +22,27 @@ export const Skills = styled.div`
         color: #b0b0b0;
         font-size: 1rem;
     }
-    & .project-lists{
-        font-family: 'Noto Sans';
-        color: #b0b0b0;
+`;
+
+export const Oval = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+    float: right;
+    margin: 2%;
+    padding-right: 4%;
+    & .oval-descp {
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        margin-right: 3px;
+    }
+    & .oval-name {
+        font-family: 'Noto Sans Regular';
         font-size: 1rem;
-        list-style: none;
-    }
-    & li {
-        display: flex;
-    }
-    & button {
-        border: none;
-        butt
-    }
-    & img {
-        width: 10%;
-    }
-    & .open img {
-        transform: rotate(180deg);
-    }
-    & .contents {
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
+        color: #fff;
+        margin-right: 10px;
     }
 `;
