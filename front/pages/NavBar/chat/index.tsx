@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
+import { ChatContent } from './styles';
 import ChatList from '@components/chat/ChatList';
 import ChatBox from '@components/chat/ChatBox';
 import useInput from '@hooks/useInput';
@@ -49,20 +50,23 @@ const onSubmitForm = useCallback(
     [chat]
 );
     return (
-        <div>
-        {/* // <div style={{width:"100%", height:"100%", padding: "20px", backgroundColor: "#1e1e1e"}}>
-        //     <div style={{border:"2px solid blue", height:"70%"}}> */}
-                {/* <ChatList /> */}
-            {/* <ChatList> */}
-                {chat}
-            {/* </ChatList> */}
-            {/* </div> */}
-            <ChatBox chat={chat} onChangeChat={onChangeChat} onSubmitForm={onSubmitForm} />
-            {/* <div style={{height:"30%", border:"2px solid green",}}>
-                <textarea placeholder="Press Enter to send message." style={{color: "#fff",width:"100%", height:"100%", "border":"none", "backgroundColor": "#141414", position:"static"}}/>
-            </div> */}
-        </div>
+        <ChatContent>
+            <ChatList></ChatList>
+            <ChatBox></ChatBox>
+        </ChatContent>
+
   );
 };
 
 export default Chat;
+
+{/* <div style={{border:"2px solid blue", height:"70%"}}>
+    <ChatList />
+<ChatList>
+    {chat}
+</ChatList>
+</div>
+<ChatBox chat={chat} onChangeChat={onChangeChat} onSubmitForm={onSubmitForm} />
+<div style={{height:"30%", border:"2px solid green",}}>
+    <textarea placeholder="Press Enter to send message." style={{color: "#fff",width:"100%", height:"100%", "border":"none", "backgroundColor": "#141414", position:"static"}}/>
+</div> */}

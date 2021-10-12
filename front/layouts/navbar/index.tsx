@@ -8,7 +8,7 @@ import Info from '@pages/NavBar/info';
 
 const NavBar = () => {
   const [showNavBar, setShowNavBar] = useState(true);
-  const [selected, setSelected] = useState('profile');
+  const [selected, setSelected] = useState('chat');
   const userData = { nickname: 'E.A.T_kristine', level: 1, skills: ['html', 'css', 'javascript'] };
   // const {data, error} = useSWR('/api/users', fetcher);
 
