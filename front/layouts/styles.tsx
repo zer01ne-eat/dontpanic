@@ -3,35 +3,39 @@ import { injectGlobal } from '@emotion/css';
 
 injectGlobal`
     @font-face {
-        font-family: 'Noto Sans';
-        // font-style: normal;
-        font-weight: 400;
+        font-family: 'NSD-Black';
         src:
         url('../fonts/NotoSansDisplay-Black.woff') format('woff')
     }
 
     @font-face {
-        font-family: 'Noto Sans Regular';
-        // font-style: normal;
-        font-weight: 400;
+        font-family: 'NSD-Bold';
         src:
-        url('../fonts/NotoSans-Regular.woff') format('woff')
-    }
-    
-    @font-face {
-        font-family: 'Noto Sans KR';
-        // font-style: normal;
-        font-weight: 400;
-        src:
-        url('../fonts/NotoSansKR-Regular.woff2') format('woff2')
+        url('../fonts/NotoSansDisplay-Bold.woff') format('woff')
     }
 
     @font-face {
-        font-family: 'Noto San KR Bold';
-        // font-style: normal;
-        font-weight: 400;
+        font-family: 'NSD-Regular';
         src:
-        url('../fonts/NotoSansKR-Bold.woff') format('woff2')
+        url('../fonts/NotoSansDisplay-Regular.woff') format('woff')
+    }
+    
+    @font-face {
+        font-family: 'NS-Bold';
+        src:
+        url('../fonts/NotoSans-Bold.woff') format('woff')
+    }
+
+    @font-face {
+        font-family: 'NS-Medium';
+        src:
+        url('../fonts/NotoSans-Medium.woff') format('woff')
+    }
+
+    @font-face {
+        font-family: 'NS-Regular';
+        src:
+        url('../fonts/NotoSans-Regular.woff') format('woff')
     }
 `
 

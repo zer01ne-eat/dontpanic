@@ -20,11 +20,6 @@ interface Props {
     return (
     <Rectangle>
         {children}
-        {/* { confirmButtonText == 'START' ? 
-        <Link style={{"textDecoration": "none"}} to='/map'>
-            <div id="buttons"><button className="ModalButton" onClick={confirmButtonAction}>{confirmButtonText}</button></div>
-        </Link> :
-        confirmButtonText == '' ? <></> : <div id="buttons"><button className="ModalButton" onClick={confirmButtonAction}>{confirmButtonText}</button></div>} */}
     </Rectangle>
     
   );

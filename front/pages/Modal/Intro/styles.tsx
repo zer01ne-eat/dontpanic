@@ -5,19 +5,22 @@ export const UserModalContent = styled.div `
         padding-top: 10%;
         font-size: 9em;
         color: #fff;
-        font-family: 'Noto Sans';
+        font-family: 'NSD-Black';
     }
     & .user-modal-content {
-        font-family: 'Noto Sans KR';
+        font-family: 'NS-Regular';
         padding: 2%;
         font-size: 2.5em;
         color: #b0b0b0;
     }
     & .user-modal-footer {
-        font-family: 'Noto Sans';
+        font-family: 'NS-Bold';
         font-size: 2.5em;
-        padding-top: 3%;
+        padding: 2%;
         color: #fff;
+    }
+    & .user-modal-button {
+
     }
 `;
 

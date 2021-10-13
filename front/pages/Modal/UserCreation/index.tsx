@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, VFC } from 'react';
 import useInput from '@hooks/useInput';
-import { UserCreationContent, Slime, CharacterCreation, Error, Button } from './styles';
+import { UserCreationContent } from './styles';
 import SlimeCharacter from '../../../imgs/slimes/red';
 import SlimeCharacterDefault from '../../../imgs/slimes/default';
 import axios from 'axios';
@@ -40,42 +40,16 @@ const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
             dispatchModalAction({nickname: nickname, slimeColor: slimeColor });
         },[nickname, slimeColor]
     )
-    // const onSubmit = useCallback(
-    //     (e) => {
-    //       e.preventDefault();
-    //       if (!nickname || !nickname.trim()) {
-    //         return;
-    //       }
-    //       if (!mismatchError) {
-    //         setSignUpError(false);
-    //         setSignUpSuccess(false);
-    //         // axios
-    //         //   .post('/api/users', { nickname, slimeColor }, {withCredentials: true})
-    //         //   .then(() => {
-    //         //     console.log("axios post");
-    //         //     setSignUpSuccess(true);
-    //         //     dispatchModalAction();
-    //         //   })
-    //         //   .catch((error) => {
-    //         //     console.log(error.response?.data);
-    //         //     setSignUpError(error.response?.data?.code === 403);
-    //         //   });
-    //       }
-    //       dispatchModalAction();
-    //     },
-    //     [nickname, slimeColor, mismatchError],
-    //   );
 
     return (
         <>
-            {/* <form onSubmit={onSubmit}> */}
                 <UserCreationContent>
                     <div className="user-creation-slime">
                         <div className="slime">{currentClick =='default' ? <SlimeCharacterDefault /> : <SlimeCharacter color={currentClick} />}</div>
                     </div>
                     <div className="user-creation-input-content">
                         <div className="user-creation-title">NAME</div>
-                        <input placeholder="Enter Name" id="nickname" name="nickname" value={nickname} onChange={onChangeNickname} style={{"display":"block","width":"335px","fontSize":"34px","lineHeight":"44px","background":"transparent","border":"none","borderBottom":"1px solid #6c6c6c","padding":"5px 0","borderRadius":"0", "color": "#fff"}} />
+                        <input placeholder="Enter Name" id="nickname" name="nickname" value={nickname} onChange={onChangeNickname} />
                         <div className="user-creation-title">Choose a Color</div>
                         <div className="user-creation-color-choose">
                             <div onClick={GetClick} id="#06c1c1" className="color-circle" style={{backgroundColor: "rgb(6, 193, 193)"}} />
@@ -88,13 +62,9 @@ const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
                             <div onClick={GetClick} id="#fff7f1" className="color-circle" style={{backgroundColor: "rgb(255, 247, 241)"}} />
                             <div onClick={GetClick} id="#969696" className="color-circle" style={{backgroundColor: "rgb(150, 150, 150)"}} />
                         </div>
+                        <div id="user-creation-button"><button onClick={onSubmit}>NEXT</button></div>
                     </div>
-                    {/* <div id="buttons">
-                        <button type="submit">next</button>
-                    </div> */}
-                <div id="buttons"><button className="ModalButton" onClick={onSubmit}>CONTINUE</button></div>
                 </UserCreationContent>
-            {/* </form> */}
         </>
     );
 }

@@ -5,7 +5,7 @@ export const Contents = styled.div`
     height: 100%;
     & .project-lists{
         margin-top: 10.8%;
-        font-family: 'Noto Sans';
+        font-family: 'NSD-Bold';
         color: #b0b0b0;
         font-size: 1rem;
     }
@@ -15,10 +15,11 @@ export const Skills = styled.div`
     padding-bottom: 0;
     & .title {
         color: #fff;
+        font-family: 'NSD-Black';
         font-size: 3em;
     }
     & .description {
-        font-family: 'Noto Sans Regular';
+        font-family: 'NSD-Regular';
         color: #b0b0b0;
         font-size: 1rem;
     }
@@ -40,7 +41,7 @@ export const Oval = styled.div`
         margin-right: 3px;
     }
     & .oval-name {
-        font-family: 'Noto Sans Regular';
+        font-family: 'NSD-Regular';
         font-size: 1rem;
         color: #fff;
         margin-right: 10px;

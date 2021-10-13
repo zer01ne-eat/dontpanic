@@ -8,7 +8,7 @@ export const FullNavbar = styled.div `
   display: inline-block;
   background-color: #1e1e1e;
   overflow: hidden;
-  font-family: 'Noto Sans';
+  font-family: 'NSD-Black';
   & .back-selected-btn {
     height: 8%;
     cursor: pointer;
@@ -50,11 +50,13 @@ export const FullNavbar = styled.div `
         & #level {
           color: #5b5b5b;
           font-size: 1em;
+          font-family: 'NSD-Bold';
         }
 
         & #nickname {
           color: #fff;
           font-size: 2em;
+          font-family: 'NSD-Black';
         }
 
         & ul {
@@ -72,6 +74,7 @@ export const FullNavbar = styled.div `
           color: #6c6c6c;
           font-size: 1em;
           display: flex;
+          font-family: 'NSD-Bold';
         }
       }
     }
@@ -84,6 +87,7 @@ export const FullNavbar = styled.div `
       width: 37.5%;
       height: 100%;
       float: left;
+      font-family: 'NSD-Bold';
 
       & li {
         color: #fff;
