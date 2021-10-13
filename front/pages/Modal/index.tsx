@@ -14,7 +14,7 @@ interface Props {
 }
 
 const ModalPage: FC<Props> = ({ onCloseModal }) => {
-    const modalReducer = (state: any, action: any) => {
+    const modalReducer = (_state: any, action: any) => {
   
         switch (action.type) {
               case INTRO:
@@ -25,14 +25,12 @@ const ModalPage: FC<Props> = ({ onCloseModal }) => {
                     
               case USER_CREATION:
                     return { 
-                      content: <UserCreation data={action.data} dispatchModalAction={() => dispatchModalAction(SKILL, action.data)}/>,
+                      content: <UserCreation data={action.data} dispatchModalAction={(data) => {dispatchModalAction(SKILL, data); console.log(action.data)}}/>,
                       show: true
                     }
               case SKILL:
                     return { 
-                      content: <Skills data={action.data} dispatchModalAction={() => {dispatchModalAction(CLOSE, null); onCloseModal();}} />,
-                    //   confirmButtonText: 'START',
-                    //   confirmButtonAction: () => {dispatchModalAction(CLOSE); onCloseModal();},
+                      content: <Skills userData={action.data} dispatchModalAction={() => {dispatchModalAction(CLOSE, null); onCloseModal();}} />,
                       show: true
                     }
               case CLOSE:
@@ -63,22 +61,11 @@ const ModalPage: FC<Props> = ({ onCloseModal }) => {
         })
     }
 
-    const dispatchUserCreationModalAction = (action: string, data: {nickname: string, slimeColor: string}) => {
-        modalDispatch({
-          type: action,
-          data: {
-              nickname: data.nickname,
-              slimeColor: data.slimeColor
-          }
-        })
-        return 
-    }
-
-    const closeModalHandler = () => {
-        modalDispatch({
-            type: CLOSE
-        })
-    }
+    // const closeModalHandler = () => {
+    //     modalDispatch({
+    //         type: CLOSE
+    //     })
+    // }
     
     return (
         <>

@@ -6,7 +6,7 @@ import SlimeCharacterDefault from '../../../imgs/slimes/default';
 import axios from 'axios';
 
 interface Props {
-    dispatchModalAction: () => void;
+    dispatchModalAction: (data:any) => void;
     data: {nickname: string, slimeColor: string} | null
 }
 
@@ -18,7 +18,6 @@ const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
     const [nickname, onChangeNickname] = useInput("");
     const [slimeColor, setSlimeColor] = useState("");
 
-    console.log('user creation : ', dispatchModalAction)
     const GetClick = (e: any) => {
         if (currentClick !== "default" ) {
             let prev = document.getElementById(currentClick!)
@@ -27,7 +26,7 @@ const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
         setCurrentClick(e.target.id);
         setSlimeColor(e.target.id);
         };
-        
+    console.log(slimeColor);
     useEffect(() => {
         if (currentClick !== "default") {
             let current = document.getElementById(currentClick!);
@@ -38,8 +37,8 @@ const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
     const onSubmit = useCallback(
         (e) => {
             e.preventDefault();
-            dispatchModalAction();
-        },[]
+            dispatchModalAction({nickname: nickname, slimeColor: slimeColor });
+        },[nickname, slimeColor]
     )
     // const onSubmit = useCallback(
     //     (e) => {
@@ -93,7 +92,7 @@ const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
                     {/* <div id="buttons">
                         <button type="submit">next</button>
                     </div> */}
-                <div id="buttons"><button className="ModalButton" onClick={dispatchModalAction}>CONTINUE</button></div>
+                <div id="buttons"><button className="ModalButton" onClick={onSubmit}>CONTINUE</button></div>
                 </UserCreationContent>
             {/* </form> */}
         </>
