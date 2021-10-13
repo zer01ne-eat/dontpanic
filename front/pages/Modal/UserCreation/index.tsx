@@ -7,6 +7,7 @@ import axios from 'axios';
 
 interface Props {
     dispatchModalAction: () => void;
+    data: {nickname: string, slimeColor: string} | null
 }
 
 const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
@@ -17,6 +18,7 @@ const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
     const [nickname, onChangeNickname] = useInput("");
     const [slimeColor, setSlimeColor] = useState("");
 
+    console.log('user creation : ', dispatchModalAction)
     const GetClick = (e: any) => {
         if (currentClick !== "default" ) {
             let prev = document.getElementById(currentClick!)
@@ -35,33 +37,39 @@ const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
 
     const onSubmit = useCallback(
         (e) => {
-          e.preventDefault();
-          if (!nickname || !nickname.trim()) {
-            return;
-          }
-          if (!mismatchError) {
-            setSignUpError(false);
-            setSignUpSuccess(false);
-            // axios
-            //   .post('/api/users', { nickname, slimeColor }, {withCredentials: true})
-            //   .then(() => {
-            //     console.log("axios post");
-            //     setSignUpSuccess(true);
-            //     dispatchModalAction();
-            //   })
-            //   .catch((error) => {
-            //     console.log(error.response?.data);
-            //     setSignUpError(error.response?.data?.code === 403);
-            //   });
-          }
-          dispatchModalAction();
-        },
-        [nickname, slimeColor, mismatchError],
-      );
+            e.preventDefault();
+            dispatchModalAction();
+        },[]
+    )
+    // const onSubmit = useCallback(
+    //     (e) => {
+    //       e.preventDefault();
+    //       if (!nickname || !nickname.trim()) {
+    //         return;
+    //       }
+    //       if (!mismatchError) {
+    //         setSignUpError(false);
+    //         setSignUpSuccess(false);
+    //         // axios
+    //         //   .post('/api/users', { nickname, slimeColor }, {withCredentials: true})
+    //         //   .then(() => {
+    //         //     console.log("axios post");
+    //         //     setSignUpSuccess(true);
+    //         //     dispatchModalAction();
+    //         //   })
+    //         //   .catch((error) => {
+    //         //     console.log(error.response?.data);
+    //         //     setSignUpError(error.response?.data?.code === 403);
+    //         //   });
+    //       }
+    //       dispatchModalAction();
+    //     },
+    //     [nickname, slimeColor, mismatchError],
+    //   );
 
     return (
         <>
-            <form onSubmit={onSubmit}>
+            {/* <form onSubmit={onSubmit}> */}
                 <UserCreationContent>
                     <div className="user-creation-slime">
                         <div className="slime">{currentClick =='default' ? <SlimeCharacterDefault /> : <SlimeCharacter color={currentClick} />}</div>
@@ -82,11 +90,12 @@ const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
                             <div onClick={GetClick} id="#969696" className="color-circle" style={{backgroundColor: "rgb(150, 150, 150)"}} />
                         </div>
                     </div>
-                    <div id="buttons">
+                    {/* <div id="buttons">
                         <button type="submit">next</button>
-                    </div>
+                    </div> */}
+                <div id="buttons"><button className="ModalButton" onClick={dispatchModalAction}>CONTINUE</button></div>
                 </UserCreationContent>
-            </form>
+            {/* </form> */}
         </>
     );
 }

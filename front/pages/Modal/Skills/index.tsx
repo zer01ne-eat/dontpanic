@@ -1,10 +1,16 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, VFC } from 'react';
 import axios from 'axios';
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import { Slime, CharacterCreation, Skill } from './styles';
 
-const Skills = () => {
+interface Props {
+    dispatchModalAction: () => void;
+    data: {nickname: string, slimeColor: string} | null;
+}
+
+const Skills: VFC<Props> = ({ dispatchModalAction }) => {
+// const Skills = () => {
     const {data, error} = useSWR('/api/users', fetcher);
     const datas = [{nickname: 'ddd', slimeColor: 'red'}]
     const skills = ['html', 'css', 'javascript']
@@ -39,6 +45,32 @@ const Skills = () => {
 
             }
         }, [currentClick]);
+
+        const onSubmit = useCallback(
+            (e) => {
+            //   e.preventDefault();
+            //   if (!nickname || !nickname.trim()) {
+            //     return;
+            //   }
+            //   if (!mismatchError) {
+            //     setSignUpError(false);
+            //     setSignUpSuccess(false);
+                // axios
+                //   .post('/api/users', { nickname, slimeColor }, {withCredentials: true})
+                //   .then(() => {
+                //     console.log("axios post");
+                //     setSignUpSuccess(true);
+                //     dispatchModalAction();
+                //   })
+                //   .catch((error) => {
+                //     console.log(error.response?.data);
+                //     setSignUpError(error.response?.data?.code === 403);
+                //   });
+            //   }
+            //   dispatchModalAction();
+            },
+            [],
+          );
     // axios
     // .get('/api/users', {
     //   withCredentials: true,
@@ -48,6 +80,7 @@ const Skills = () => {
     //     console.log(response.data);});
     return (
         <>
+            <form onSubmit={onSubmit}>
 
                 {/* <div style={{"display":"inline-block"}}> */}
                     <Slime><img src={`imgs/slimes/${datas[0].slimeColor}.svg`} /></Slime>
@@ -63,7 +96,10 @@ const Skills = () => {
                             </li>
                             ))}
                         </ul>
+                        <div id="buttons"><button className="ModalButton" onClick={dispatchModalAction}>CONTINUE</button></div>
                 </CharacterCreation>
+            </form>
+
         </>
     );
 }

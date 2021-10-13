@@ -8,7 +8,7 @@ const CodeShare = loadable(() => import('@pages/CodeShare'));
 const NavBar = loadable(() => import('@layouts/navbar'));
 
 const App = () => {
-    const [showCreateWorkspaceModal, setShowCreateWorkspaceModal] = useState(false);
+    const [showCreateWorkspaceModal, setShowCreateWorkspaceModal] = useState(true);
     const onCloseModal = useCallback(() => {
       setShowCreateWorkspaceModal(false);
     }, []);
@@ -16,15 +16,16 @@ const App = () => {
     return (
         <>
         <div style={{"width":"100%","height":"100%","backgroundColor":"rgb(32, 37, 64)","WebkitBoxAlign":"center","alignItems":"center","WebkitBoxPack":"center","justifyContent":"center","overflowY":"auto","padding":"0px"}}>
-            {/* <ModalPage onCloseModal={onCloseModal} /> */}
+            <ModalPage onCloseModal={onCloseModal} />
         {/* </div> */}
             { !showCreateWorkspaceModal &&
                 <BackGround>
                     <NavBar />
-                        <Switch>
+                    <Map />
+                        {/* <Switch>
                             <Route path="/map" component={Map} />
                             <Route path="/codeshare" component={CodeShare} />
-                        </Switch>
+                        </Switch> */}
                 </BackGround>
             }
             </div>

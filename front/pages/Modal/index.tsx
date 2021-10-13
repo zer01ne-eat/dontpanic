@@ -19,24 +19,20 @@ const ModalPage: FC<Props> = ({ onCloseModal }) => {
         switch (action.type) {
               case INTRO:
                     return {
-                      content: <Intro />,
-                      confirmButtonText: 'CONTINUE',
-                      confirmButtonAction: () => dispatchModalAction(USER_CREATION),
+                      content: <Intro dispatchModalAction={() => dispatchModalAction(USER_CREATION, null) }/>,
                       show: true
                     }
                     
               case USER_CREATION:
                     return { 
-                      content: <UserCreation dispatchModalAction={() => dispatchModalAction(SKILL)}/>,
-                      confirmButtonText: '',
-                      confirmButtonAction: () => console.log('next.'),
+                      content: <UserCreation data={action.data} dispatchModalAction={() => dispatchModalAction(SKILL, action.data)}/>,
                       show: true
                     }
               case SKILL:
                     return { 
-                      content: <Skills />,
-                      confirmButtonText: 'START',
-                      confirmButtonAction: () => {dispatchModalAction(CLOSE); onCloseModal();},
+                      content: <Skills data={action.data} dispatchModalAction={() => {dispatchModalAction(CLOSE, null); onCloseModal();}} />,
+                    //   confirmButtonText: 'START',
+                    //   confirmButtonAction: () => {dispatchModalAction(CLOSE); onCloseModal();},
                       show: true
                     }
               case CLOSE:
@@ -50,23 +46,32 @@ const ModalPage: FC<Props> = ({ onCloseModal }) => {
         }
   }
     const [showConfirmCallToAction, setshowConfirmCallToAction] = useState(true);
-
     const [modalState, modalDispatch] = useReducer(modalReducer, {
-        content: <Intro />,
-        confirmButtonText: 'CONTINUE',
-        confirmButtonAction: () => dispatchModalAction(USER_CREATION),
+        content: <Intro dispatchModalAction={() => dispatchModalAction(USER_CREATION, null) }/>,
         show: true
     }
     )
 
     
-    const dispatchModalAction = (action: string) => {
+    const dispatchModalAction = (action: string, data: {nickname: string, slimeColor: string} | null) => {
         modalDispatch({
           type: action,
-          user: {
-              username: 'ddd'
+          data: {
+              nickname: data?.nickname,
+              slimeColor: data?.slimeColor
           }
         })
+    }
+
+    const dispatchUserCreationModalAction = (action: string, data: {nickname: string, slimeColor: string}) => {
+        modalDispatch({
+          type: action,
+          data: {
+              nickname: data.nickname,
+              slimeColor: data.slimeColor
+          }
+        })
+        return 
     }
 
     const closeModalHandler = () => {
@@ -78,11 +83,12 @@ const ModalPage: FC<Props> = ({ onCloseModal }) => {
     return (
         <>
             <Modal
-                showConfirmCallToAction={showConfirmCallToAction}
+                // showConfirmCallToAction={showConfirmCallToAction}
                 show={modalState!.show}
-                close={closeModalHandler}
-                confirmButtonText={modalState!.confirmButtonText}
-                confirmButtonAction={modalState!.confirmButtonAction}>
+                // close={closeModalHandler}
+                // confirmButtonText={modalState!.confirmButtonText}
+                // confirmButtonAction={modalState!.confirmButtonAction}
+                >
                 {modalState!.content}
              </Modal>
         </>
@@ -90,3 +96,4 @@ const ModalPage: FC<Props> = ({ onCloseModal }) => {
 }
 
 export default ModalPage;
+

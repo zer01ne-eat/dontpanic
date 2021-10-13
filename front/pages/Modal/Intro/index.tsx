@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { VFC } from 'react';
 import { UserModalContent } from './styles';
 
-const Intro = () => {
+interface Props {
+    dispatchModalAction: () => void;
+}
+
+const Intro: VFC<Props> = ({ dispatchModalAction }) => {
     return (
         <UserModalContent>
             <div className="user-modal-title">
@@ -15,6 +19,7 @@ const Intro = () => {
             <div className="user-modal-footer">
                 Choose your own character
             </div>
+            <div id="buttons"><button className="ModalButton" onClick={dispatchModalAction}>CONTINUE</button></div>
         </UserModalContent>
     );
 }
