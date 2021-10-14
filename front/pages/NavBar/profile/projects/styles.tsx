@@ -34,13 +34,13 @@ export const ProjectsContents = styled.div`
         transform: rotate(180deg);
     }
     & .contents {
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
-        font-family: 'Noto Sans Regular';
+        // overflow: hidden;
+        transition: all 0.3s ease-out;
+        font-family: 'NS-Regular';
         background-color: #141414;
     }
     & .quiz-name {
-        font-family: 'Noto Sans Regular';
+        font-family: 'NS-Regular';
         padding: 3% 20%;
         padding-right: 0;
         display: flex;
