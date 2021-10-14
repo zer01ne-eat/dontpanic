@@ -37,7 +37,11 @@ export const FullNavbar = styled.div `
         padding: 5%;
         & #slime-img {
           display: flex;
-          justify-content: flex-end;
+          position: relative;
+          height: 100%;
+          & svg {
+            height: 100%;
+          }
         }
       }
 

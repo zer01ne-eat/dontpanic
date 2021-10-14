@@ -7,4 +7,8 @@ export const ChatContent = styled.div`
     height: 100%;
     flex-flow: column;
     position: relative;
+
+    & .chat-sendbird {
+        height: 71.4vh;
+    }
 `;
