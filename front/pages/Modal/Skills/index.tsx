@@ -4,6 +4,8 @@ import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import { SkillsContent, Skill } from './styles';
 import SlimeCharacter from '../../../imgs/slimes/red';
+import { useRecoilState } from 'recoil';
+import { userNameState, userDataState } from '../../../store/basic';
 
 interface Props {
     dispatchModalAction: () => void;
@@ -13,6 +15,7 @@ interface Props {
 const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
     // const Skills = () => {
     // const {data, error} = useSWR('/api/users', fetcher);
+    const [data, setData] = useRecoilState(userDataState)
     const skills = ['html', 'css', 'javascript']
     const selectedSkills: any[] = []
     const GetClick = useCallback(
@@ -48,6 +51,13 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
             //     setSignUpError(error.response?.data?.code === 403);
             //   });
             //   }
+            const d = {
+                nickname: userData!.nickname,
+                slimeColor: userData!.slimeColor,
+                level: 0,
+                skills: skills
+            }
+            setData(d);
             dispatchModalAction();
         },
         [],

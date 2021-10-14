@@ -10,9 +10,14 @@ import { IDM } from '@typings/db';
 // import useSocket from '@hooks/useSocket';
 import { disconnect } from 'process';
 import {io} from 'socket.io-client';
-
+import { SendBirdProvider, OpenChannel } from "sendbird-uikit";
+import "sendbird-uikit/dist/index.css";
+import { useRecoilValue } from 'recoil';
+import { userDataState } from '../../../store/basic';
 const Chat = () => {
 const [chat, onChangeChat, setChat] = useInput('');
+const userData = useRecoilValue(userDataState);
+
 // const {data: chatData, mutate: mutateChat } = useSWR<IDM[]>(
 //     '/api/dms/chats?perPage=20&page=1', fetcher, 
 // );
@@ -51,8 +56,23 @@ const onSubmitForm = useCallback(
 );
     return (
         <ChatContent>
-            <ChatList></ChatList>
-            <ChatBox></ChatBox>
+                  <span>
+        <SendBirdProvider
+          appId={process.env.REACT_APP_CHAT_APP_ID!}
+          userId={userData.nickname}
+          theme="dark"
+        >
+          <div style={{ height: "90vh", marginTop: "1em" }}>
+            <OpenChannel
+              channelUrl={process.env.REACT_APP_CHAT_CHANNEL_URL!}
+              disableUserProfile // to determine whether to display user profile on clicking userIcons,
+              fetchingParticipants={false}
+            />
+          </div>
+        </SendBirdProvider>
+      </span>
+            {/* <ChatList></ChatList>
+            <ChatBox></ChatBox> */}
         </ChatContent>
 
   );
