@@ -28,10 +28,18 @@ export default function useWalk(maxSteps: number) {
     }
 
     function move(dir: string | number) {
-        setPos(prev => ({
-            x: prev.x + modifier[dir].x,
-            y: prev.y + modifier[dir].y,
-        }));
+        setPos((prev) => {
+            let tempX = prev.x + modifier[dir].x;
+            let tempY = prev.y + modifier[dir].y;
+            let posX = prev.x
+            let posY = prev.y
+            if (tempX >= 0 && tempX <= 1890) posX = tempX
+            if (tempY >= 0 && tempY <= 1292) posY = tempY
+            return {
+                x: posX,
+                y: posY
+            }
+        });
     }
 
     return {
