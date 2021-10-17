@@ -13,7 +13,6 @@ const Map = () => {
         {name: 'project2', position: {x: 850, y: 700}, type: 'css'},
         {name: 'project3', position: {x: 1300, y: 1000}, type: 'js'}]
     return (
-        // <BackGround>
         <>
             <Player skin="character-00" />
             <button><Link style={{"textDecoration": "none"}} to='/codeshare'>dd</Link></button>
@@ -31,9 +30,8 @@ const Map = () => {
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
             }}
-        />)}
+            />)}
         </>
-        // </BackGround>
   );
 };
 
