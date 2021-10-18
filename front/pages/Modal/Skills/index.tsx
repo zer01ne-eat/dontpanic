@@ -5,7 +5,7 @@ import fetcher from '@utils/fetcher';
 import { SkillsContent, Skill } from './styles';
 import SlimeCharacter from '../../../imgs/slimes/red';
 import { useRecoilState } from 'recoil';
-import { userNameState, userDataState } from '../../../store/basic';
+import { userDataState } from '../../../store/basic';
 
 interface Props {
     dispatchModalAction: () => void;

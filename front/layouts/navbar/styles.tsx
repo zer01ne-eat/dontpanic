@@ -9,6 +9,7 @@ export const FullNavbar = styled.div `
   background-color: #1e1e1e;
   overflow: hidden;
   font-family: 'NSD-Black';
+  position: absolute;
   & .back-selected-btn {
     height: 8%;
     cursor: pointer;
@@ -134,6 +135,7 @@ export const ShrinkNavbar = styled.div `
   display: inline-block;
   background-color: #1e1e1e;
   overflow: hidden;
+  position: absolute;
   & img {
     width: 80%;
     cursor: pointer;
