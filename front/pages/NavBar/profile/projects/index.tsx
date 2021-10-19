@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect, useRef, useCallback } from 'react';
 import { ProjectsContents } from './styles';
+
 interface Props {
     project: any,
     // key: number
