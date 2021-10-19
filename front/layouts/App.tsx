@@ -15,7 +15,7 @@ import {
   } from 'recoil';
 
 const App = () => {
-    const [showCreateWorkspaceModal, setShowCreateWorkspaceModal] = useState(false);
+    const [showCreateWorkspaceModal, setShowCreateWorkspaceModal] = useState(true);
     const onCloseModal = useCallback(() => {
       setShowCreateWorkspaceModal(false);
     }, []);
@@ -23,7 +23,7 @@ const App = () => {
     return (
         <RecoilRoot>
             <div style={{"width":"100%","height":"100%","backgroundColor":"rgb(32, 37, 64)","WebkitBoxAlign":"center","alignItems":"center","WebkitBoxPack":"center","justifyContent":"center","overflowY":"auto","padding":"0px"}}>
-            {/* <ModalPage onCloseModal={onCloseModal} /> */}
+            <ModalPage onCloseModal={onCloseModal} />
             { !showCreateWorkspaceModal &&
                 <BackGround>
                     <NavBar />

@@ -5,6 +5,7 @@ import { useRecoilValue } from 'recoil';
 import { projectIconState } from '../../store/basic';
 import loadable from '@loadable/component';
 import axios from 'axios';
+import CodeShareContent from '@components/codeshareContent';
 // import { BackGround } from './styles';
 
 const Map = () => {
@@ -31,7 +32,9 @@ const Map = () => {
                             backgroundRepeat: "no-repeat",
                         }} />)}
             </>
-            : <CodeShare id={32} /> }
+            : 
+            <CodeShareContent />
+            }
     </>
   );
 };
