@@ -92,6 +92,7 @@ const CodeShare: FC<Props> = ({ id }) => {
           />
         </div>
         </CodeShareBox>
+        <button onClick={() => setProjectShow(true)}>취소</button>
       </div>
     );
   };
