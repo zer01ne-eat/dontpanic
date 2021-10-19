@@ -1,5 +1,6 @@
 import React, { FC, useState, useRef } from 'react';
 import { ProjectsContents } from './styles';
+
 interface Props {
     project: any,
 }

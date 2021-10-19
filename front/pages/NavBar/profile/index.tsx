@@ -1,12 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 import { Contents, Skills, Oval } from './styles';
 import Chart from 'chart.js/auto';
 import Projects from '@pages/NavBar/profile/projects';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 const Profile = () => {
     const [closeList, setCloseList] = useState(false);
     const [display, setDisplay] = useState('');
-    
+    const scrollbarRef = useRef(null);
+    const onScroll = useCallback(() => {}, []);
     const ref = useRef<Chart | null>(null);
     const skillChart = (canvas:HTMLCanvasElement | null) => {
         const ctx = canvas?.getContext('2d');
@@ -88,7 +90,8 @@ const Profile = () => {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum turpis sed pretium sodales.
                 </div>
             </Skills>
-
+            <div style={{"height": "24%"}}>
+            <Scrollbars autoHide ref={scrollbarRef} onScrollFrame={onScroll}>
                 <Oval>
                     <div className="oval-descp" style={{backgroundColor: "#1799b8"}} />
                     <div className="oval-name">Great</div>
@@ -104,6 +107,9 @@ const Profile = () => {
                     return <Projects project={project} key={index}/>;}
                 )}
                 </div>
+                </Scrollbars>
+                </div>
+
         </Contents>
     );
 };
