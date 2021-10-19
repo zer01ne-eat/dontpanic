@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC } from 'react';
 import Home from '@pages/NavBar/home';
 import Goal from '@pages/NavBar/goal';
 import Profile from '@pages/NavBar/profile';

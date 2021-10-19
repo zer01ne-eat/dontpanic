@@ -1,32 +1,19 @@
 import React, { useCallback, useState, useEffect } from 'react';
-// import { LeftNavBar, UserInfo, ClosedNavBar } from './styles';
 import { FullNavbar, ShrinkNavbar } from './styles';
 import NavBarContent from '@pages/NavBar/navbarContent';
-import useSWR from 'swr';
-import fetcher from '@utils/fetcher';
-import Info from '@pages/NavBar/info';
+import SlimeCharacter from '@imgs/slimes/red';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { userDataState, navbarState } from '../../store/basic';
-import SlimeCharacter from '../../imgs/slimes/red';
+import { userDataState, navbarState } from '@store/basic';
 
 const NavBar = () => {
   const userData = useRecoilValue(userDataState);
   const setShowNavBar = useSetRecoilState(navbarState);
   const showNavBar = useRecoilValue(navbarState);
-  // const [showNavBar, setShowNavBar] = useState(true);
   const [selected, setSelected] = useState('home');
-  // const userData = { nickname: 'E.A.T_kristine', level: 1, skills: ['html', 'css', 'javascript'] };
-  // const {data, error} = useSWR('/api/users', fetcher);
 
   const onClickNavBar = useCallback(() => {
     setShowNavBar((prev) => !prev);
   }, []);
-//   useEffect(() => {
-//     if (selected !== null) {
-//         let current = document.getElementById(selected!);
-//         current!.style.border = "3px solid rgb(255, 255, 255)";
-//     }
-// }, []);
 
   return (
     <>
@@ -39,7 +26,6 @@ const NavBar = () => {
             <div className="user-info">
               <div className="slime">
                 <div id="slime-img">
-                  {/* <img src={`imgs/slimes/red.svg`} /> */}
                   <SlimeCharacter color={userData!.slimeColor} />
                 </div>
               </div>

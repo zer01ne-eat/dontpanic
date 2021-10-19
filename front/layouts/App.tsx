@@ -22,21 +22,16 @@ const App = () => {
 
     return (
         <RecoilRoot>
-        <div style={{"width":"100%","height":"100%","backgroundColor":"rgb(32, 37, 64)","WebkitBoxAlign":"center","alignItems":"center","WebkitBoxPack":"center","justifyContent":"center","overflowY":"auto","padding":"0px"}}>
+            <div style={{"width":"100%","height":"100%","backgroundColor":"rgb(32, 37, 64)","WebkitBoxAlign":"center","alignItems":"center","WebkitBoxPack":"center","justifyContent":"center","overflowY":"auto","padding":"0px"}}>
             {/* <ModalPage onCloseModal={onCloseModal} /> */}
-        {/* </div> */}
             { !showCreateWorkspaceModal &&
                 <BackGround>
                     <NavBar />
                     <Map />
-                        {/* <Switch>
-                            <Route path="/map" component={Map} />
-                            <Route path="/codeshare" component={CodeShare} />
-                        </Switch> */}
                 </BackGround>
             }
             </div>
-            </RecoilRoot>
+        </RecoilRoot>
     );
 };
 

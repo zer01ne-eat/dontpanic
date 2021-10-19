@@ -1,14 +1,11 @@
+import React from 'react';
 import Player from '@components/character/player';
+import CodeShare from '@components/codeshare';
 import { useRecoilValue } from 'recoil';
 import { projectIconState } from '../../store/basic';
 import loadable from '@loadable/component';
 import axios from 'axios';
 // import { BackGround } from './styles';
-
-// const CodeShare = loadable(() => import('@pages/CodeShare'));
-
-import React, { useState, useReducer } from 'react';
-import CodeShare from '@components/codeshare';
 
 const Map = () => {
     const projectShow = useRecoilValue(projectIconState);

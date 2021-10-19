@@ -2,7 +2,7 @@ import React, { FC, useState, useRef } from 'react';
 import Editor, { Monaco } from '@monaco-editor/react';
 import { CodeShareBox } from './style';
 import { useSetRecoilState } from 'recoil';
-import { userDataState, navbarState, projectIconState } from '../../store/basic';
+import { userDataState, navbarState, projectIconState } from '@store/basic';
 interface Props {
     id: number;
 }

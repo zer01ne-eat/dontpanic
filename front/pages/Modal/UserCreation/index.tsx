@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback, VFC } from 'react';
-import useInput from '@hooks/useInput';
 import { UserCreationContent } from './styles';
-import SlimeCharacter from '../../../imgs/slimes/red';
-import SlimeCharacterDefault from '../../../imgs/slimes/default';
+import SlimeCharacter from '@imgs/slimes/red';
+import SlimeCharacterDefault from '@imgs/slimes/default';
+import useInput from '@hooks/useInput';
 import axios from 'axios';
 
 interface Props {
