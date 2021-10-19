@@ -5,24 +5,14 @@ export const loginState = atom({
   default: false,
 });
 
-export const userNameState = atom({
-  key: "nickname",
-  default: "",
+export const navbarState = atom({
+  key: "isNavOpen",
+  default: true,
 });
 
-export const slimeColorState = atom({
-    key: "slimeColor",
-    default: "",
-  });
-
-export const levelState = atom({
-    key: "level",
-    default: 0
-});
-
-export const skillsState = atom({
-    key: "skills",
-    default: []
+export const projectIconState = atom({
+  key: "isProjectIconShow",
+  default: true,
 });
 
 export const userDataState = atom({
@@ -30,7 +20,11 @@ export const userDataState = atom({
     default: {nickname: '', level: 0, slimeColor: '', skills: ['']}
 });
 
-export const componentState = atom({
-  key: "component",
-  default: "",
+export const projectDataState = atom({
+  key: "projects",
+  default: [
+    {name: 'project1', position: {x: 1550, y: 500}, type: 'html', list: [{name: 'Quiz1', marked: 100}, {name: 'Quiz2', marked: 10}]},
+    {name: 'project2', position: {x: 850, y: 700}, type: 'css', list: [{name: 'Quiz1', marked: 100}, {name: 'Quiz2', marked: 10}]},
+    {name: 'project3', position: {x: 1300, y: 1000}, type: 'js', list: [{name: 'Quiz1', marked: 100}, {name: 'Quiz2', marked: 10}]}
+],
 });
