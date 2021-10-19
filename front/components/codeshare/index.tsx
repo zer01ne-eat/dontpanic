@@ -1,6 +1,5 @@
 import React, { FC, useState, useRef } from 'react';
 import Editor, { Monaco } from '@monaco-editor/react';
-import { CodeShareBox } from './style';
 import { useSetRecoilState } from 'recoil';
 import { userDataState, navbarState, projectIconState } from '@store/basic';
 interface Props {
@@ -63,7 +62,6 @@ const CodeShare: FC<Props> = ({ id }) => {
   
     return (
       <>
-          {/* <CodeShareBox> */}
         <div style={{ width: "30vw", float: "left" }}>
           <Editor
             height="90vh"
@@ -91,7 +89,6 @@ const CodeShare: FC<Props> = ({ id }) => {
             onMount={handleJsEditorDidMount}
           />
         </div>
-        {/* </CodeShareBox> */}
       </>
     );
   };
