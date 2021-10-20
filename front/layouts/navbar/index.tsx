@@ -1,57 +1,136 @@
-import React, { useCallback, useState } from 'react';
-import { LeftNavBar, UserInfo, ClosedNavBar } from './styles';
+import React, { useCallback, useState, useEffect } from 'react';
+import { FullNavbar, ShrinkNavbar } from './styles';
 import NavBarContent from '@pages/NavBar/navbarContent';
-import useSWR from 'swr';
-import fetcher from '@utils/fetcher';
+import SlimeCharacter from '@imgs/slimes/red';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { userDataState, navbarState } from '@store/basic';
 
 const NavBar = () => {
-    const [showNavBar, setShowNavBar] = useState(true);
-    const [selected, setSelected] = useState('goal');
-    const {data, error} = useSWR('/api/users', fetcher);
-    const onClickNavBar = useCallback(() => {
-        setShowNavBar((prev) => !prev);
-    }, []);
+  const userData = useRecoilValue(userDataState);
+  const setShowNavBar = useSetRecoilState(navbarState);
+  const showNavBar = useRecoilValue(navbarState);
+  const [selected, setSelected] = useState('home');
 
-    return (
-        <>
-            {showNavBar ? (
-                <LeftNavBar>
-                    <div id="top">
-                        <div className='back-selected-btn' onClick={onClickNavBar}>
-                            <img src='imgs/navbar/btn-close.svg' />
-                        </div>
-                        <div>
-                            <UserInfo>
-                                <img style={{"display":"flex","width": "90px"}} src='imgs/slimes/red.svg' />
-                            </UserInfo>
-                        </div>
-                    </div>
-                    <div className="middle">
-                        <div id="left">
-                            <ul>
-                                <li onClick={() => {setSelected('home');}}><img src='imgs/navbar/ic-home-default.svg' />home</li>
-                                <li onClick={() => {setSelected('profile');}}><img src='imgs/navbar/ic-profile-default.svg' />profile</li>
-                                <li onClick={() => {setSelected('goal');}}><img src='imgs/navbar/ic-goal-default.svg' />goal</li>
-                                <li onClick={() => {setSelected('chat');}}><img src='imgs/navbar/ic-chat-default.svg' />chat</li>
-                            </ul>
-                        </div>
-                        <div id="right">
-                            <NavBarContent selected={selected} />
-                        </div>
-                    </div>
-                
-                </LeftNavBar>
-            ) :
-                (<ClosedNavBar>
-                    <div id="top" onClick={onClickNavBar}><img src='imgs/navbar/btn-open.svg' /></div>
-                    <div onClick={() => {setShowNavBar((prev) => !prev); setSelected('home');}}><img src='imgs/navbar/ic-home-default.svg' /></div>
-                    <div onClick={() => {setShowNavBar((prev) => !prev); setSelected('profile');}}><img src='imgs/navbar/ic-profile-default.svg' /></div>
-                    <div onClick={() => {setShowNavBar((prev) => !prev); setSelected('goal');}}><img src='imgs/navbar/ic-goal-default.svg' /></div>
-                    <div onClick={() => {setShowNavBar((prev) => !prev); setSelected('chat');}}><img src='imgs/navbar/ic-chat-default.svg' /></div>
-                </ClosedNavBar>)
-            }
-        </>
-    );
+  const onClickNavBar = useCallback(() => {
+    setShowNavBar((prev) => !prev);
+  }, []);
+
+  return (
+    <>
+      {showNavBar ? (
+        <FullNavbar>
+          <div className="back-selected-btn" onClick={onClickNavBar}>
+            <img src="imgs/navbar/btn-close.svg" />
+          </div>
+          <div className="content">
+            <div className="user-info">
+              <div className="slime">
+                <div id="slime-img">
+                  <SlimeCharacter color={userData!.slimeColor} />
+                </div>
+              </div>
+              <div className="user-data">
+                <div id="level">Lv. {userData.level}</div>
+                <div id="nickname">
+                  {userData.nickname}
+                  <br />
+                </div>
+                <ul>
+                  {userData.skills.map((skill) => (
+                    <li key={skill}>
+                      <div id="skills">{skill}</div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <hr style={{ margin: '0', border: 'none', height: '1px', backgroundColor: 'black' }} />
+            <div className="left-content">
+              <ul>
+                <li id='home'
+                  onClick={() => {
+                    setSelected('home');
+                  }}
+                >
+                  <img src="imgs/navbar/ic-home-default.svg" />
+                  <div id="menu-title">Home</div>
+                </li>
+                <li id='profile'
+                  onClick={() => {
+                    setSelected('profile');
+                  }}
+                >
+                  <img src="imgs/navbar/ic-profile-default.svg" />
+                  <div id="menu-title">Profile</div>
+                </li>
+                <li id='goal'
+                  onClick={() => {
+                    setSelected('goal');
+                  }}
+                >
+                  <img src="imgs/navbar/ic-goal-default.svg" />
+                  <div id="menu-title">Goal</div>
+                </li>
+                <li id='chat'
+                  onClick={() => {
+                    setSelected('chat');
+                  }}
+                >
+                  <img src="imgs/navbar/ic-chat-default.svg" />
+                  <div id="menu-title">Chat</div>
+                </li>
+              </ul>
+            </div>
+            <div className="right-content">
+                <NavBarContent selected={selected} />
+            </div>
+          </div>
+        </FullNavbar>
+      ) : (
+        <ShrinkNavbar>
+          <div className="open-selected-btn" onClick={onClickNavBar}>
+            <img src="imgs/navbar/btn-open.svg" />
+          </div>
+          <div className="content">
+          <hr style={{ width: "100%", margin: '0', border: 'none', height: '1px', backgroundColor: 'black' }} />
+            <div id="icons"
+                onClick={() => {
+                setShowNavBar((prev) => !prev);
+                setSelected('home');
+                }}
+            >
+                <img src="imgs/navbar/ic-home-default.svg" />
+            </div>
+            <div id="icons"
+                onClick={() => {
+                setShowNavBar((prev) => !prev);
+                setSelected('profile');
+                }}
+            >
+                <img src="imgs/navbar/ic-profile-default.svg" />
+            </div>
+            <div id="icons"
+                onClick={() => {
+                setShowNavBar((prev) => !prev);
+                setSelected('goal');
+                }}
+            >
+                <img src="imgs/navbar/ic-goal-default.svg" />
+            </div>
+            <div id="icons"
+                onClick={() => {
+                setShowNavBar((prev) => !prev);
+                setSelected('chat');
+                }}
+            >
+                <img src="imgs/navbar/ic-chat-default.svg" />
+            </div>
+          </div>
+          
+        </ShrinkNavbar>
+      )}
+    </>
+  );
 };
 
 export default NavBar;

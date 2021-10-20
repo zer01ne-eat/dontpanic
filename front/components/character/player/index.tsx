@@ -1,7 +1,8 @@
 import React, { FC } from "react";
-import Actor from "../actor";
+import Actor from "@components/character/actor";
 import useKeyPress from "@hooks/useKeyPress";
 import useWalk from "@hooks/use-walk";
+
 interface Props {
   skin: string;
 }
@@ -14,9 +15,15 @@ const Player: FC<Props> = ({ skin }) => {
       };
 
     useKeyPress((e) => {
+      if (e.key == "ArrowRight" || e.key == "ArrowLeft" || e.key == "ArrowUp" || e.key == "ArrowDown") {
         walk(e.key.replace("Arrow", "").toLowerCase());
+      }
+      else {
+        return
+      }
         e.preventDefault();
     })
+
     return <Actor
     sprite={`../../../imgs/${skin}.png`}
     data={ data }

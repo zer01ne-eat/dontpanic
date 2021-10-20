@@ -4,14 +4,18 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { UsersModule } from './users/users.module';
-import { DmsService } from './dms/dms.service';
-import { DmsController } from './dms/dms.controller';
-import { DmsModule } from './dms/dms.module';
+import { DMsService } from './dms/dms.service';
+import { DMsController } from './dms/dms.controller';
+import { DMsModule } from './dms/dms.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as ormconfig from './ormconfig';
 import { UsersService } from './users/users.service';
 import { EventsModule } from './events/events.module';
 import { EventsGateway } from './events/events.gateway';
+import { ProjectsModule } from './projects/projects.module';
+import { ProjectUsersModule } from './project-users/project-users.module';
+import { SkillsModule } from './skills/skills.module';
+import { SkillUsersModule } from './skill-users/skill-users.module';
 
 @Module({
   imports: [
@@ -19,9 +23,13 @@ import { EventsGateway } from './events/events.gateway';
       isGlobal: true
     }),
     UsersModule,
-    DmsModule,
+    DMsModule,
     TypeOrmModule.forRoot(ormconfig),
-    EventsModule
+    EventsModule,
+    ProjectsModule,
+    ProjectUsersModule,
+    SkillsModule,
+    SkillUsersModule
   ],
   controllers: [AppController],
   providers: [AppService],

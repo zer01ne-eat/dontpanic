@@ -11,31 +11,25 @@ import {
 //   import { Workspaces } from './Workspaces';
   import { Users } from './Users';
   
-  @Index('WorkspaceId', ['WorkspaceId'], {})
-  @Index('dms_ibfk_2', ['SenderId'], {})
-  @Index('dms_ibfk_3', ['ReceiverId'], {})
-  @Entity({ schema: 'sleact', name: 'dms' })
+  // @Index('WorkspaceId', ['WorkspaceId'], {})
+  // @Index('dms_ibfk_2', ['SenderId'], {})
+  // @Index('dms_ibfk_3', ['ReceiverId'], {})
+  @Entity({ schema: 'dontpanic', name: 'DMs' })
   export class DMs {
     @PrimaryGeneratedColumn({ type: 'int', name: 'id' })
     id: number;
   
-    @Column('text', { name: 'content' })
+    @Column('longtext', { name: 'content' })
     content: string;
   
     @CreateDateColumn()
-    createdAt: Date;
+    created_at: Date;
   
-    @UpdateDateColumn()
-    updatedAt: Date;
+    @Column('int', { name: 'users_id', nullable: true })
+    users_id: number | null;
   
-    @Column('int', { name: 'WorkspaceId', nullable: true })
-    WorkspaceId: number | null;
-  
-    @Column('int', { name: 'SenderId', nullable: true })
-    SenderId: number | null;
-  
-    @Column('int', { name: 'ReceiverId', nullable: true })
-    ReceiverId: number | null;
+    @Column('int', { name: 'members_id', nullable: true })
+    members_id: number | null;
   
     // @ManyToOne(() => Workspaces, (workspaces) => workspaces.DMs, {
     //   onDelete: 'SET NULL',
@@ -44,17 +38,18 @@ import {
     // @JoinColumn([{ name: 'WorkspaceId', referencedColumnName: 'id' }])
     // Workspace: Workspaces;
   
-    @ManyToOne(() => Users, (users) => users.DMs, {
-      onDelete: 'SET NULL',
-      onUpdate: 'CASCADE',
-    })
-    @JoinColumn([{ name: 'SenderId', referencedColumnName: 'id' }])
-    Sender: Users;
+    // @ManyToOne(() => Users, (users) => users.DMs, {
+    //   onDelete: 'SET NULL',
+    //   onUpdate: 'CASCADE',
+    // })
+    // @JoinColumn([{ name: 'SenderId', referencedColumnName: 'id' }])
+    // Sender: Users;
   
-    @ManyToOne(() => Users, (users) => users.DMs2, {
-      onDelete: 'SET NULL',
-      onUpdate: 'CASCADE',
-    })
-    @JoinColumn([{ name: 'ReceiverId', referencedColumnName: 'id' }])
-    Receiver: Users;
+    // @ManyToOne(() => Users, (users) => users.DMs2, {
+    //   onDelete: 'SET NULL',
+    //   onUpdate: 'CASCADE',
+    // })
+
+    // @JoinColumn([{ name: 'ReceiverId', referencedColumnName: 'id' }])
+    // Receiver: Users;
   }
