@@ -11,7 +11,7 @@ const CodeShareContent = () => {
         <>
         <CodeSharePage>
             <div className="codeshare-content">
-               <div id="codeshare"><CodeShare id={12} /></div>
+               <div id="codeshare"><CodeShare projectId={"TThQ2JDeLZvlkk4OZBtG"} /></div>
                <div id="grading">
                 <button onClick={() => setProjectShow(true)}>취소</button>
                </div>
