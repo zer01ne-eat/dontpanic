@@ -1,23 +1,14 @@
-import React, { FC, useState, useEffect, useRef, useCallback } from 'react';
+import React, { FC, useState, useRef } from 'react';
 import { ProjectsContents } from './styles';
 
 interface Props {
     project: any,
-    // key: number
 }
 
 const Projects: FC<Props> = ({ project }) => {
     const [subproj, setSubproj] = useState(false);
     const selectedRef = useRef<any>();
     const showSubproj = () => {setSubproj(!subproj);  if (subproj) selectedRef.current; else selectedRef == null;};
-
-    // useEffect(() => {
-    //     console.log(selectedRef)
-    //     if (!selectedRef) return;
-
-    //     selectedRef.current.style.backgroundColor='white'
-    //     console.log(selectedRef)
-    // }, [])
 
     return (
         <ProjectsContents>
@@ -35,7 +26,6 @@ const Projects: FC<Props> = ({ project }) => {
                 <div className="contents">
                 {subproj &&
                         project.list.map((item:any) => {
-                            // console.log(project.list);
                             return (
                                 <div className="quiz-name">
                                 <div key={item.name}>{item.name}</div>
@@ -47,4 +37,5 @@ const Projects: FC<Props> = ({ project }) => {
             </ProjectsContents>
     );
 }
-            export default Projects
+
+export default Projects

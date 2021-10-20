@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import CodeShare from "@components/codeshare";
-import Sprite from "../sprite";
+import Sprite from "@components/character/sprite";
 
 interface Props {
     sprite: string,

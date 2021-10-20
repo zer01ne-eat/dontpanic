@@ -1,7 +1,7 @@
 import React, { useRef, useState, useCallback } from 'react';
 import { Contents, Skills, Oval } from './styles';
 import Chart from 'chart.js/auto';
-import Projects from './projects';
+import Projects from '@pages/NavBar/profile/projects';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 const Profile = () => {

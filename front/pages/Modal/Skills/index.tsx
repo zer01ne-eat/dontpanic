@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback, VFC } from 'react';
+import { SkillsContent, Skill } from './styles';
+import { userDataState } from '@store/basic';
+import SlimeCharacter from '@imgs/slimes/red';
+import fetcher from '@utils/fetcher';
+import { useRecoilState } from 'recoil';
 import axios from 'axios';
 import useSWR from 'swr';
-import fetcher from '@utils/fetcher';
-import { SkillsContent, Skill } from './styles';
-import SlimeCharacter from '../../../imgs/slimes/red';
-import { useRecoilState } from 'recoil';
-import { userDataState } from '../../../store/basic';
 
 interface Props {
     dispatchModalAction: () => void;
