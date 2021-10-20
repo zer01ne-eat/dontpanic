@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useCallback, VFC } from 'react';
+import React, { useState, useCallback, VFC } from 'react';
 import { SkillsContent, Skill } from './styles';
 import { userDataState } from '@store/basic';
 import SlimeCharacter from '@imgs/slimes/red';
 import fetcher from '@utils/fetcher';
 import { useRecoilState } from 'recoil';
 import axios from 'axios';
-import useSWR from 'swr';
 
 interface Props {
     dispatchModalAction: () => void;
@@ -13,11 +12,10 @@ interface Props {
 }
 
 const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
-    // const Skills = () => {
     // const {data, error} = useSWR('/api/users', fetcher);
-    const [data, setData] = useRecoilState(userDataState)
-    const skills = ['html', 'css', 'javascript']
-    const selectedSkills: any[] = []
+    const [data, setData] = useRecoilState(userDataState);
+    const skills = ['html', 'css', 'javascript'];
+    const [selectedSkills, setSelectedSkills] = useState<Array<string>>([]);
     const GetClick = useCallback(
         (e) => {
             e.preventDefault();
@@ -26,14 +24,16 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
                 e.target.className = 'unselected';
                 e.target.style.border = "solid 9px #6c6c6c";
                 e.target.style.color = "#6c6c6c";
+                setSelectedSkills(selectedSkills.filter((skill) => e.target.id.indexOf(skill) === -1));
             }
             else if (e.target.className == 'unselected') {
                 e.target.className = 'selected'
                 e.target.style.border = "solid 9px #fff";
                 e.target.style.color = "#fff";
+                setSelectedSkills([...selectedSkills, e.target.id]);
             }
         },
-        [],
+        [selectedSkills],
     )
 
     const onSubmit = useCallback(
@@ -55,12 +55,12 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
                 nickname: userData!.nickname,
                 slimeColor: userData!.slimeColor,
                 level: 0,
-                skills: skills
+                skills: selectedSkills
             }
             setData(d);
             dispatchModalAction();
         },
-        [],
+        [selectedSkills],
     );
     return (
         <form onSubmit={onSubmit}>
@@ -75,7 +75,11 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
                     <ul style={{ listStyle: "none", "display": "flex" }}>
                         {skills.map(skill => (
                             <li key={skill} style={{ "paddingRight": "10px" }}>
-                                <Skill><div className="unselected" id={skill} onClick={GetClick} style={{ padding: "15px 55px", "borderRadius": "60.8px", "cursor": "pointer", border: "solid 9px #6c6c6c", color: "#6c6c6c" }}>{skill}</div></Skill>
+                                <Skill>
+                                    <div className="unselected" id={skill} onClick={GetClick} style={{ padding: "15px 55px", "borderRadius": "60.8px", "cursor": "pointer", border: "solid 9px #6c6c6c", color: "#6c6c6c" }}>
+                                        {skill}
+                                    </div>
+                                </Skill>
                             </li>
                         ))}
                     </ul>
