@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import CodeShare from "@components/codeshare";
 import Sprite from "@components/character/sprite";
+import { useSetRecoilState } from 'recoil';
+import { projectIconState } from '@store/basic';
 
 interface Props {
     sprite: string,
@@ -16,12 +18,14 @@ const Actor: FC<Props> = ({     sprite,
     step = 0,
     dir = 0 }) => {
     const { h, w } = data;
+    const projectShow = useSetRecoilState(projectIconState);
 
       if ((position.x >= 804 && position.x <= 932) && (position.y >= 700 && position.y <= 764) ||
       (position.x >= 1510 && position.x <= 1622) && (position.y >= 492 && position.y <= 588) ||
       (position.x >= 1254 && position.x <= 1366) && (position.y >= 988 && position.y <= 1084))
       {
-        return (<CodeShare id={12} />)
+        // return (<CodeShare projectId={"TThQ2JDeLZvlkk4OZBtG"} />)
+        projectShow(false);
       }
     
     return (

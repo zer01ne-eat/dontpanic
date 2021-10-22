@@ -1,17 +1,22 @@
-import React, { FC, useState, useRef } from 'react';
+import React, { FC, useState, useRef, useEffect } from 'react';
 import Editor, { Monaco } from '@monaco-editor/react';
 import { useSetRecoilState } from 'recoil';
 import { userDataState, navbarState, projectIconState } from '@store/basic';
+import firebase from 'firebase';
+import { useRecoilValue } from 'recoil';
+import { fromMonaco } from "@hackerrank/firepad";
+
 interface Props {
-    id: number;
+  projectId: string;
 }
 
-const CodeShare: FC<Props> = ({ id }) => {
+const CodeShare: FC<Props> = ({ projectId }) => {
     const [htmlEditorLoaded, setHtmlEditorLoaded] = useState(false);
     const [cssEditorLoaded, setCssEditorLoaded] = useState(false);
     const [jsEditorLoaded, setJsEditorLoaded] = useState(false);
     const setShowNavBar = useSetRecoilState(navbarState);
     const setProjectShow = useSetRecoilState(projectIconState);
+    const userData = useRecoilValue(userDataState);
 
     const htmlEditorRef = useRef(null);
     const cssEditorRef = useRef(null);
@@ -35,30 +40,30 @@ const CodeShare: FC<Props> = ({ id }) => {
       setJsEditorLoaded(true);
     }
   
-    // useEffect(() => {
-    //   if (
-    //     !htmlEditorLoaded ||
-    //     !cssEditorLoaded ||
-    //     !jsEditorLoaded ||
-    //     projectId === ""
-    //   ) {
-    //     // If editor is not loaded return
-    //     return;
-    //   }
-    //   const projectDBRef = firebase.database().ref().child(projectId);
+    useEffect(() => {
+      if (
+        !htmlEditorLoaded ||
+        !cssEditorLoaded ||
+        !jsEditorLoaded ||
+        projectId === ""
+      ) {
+        // If editor is not loaded return
+        return;
+      }
+      const projectDBRef = firebase.database().ref().child(projectId);
   
-    //   const htmlCodeDBRef = projectDBRef.child("html");
-    //   const cssCodeDBRef = projectDBRef.child("css");
-    //   const jsCodeDBRef = projectDBRef.child("js");
+      const htmlCodeDBRef = projectDBRef.child("html");
+      const cssCodeDBRef = projectDBRef.child("css");
+      const jsCodeDBRef = projectDBRef.child("js");
   
-    //   const htmlFirePad = fromMonaco(htmlCodeDBRef, htmlEditorRef.current!);
-    //   const cssFirePad = fromMonaco(cssCodeDBRef, cssEditorRef.current!);
-    //   const jsFirePad = fromMonaco(jsCodeDBRef, jsEditorRef.current!);
+      const htmlFirePad = fromMonaco(htmlCodeDBRef, htmlEditorRef.current!);
+      const cssFirePad = fromMonaco(cssCodeDBRef, cssEditorRef.current!);
+      const jsFirePad = fromMonaco(jsCodeDBRef, jsEditorRef.current!);
   
-    //   htmlFirePad.setUserName(userName);
-    //   cssFirePad.setUserName(userName);
-    //   jsFirePad.setUserName(userName);
-    // }, [htmlEditorLoaded, cssEditorLoaded, jsEditorLoaded, userName, projectId]);
+      htmlFirePad.setUserName(userData.nickname);
+      cssFirePad.setUserName(userData.nickname);
+      jsFirePad.setUserName(userData.nickname);
+    }, [htmlEditorLoaded, cssEditorLoaded, jsEditorLoaded, userData.nickname, projectId]);
   
     return (
       <>

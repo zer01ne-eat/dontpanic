@@ -20,6 +20,11 @@ export const userDataState = atom({
     default: {nickname: '', level: 0, slimeColor: '', skills: ['']}
 });
 
+export const projectListState = atom({
+  key: "projectList",
+  default: [] as any[],
+});
+
 export const projectDataState = atom({
   key: "projects",
   default: [
