@@ -36,7 +36,7 @@ const CodeShareContent = () => {
   
         setVideoRoom(room);
         if (videoRoom) {
-          await videoRoom.enter({ videoEnabled: true, audioEnabled: true });
+          await videoRoom.enter({ videoEnabled: true, audioEnabled: false });
           videoRoom.localParticipant.setMediaView(
             localMediaView as HTMLMediaElement
           );
