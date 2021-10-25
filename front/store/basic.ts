@@ -17,7 +17,7 @@ export const projectIconState = atom({
 
 export const userDataState = atom({
     key: "data",
-    default: {nickname: '', level: 0, slimeColor: '', skills: ['']}
+    default: {nickname: '', level: 0, slimeColor: '', skills: [''], sendbirdAccessToken: '000088b5-fe00-47ed-a721-782cc1e92e75'}
 });
 
 export const projectListState = atom({

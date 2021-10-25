@@ -95,12 +95,12 @@ const config: Configuration = {
     historyApiFallback: true,
     port: 4200,
     publicPath: '/dist/',
-    proxy: {
-      '/api/': {
-        target: 'http://localhost:4242',
-        changeOrigin: true,
-      }
-    }
+    // proxy: {
+    //   '/api/': {
+    //     target: 'http://localhost:4242',
+    //     changeOrigin: true,
+    //   }
+    // }
   },
 };
 

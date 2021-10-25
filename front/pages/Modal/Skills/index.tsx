@@ -8,7 +8,7 @@ import axios from 'axios';
 
 interface Props {
     dispatchModalAction: () => void;
-    userData: { nickname: string, slimeColor: string } | null;
+    userData: { nickname: string, slimeColor: string, sendbirdAccessToken: string } | null;
 }
 
 const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
@@ -39,26 +39,27 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
     const onSubmit = useCallback(
         (e) => {
             e.preventDefault();
-            // axios
-            //   .post('/api/users', { nickname, slimeColor }, {withCredentials: true})
-            //   .then(() => {
-            //     console.log("axios post");
-            //     setSignUpSuccess(true);
-            //     dispatchModalAction();
-            //   })
-            //   .catch((error) => {
-            //     console.log(error.response?.data);
-            //     setSignUpError(error.response?.data?.code === 403);
-            //   });
-            //   }
             const d = {
                 nickname: userData!.nickname,
                 slimeColor: userData!.slimeColor,
                 level: 0,
-                skills: selectedSkills
+                skills: selectedSkills,
+                sendbirdAccessToken: userData!.sendbirdAccessToken
             }
-            setData(d);
-            dispatchModalAction();
+            axios
+            .post('https://us-central1-dontpanic-zerone.cloudfunctions.net/loginUser', d, {withCredentials: true})
+            .then(() => {
+              console.log("axios post");
+            //   setSignUpSuccess(true);
+                setData(d);
+              dispatchModalAction();
+            })
+            .catch((error) => {
+              console.log(error.response?.data);
+            //   setSignUpError(error.response?.data?.code === 403);
+            });
+            // setData(d);
+            // dispatchModalAction();
         },
         [selectedSkills],
     );
