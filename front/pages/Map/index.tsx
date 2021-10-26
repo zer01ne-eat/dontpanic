@@ -20,7 +20,11 @@ const Map = () => {
 
   useEffect(() => {
     const userRef = db.collection('user').doc(userData.nickname);
-
+    window.addEventListener('beforeunload', (event) => {
+      userRef.update({
+        isOnline: false,
+      });
+    });
     userRef.update({
       isOnline: true,
     });
