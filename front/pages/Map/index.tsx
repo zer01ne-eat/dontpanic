@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Player from '@components/character/player';
 import CodeShare from '@components/codeshare';
 import { useRecoilValue, useRecoilState } from 'recoil';
@@ -15,16 +15,26 @@ const Map = () => {
   const [userData, setUserData] = useRecoilState(userDataState);
   const projectShow = useRecoilValue(projectIconState);
   const [projectList, setProjectList] = useRecoilState(projectListState);
+  const [others, setOthers] = useState([] as UserData[]);
 
   const db = firebase.firestore();
+  const userRef = db.collection('user').doc(userData.nickname);
 
   useEffect(() => {
-    const userRef = db.collection('user').doc(userData.nickname);
-    window.addEventListener('beforeunload', (event) => {
-      userRef.update({
+    const unloadCallback = (event: { preventDefault: () => void; returnValue: string }) => {
+      console.log(event);
+      event.preventDefault();
+      event.returnValue = '';
+      return userRef.update({
         isOnline: false,
       });
-    });
+    };
+
+    window.addEventListener('beforeunload', unloadCallback);
+    return () => window.removeEventListener('beforeunload', unloadCallback);
+  }, []);
+
+  useEffect(() => {
     userRef.update({
       isOnline: true,
     });
@@ -32,6 +42,18 @@ const Map = () => {
       const currentData = new UserData(doc.data());
       setUserData(currentData);
     });
+
+    db.collection('user')
+      .where('isOnline', '==', true)
+      .where('nickname', '!=', userData.nickname)
+      .onSnapshot((querySnapshot) => {
+        let users = [] as UserData[];
+        querySnapshot.forEach((doc) => {
+          users.push(new UserData(doc.data()));
+        });
+        // console.log(users);
+        setOthers(users);
+      });
   }, []);
 
   useEffect(() => {
@@ -56,7 +78,10 @@ const Map = () => {
     <>
       {projectShow ? (
         <>
-          <Player skin="character-00" userData={userData} />
+          <Player key={userData.nickname} skin="character-00" userData={userData} />
+          {others.map((otherUser) => {
+            return <Player key={otherUser.nickname} skin="character-00" userData={otherUser} />;
+          })}
           {projects.map((project) => (
             <div
               key={project.name}
