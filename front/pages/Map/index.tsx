@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Player from '@components/character/player';
 import CodeShare from '@components/codeshare';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import { userDataState, projectListState } from '@store/basic';
+import { userDataState, projectListState, UserData } from '@store/basic';
 import { projectIconState } from '../../store/basic';
 import loadable from '@loadable/component';
 import axios from 'axios';
@@ -12,18 +12,22 @@ import firebase from 'firebase';
 // import { BackGround } from './styles';
 
 const Map = () => {
-  const userData = useRecoilValue(userDataState);
+  const [userData, setUserData] = useRecoilState(userDataState);
   const projectShow = useRecoilValue(projectIconState);
   const [projectList, setProjectList] = useRecoilState(projectListState);
 
   const db = firebase.firestore();
 
   useEffect(() => {
-    db.collection('user')
-      .doc(userData.nickname)
-      .onSnapshot((doc) => {
-        console.log(doc.data());
-      });
+    const userRef = db.collection('user').doc(userData.nickname);
+
+    userRef.update({
+      isOnline: true,
+    });
+    userRef.onSnapshot((doc) => {
+      const currentData = new UserData(doc.data());
+      setUserData(currentData);
+    });
   }, []);
 
   useEffect(() => {
@@ -48,7 +52,7 @@ const Map = () => {
     <>
       {projectShow ? (
         <>
-          <Player skin="character-00" />
+          <Player skin="character-00" userData={userData} />
           {projects.map((project) => (
             <div
               key={project.name}

@@ -15,8 +15,6 @@ const NavBar = () => {
     setShowNavBar((prev) => !prev);
   }, []);
 
-  console.log(userData);
-
   return (
     <>
       {showNavBar ? (

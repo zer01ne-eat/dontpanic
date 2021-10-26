@@ -56,7 +56,6 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
       //     level: 0,
       //     skills: selectedSkills,
       //   };
-      console.log(userData);
       setData(userData!);
       dispatchModalAction();
     },
