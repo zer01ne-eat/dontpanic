@@ -91,7 +91,6 @@ const Profile = () => {
                 </div>
             </Skills>
             <div style={{"height": "24%"}}>
-            <Scrollbars autoHide ref={scrollbarRef} onScrollFrame={onScroll}>
                 <Oval>
                     <div className="oval-descp" style={{backgroundColor: "#1799b8"}} />
                     <div className="oval-name">Great</div>
@@ -102,6 +101,7 @@ const Profile = () => {
                     <div className="oval-descp" style={{backgroundColor: "#e64715"}} />
                     <div className="oval-name">Bad</div>
                 </Oval>
+            <Scrollbars autoHide ref={scrollbarRef} onScrollFrame={onScroll}>
                 <div className="project-lists">
                 {projects.map((project, index) =>{
                     return <Projects project={project} key={index}/>;}
