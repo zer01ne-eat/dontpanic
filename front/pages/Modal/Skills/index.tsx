@@ -60,24 +60,36 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      // axios
-      //   .post('/api/users', { nickname, slimeColor }, {withCredentials: true})
+      const d = {
+        nickname: userData!.nickname,
+        slimeColor: userData!.slimeColor,
+        level: 0,
+        skills: selectedSkills,
+      };
+      // axios({
+      //   method: "POST",
+      //   url: "https://us-central1-dontpanic-zerone.cloudfunctions.net/loginUser",
+      //   data: {
+      //     nickname: userData!.nickname,
+      //     slimeColor: userData!.slimeColor,
+      //     userSkill: selectedSkills,
+      //   },
+      //   headers: {
+      //     'Access-Control-Allow-Credentials': true,
+      //     'Access-Control-Allow-Origin': 'http://localhost:4200',
+      //     'content-type': 'application/json', 
+      //   },
+      //   withCredentials: true
+      // })
       //   .then(() => {
       //     console.log("axios post");
-      //     setSignUpSuccess(true);
+      //     setData(userData!);
       //     dispatchModalAction();
       //   })
       //   .catch((error) => {
       //     console.log(error.response?.data);
-      //     setSignUpError(error.response?.data?.code === 403);
       //   });
-      //   }
-      //   const d = {
-      //     nickname: userData!.nickname,
-      //     slimeColor: userData!.slimeColor,
-      //     level: 0,
-      //     skills: selectedSkills,
-      //   };
+
       setData(userData!);
       dispatchModalAction();
     },

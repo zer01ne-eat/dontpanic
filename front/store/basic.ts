@@ -49,8 +49,8 @@ export const userDataState = atom({
     userSkill: [],
     projects: [],
     sendbirdAccessToken: '',
-    positionX: -1,
-    positionY: -1,
+    positionX: 950,
+    positionY: 700,
   }),
   // default: {nickname: '', level: 0, slimeColor: '', skills: ['']}
 });

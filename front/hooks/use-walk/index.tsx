@@ -6,11 +6,12 @@ export default function useWalk(maxSteps: number, initialPosiotn: { x: number; y
   const [step, setStep] = useState(0);
   const directions: any = {
     down: 0,
-    right: 1,
-    left: 2,
+    left: 1,
+    right: 2,
     up: 3,
   };
-  const stepSize = 16;
+  const stepSize = 20;
+  console.log('user data : ', initialPosiotn);
 
   const modifier: any = {
     down: { x: 0, y: stepSize },

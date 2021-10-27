@@ -13,15 +13,14 @@ interface Props {
 
 const Player: FC<Props> = ({ skin, userData }) => {
   const plyaer = useRecoilValue(userDataState);
-  const { dir, step, walk, position, warp } = useWalk(3, { x: userData.positionX, y: userData.positionY });
+  const { dir, step, walk, position, warp } = useWalk(8, { x: userData.positionX, y: userData.positionY });
   const data = {
-    h: 50,
-    w: 50,
+    h: 85,
+    w: 85,
   };
-
-  useEffect(() => {
-    warp({ x: userData.positionX, y: userData.positionY });
-  }, [userData]);
+  // useEffect(() => {
+  //   warp({ x: userData.positionX, y: userData.positionY });
+  // }, [userData]);
 
   useKeyPress((e) => {
     if (e.key == 'ArrowRight' || e.key == 'ArrowLeft' || e.key == 'ArrowUp' || e.key == 'ArrowDown') {

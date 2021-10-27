@@ -63,6 +63,7 @@ const Map = () => {
     })
       .then((response) => {
         setProjectList(response.data as any[]);
+        console.log('axios get : ', response);
       })
       .catch((error) => {
         console.error(error);
@@ -78,9 +79,9 @@ const Map = () => {
     <>
       {projectShow ? (
         <>
-          <Player key={userData.nickname} skin="character-00" userData={userData} />
+          <Player key={userData.nickname} skin="teal" userData={userData} />
           {others.map((otherUser) => {
-            return <Player key={otherUser.nickname} skin="character-00" userData={otherUser} />;
+            return <Player key={otherUser.nickname} skin="teal" userData={otherUser} />;
           })}
           {projects.map((project) => (
             <div
