@@ -5,10 +5,32 @@ import SlimeCharacter from '@imgs/slimes/red';
 import fetcher from '@utils/fetcher';
 import { useRecoilState } from 'recoil';
 import axios from 'axios';
+import Lottie from 'react-lottie';
+import Teal from '@imgs/slimes/#06c1c1.json';
+import Red from '@imgs/slimes/#f9533b.json';
+import Orange from '@imgs/slimes/#fea040.json';
+import Yellow from '@imgs/slimes/#ffbf2b.json';
+import Green from '@imgs/slimes/#06c17a.json';
+import Blue from '@imgs/slimes/#396bf6.json';
+import DarkBlue from '@imgs/slimes/#3e579c.json';
+import White from '@imgs/slimes/#fff7f1.json';
+import Grey from '@imgs/slimes/#969696.json';
 
 interface Props {
   dispatchModalAction: () => void;
   userData: UserData | null;
+}
+
+const colorCode:any = {
+    "#06c1c1": Teal,
+    "#f9533b": Red,
+    "#fea040": Orange,
+    "#ffbf2b": Yellow,
+    "#06c17a": Green,
+    "#396bf6": Blue,
+    "#3e579c": DarkBlue,
+    "#fff7f1": White,
+    "#969696": Grey,
 }
 
 const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
@@ -66,7 +88,13 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
       <SkillsContent>
         <div className="skills-slime">
           <div className="slime">
-            <SlimeCharacter color={userData!.slimeColor} />
+          <Lottie
+                    options={{animationData: colorCode[userData!.slimeColor],loop: true,        
+                    autoplay: true }}
+                    isClickToPauseDisabled={false}
+                    style={{width: '300px', height: '300px'}}
+                />
+            {/* <SlimeCharacter color={userData!.slimeColor} /> */}
           </div>
         </div>
         <div className="skills-content">

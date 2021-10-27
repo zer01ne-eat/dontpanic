@@ -3,6 +3,17 @@ import { UserCreationContent } from './styles';
 import SlimeCharacter from '@imgs/slimes/red';
 import SlimeCharacterDefault from '@imgs/slimes/default';
 import useInput from '@hooks/useInput';
+import Lottie from 'react-lottie';
+import DefaultSlime from '@imgs/slimes/Slime_motion_00.json';
+import Teal from '@imgs/slimes/#06c1c1.json';
+import Red from '@imgs/slimes/#f9533b.json';
+import Orange from '@imgs/slimes/#fea040.json';
+import Yellow from '@imgs/slimes/#ffbf2b.json';
+import Green from '@imgs/slimes/#06c17a.json';
+import Blue from '@imgs/slimes/#396bf6.json';
+import DarkBlue from '@imgs/slimes/#3e579c.json';
+import White from '@imgs/slimes/#fff7f1.json';
+import Grey from '@imgs/slimes/#969696.json';
 import axios from 'axios';
 import { useRecoilValue } from 'recoil';
 import { UserData, userDataState } from '@store/basic';
@@ -10,6 +21,28 @@ import { UserData, userDataState } from '@store/basic';
 interface Props {
   dispatchModalAction: (data: any) => void;
   data: UserData | null;
+}
+
+const lottieOptions = {
+    animationData: DefaultSlime,   
+    loop: true,        
+    autoplay: true,   
+    rendererSettings: {
+      className: 'add-class', // svg에 적용
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
+  const colorCode:any = {
+    "#06c1c1": Teal,
+    "#f9533b": Red,
+    "#fea040": Orange,
+    "#ffbf2b": Yellow,
+    "#06c17a": Green,
+    "#396bf6": Blue,
+    "#3e579c": DarkBlue,
+    "#fff7f1": White,
+    "#969696": Grey,
 }
 
 const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
@@ -29,7 +62,6 @@ const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
     setCurrentClick(e.target.id);
     setSlimeColor(e.target.id);
   };
-  console.log(slimeColor);
   useEffect(() => {
     if (currentClick !== 'default') {
       let current = document.getElementById(currentClick!);
@@ -50,82 +82,122 @@ const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
     [nickname, slimeColor],
   );
 
-  return (
-    <>
-      <UserCreationContent>
-        <div className="user-creation-slime">
-          <div className="slime">
-            {currentClick == 'default' ? <SlimeCharacterDefault /> : <SlimeCharacter color={currentClick} />}
-          </div>
-        </div>
-        <div className="user-creation-input-content">
-          <div className="user-creation-title">NAME</div>
-          <input placeholder="Enter Name" id="nickname" name="nickname" value={nickname} onChange={onChangeNickname} />
-          <div className="user-creation-title">Choose a Color</div>
-          <div className="user-creation-color-choose">
-            <div
-              onClick={GetClick}
-              id="#06c1c1"
-              className="color-circle"
-              style={{ backgroundColor: 'rgb(6, 193, 193)' }}
-            />
-            <div
-              onClick={GetClick}
-              id="#f9533b"
-              className="color-circle"
-              style={{ backgroundColor: 'rgb(249, 83, 59)' }}
-            />
-            <div
-              onClick={GetClick}
-              id="#fea040"
-              className="color-circle"
-              style={{ backgroundColor: 'rgb(254, 160, 64)' }}
-            />
-            <div
-              onClick={GetClick}
-              id="#ffbf2b"
-              className="color-circle"
-              style={{ backgroundColor: 'rgb(255, 191, 43)' }}
-            />
-            <div
-              onClick={GetClick}
-              id="#06c17a"
-              className="color-circle"
-              style={{ backgroundColor: 'rgb(6, 193, 122)' }}
-            />
-            <div
-              onClick={GetClick}
-              id="#396bf6"
-              className="color-circle"
-              style={{ backgroundColor: 'rgb(57, 107, 246)' }}
-            />
-            <div
-              onClick={GetClick}
-              id="#3e579c"
-              className="color-circle"
-              style={{ backgroundColor: 'rgb(62, 87, 156)' }}
-            />
-            <div
-              onClick={GetClick}
-              id="#fff7f1"
-              className="color-circle"
-              style={{ backgroundColor: 'rgb(255, 247, 241)' }}
-            />
-            <div
-              onClick={GetClick}
-              id="#969696"
-              className="color-circle"
-              style={{ backgroundColor: 'rgb(150, 150, 150)' }}
-            />
-          </div>
-          <div id="user-creation-button">
-            <button onClick={onSubmit}>NEXT</button>
-          </div>
-        </div>
-      </UserCreationContent>
-    </>
-  );
-};
+//   return (
+//     <>
+//       <UserCreationContent>
+//         <div className="user-creation-slime">
+//           <div className="slime">
+//             {currentClick == 'default' ? <SlimeCharacterDefault /> : <SlimeCharacter color={currentClick} />}
+//           </div>
+//         </div>
+//         <div className="user-creation-input-content">
+//           <div className="user-creation-title">NAME</div>
+//           <input placeholder="Enter Name" id="nickname" name="nickname" value={nickname} onChange={onChangeNickname} />
+//           <div className="user-creation-title">Choose a Color</div>
+//           <div className="user-creation-color-choose">
+//             <div
+//               onClick={GetClick}
+//               id="#06c1c1"
+//               className="color-circle"
+//               style={{ backgroundColor: 'rgb(6, 193, 193)' }}
+//             />
+//             <div
+//               onClick={GetClick}
+//               id="#f9533b"
+//               className="color-circle"
+//               style={{ backgroundColor: 'rgb(249, 83, 59)' }}
+//             />
+//             <div
+//               onClick={GetClick}
+//               id="#fea040"
+//               className="color-circle"
+//               style={{ backgroundColor: 'rgb(254, 160, 64)' }}
+//             />
+//             <div
+//               onClick={GetClick}
+//               id="#ffbf2b"
+//               className="color-circle"
+//               style={{ backgroundColor: 'rgb(255, 191, 43)' }}
+//             />
+//             <div
+//               onClick={GetClick}
+//               id="#06c17a"
+//               className="color-circle"
+//               style={{ backgroundColor: 'rgb(6, 193, 122)' }}
+//             />
+//             <div
+//               onClick={GetClick}
+//               id="#396bf6"
+//               className="color-circle"
+//               style={{ backgroundColor: 'rgb(57, 107, 246)' }}
+//             />
+//             <div
+//               onClick={GetClick}
+//               id="#3e579c"
+//               className="color-circle"
+//               style={{ backgroundColor: 'rgb(62, 87, 156)' }}
+//             />
+//             <div
+//               onClick={GetClick}
+//               id="#fff7f1"
+//               className="color-circle"
+//               style={{ backgroundColor: 'rgb(255, 247, 241)' }}
+//             />
+//             <div
+//               onClick={GetClick}
+//               id="#969696"
+//               className="color-circle"
+//               style={{ backgroundColor: 'rgb(150, 150, 150)' }}
+//             />
+//           </div>
+//           <div id="user-creation-button">
+//             <button onClick={onSubmit}>NEXT</button>
+//           </div>
+//         </div>
+//       </UserCreationContent>
+//     </>
+//   );
+// };
+    return (
+        <>
+            <UserCreationContent>
+                <div className="user-creation-slime">
+                    <div className="slime">{currentClick =='default' ? 
+                    <Lottie
+				options={lottieOptions}
+				isClickToPauseDisabled={false}
+				style={{width: '300px', height: '300px'}}
+			/>
+                    : 
+                    <Lottie
+                    options={{animationData: colorCode[slimeColor],loop: true,        
+                    autoplay: true }}
+                    isClickToPauseDisabled={false}
+                    style={{width: '300px', height: '300px'}}
+                />}
+                    </div>
+                </div>
+                <div className="user-creation-input-content">
+                    <div className="user-creation-title">NAME</div>
+                    <input placeholder="Enter Name" id="nickname" name="nickname" value={nickname} onChange={onChangeNickname} />
+                    <div className="user-creation-title">Choose a Color</div>
+                    <div className="user-creation-color-choose">
+                        <div onClick={GetClick} id="#06c1c1" className="color-circle" style={{backgroundColor: "rgb(6, 193, 193)"}} />
+                        <div onClick={GetClick} id="#f9533b" className="color-circle" style={{backgroundColor: "rgb(249, 83, 59)"}} />
+                        <div onClick={GetClick} id="#fea040" className="color-circle" style={{backgroundColor: "rgb(254, 160, 64)"}} />
+                        <div onClick={GetClick} id="#ffbf2b" className="color-circle" style={{backgroundColor: "rgb(255, 191, 43)"}} />
+                        <div onClick={GetClick} id="#06c17a" className="color-circle" style={{backgroundColor: "rgb(6, 193, 122)"}} />
+                        <div onClick={GetClick} id="#396bf6" className="color-circle" style={{backgroundColor: "rgb(57, 107, 246)"}} />
+                        <div onClick={GetClick} id="#3e579c" className="color-circle" style={{backgroundColor: "rgb(62, 87, 156)"}} />
+                        <div onClick={GetClick} id="#fff7f1" className="color-circle" style={{backgroundColor: "rgb(255, 247, 241)"}} />
+                        <div onClick={GetClick} id="#969696" className="color-circle" style={{backgroundColor: "rgb(150, 150, 150)"}} />
+                    </div>
+                    <div id="user-creation-button"><button onClick={onSubmit}>NEXT</button></div>
+                </div>
+            </UserCreationContent>
+        </>
+    );
+}
 
 export default UserCreation;
 
