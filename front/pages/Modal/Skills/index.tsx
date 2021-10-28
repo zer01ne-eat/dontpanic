@@ -58,38 +58,30 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
   );
 
   const onSubmit = useCallback(
-    (e) => {
+    async (e) => {
       e.preventDefault();
+
       const d = {
         nickname: userData!.nickname,
         slimeColor: userData!.slimeColor,
         level: 0,
         skills: selectedSkills,
       };
-      // axios({
-      //   method: "POST",
-      //   url: "https://us-central1-dontpanic-zerone.cloudfunctions.net/loginUser",
-      //   data: {
-      //     nickname: userData!.nickname,
-      //     slimeColor: userData!.slimeColor,
-      //     userSkill: selectedSkills,
-      //   },
-      //   headers: {
-      //     'Access-Control-Allow-Credentials': true,
-      //     'Access-Control-Allow-Origin': 'http://localhost:4200',
-      //     'content-type': 'application/json', 
-      //   },
-      //   withCredentials: true
-      // })
-      //   .then(() => {
-      //     console.log("axios post");
-      //     setData(userData!);
-      //     dispatchModalAction();
-      //   })
-      //   .catch((error) => {
-      //     console.log(error.response?.data);
-      //   });
-
+      await axios({
+        method: 'post',
+        url: 'https://us-central1-dontpanic-zerone.cloudfunctions.net/loginUser',
+        data: {
+          nickname: userData?.nickname,
+          slimeColor: userData?.slimeColor,
+          userSkill: ['html', 'css'],
+        },
+      })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       setData(userData!);
       dispatchModalAction();
     },
