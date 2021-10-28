@@ -1,8 +1,6 @@
 import React, { useState, useCallback, VFC } from 'react';
 import { SkillsContent, Skill } from './styles';
 import { UserData, userDataState } from '@store/basic';
-import SlimeCharacter from '@imgs/slimes/red';
-import fetcher from '@utils/fetcher';
 import { useRecoilState } from 'recoil';
 import axios from 'axios';
 import Lottie from 'react-lottie';
@@ -15,6 +13,7 @@ import Blue from '@imgs/slimes/#396bf6.json';
 import DarkBlue from '@imgs/slimes/#3e579c.json';
 import White from '@imgs/slimes/#fff7f1.json';
 import Grey from '@imgs/slimes/#969696.json';
+import Loading from '@components/loading';
 
 interface Props {
   dispatchModalAction: () => void;
@@ -38,6 +37,7 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
   const [data, setData] = useRecoilState(userDataState);
   const skills = ['html', 'css', 'javascript'];
   const [selectedSkills, setSelectedSkills] = useState<Array<string>>([]);
+  const [loading, setLoading] = useState(false);
   const GetClick = useCallback(
     (e) => {
       e.preventDefault();
@@ -60,33 +60,34 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
   const onSubmit = useCallback(
     async (e) => {
       e.preventDefault();
-
-      // const d = {
-      //   nickname: userData!.nickname,
-      //   slimeColor: userData!.slimeColor,
-      //   level: 0,
-      //   skills: selectedSkills,
-      // };
-      await axios({
-        method: 'post',
-        url: 'https://us-central1-dontpanic-zerone.cloudfunctions.net/loginUser',
-        data: {
-          nickname: userData?.nickname,
-          slimeColor: userData?.slimeColor,
-          userSkill: selectedSkills,
-        },
-      })
-        .then((response) => {
-          console.log(response);
+      try {
+        setLoading(true);
+        await axios({
+          method: 'post',
+          url: 'https://us-central1-dontpanic-zerone.cloudfunctions.net/loginUser',
+          data: {
+            nickname: userData?.nickname,
+            slimeColor: userData?.slimeColor,
+            userSkill: selectedSkills,
+          },
         })
-        .catch((error) => {
-          console.log(error);
-        });
-      setData(userData!);
+          .then((response) => {
+            console.log(response);
+          })
+      } catch (error) {
+        console.log(error);
+      }
+
+      
+      // setData(userData!);
       dispatchModalAction();
+      setLoading(false);
     },
     [selectedSkills],
   );
+
+  if (loading) return <Loading slimeColor={colorCode[userData!.slimeColor]} />
+
   return (
     <form onSubmit={onSubmit}>
       <SkillsContent>
