@@ -42,7 +42,7 @@ const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
       e.preventDefault();
       userData.nickname = nickname;
       userData.slimeColor = slimeColor;
-
+      console.log(userData);
       if (nickname && slimeColor) {
         dispatchModalAction(userData);
       }

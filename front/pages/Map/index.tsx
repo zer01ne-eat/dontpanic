@@ -39,8 +39,10 @@ const Map = () => {
       isOnline: true,
     });
     userRef.onSnapshot((doc) => {
-      const currentData = new UserData(doc.data());
-      setUserData(currentData);
+      if (doc.data() !== undefined) {
+        const currentData = new UserData(doc.data());
+        setUserData(currentData);
+      }
     });
 
     db.collection('user')
@@ -57,16 +59,19 @@ const Map = () => {
   }, []);
 
   useEffect(() => {
-    axios({
-      method: 'GET',
-      url: 'https://us-central1-dontpanic-zerone.cloudfunctions.net/getProjectList?name=' + userData.nickname,
-    })
-      .then((response) => {
-        setProjectList(response.data as any[]);
+    console.log(userData);
+    if (userData !== undefined && userData.isOnline) {
+      axios({
+        method: 'GET',
+        url: 'https://us-central1-dontpanic-zerone.cloudfunctions.net/getProjectList?name=' + userData.nickname,
       })
-      .catch((error) => {
-        console.error(error);
-      });
+        .then((response) => {
+          setProjectList(response.data as any[]);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   }, [userData.nickname, setProjectList]);
 
   const projects = [

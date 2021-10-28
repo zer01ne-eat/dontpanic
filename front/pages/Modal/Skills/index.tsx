@@ -36,8 +36,23 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
   );
 
   const onSubmit = useCallback(
-    (e) => {
+    async (e) => {
       e.preventDefault();
+      await axios({
+        method: 'post',
+        url: 'https://us-central1-dontpanic-zerone.cloudfunctions.net/loginUser',
+        data: {
+          nickname: userData?.nickname,
+          slimeColor: userData?.slimeColor,
+          userSkill: ['html', 'css'],
+        },
+      })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       // axios
       //   .post('/api/users', { nickname, slimeColor }, {withCredentials: true})
       //   .then(() => {
