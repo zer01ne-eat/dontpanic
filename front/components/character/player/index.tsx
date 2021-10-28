@@ -9,18 +9,21 @@ import { useRecoilValue } from 'recoil';
 interface Props {
   skin: string;
   userData: UserData;
+  isUser: boolean;
 }
 
-const Player: FC<Props> = ({ skin, userData }) => {
+const Player: FC<Props> = ({ skin, userData, isUser }) => {
   const plyaer = useRecoilValue(userDataState);
   const { dir, step, walk, position, warp } = useWalk(8, { x: userData.positionX, y: userData.positionY });
   const data = {
     h: 85,
     w: 85,
   };
-  // useEffect(() => {
-  //   warp({ x: userData.positionX, y: userData.positionY });
-  // }, [userData]);
+  useEffect(() => {
+    if (!isUser) {
+      warp({ x: userData.positionX, y: userData.positionY });
+    }
+  }, [userData]);
 
   useKeyPress((e) => {
     if (e.key == 'ArrowRight' || e.key == 'ArrowLeft' || e.key == 'ArrowUp' || e.key == 'ArrowDown') {
@@ -31,7 +34,6 @@ const Player: FC<Props> = ({ skin, userData }) => {
           positionX: position.x,
           positionY: position.y,
         });
-        console.log(position);
       }
     } else {
       return;

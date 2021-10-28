@@ -82,9 +82,9 @@ const Map = () => {
     <>
       {projectShow ? (
         <>
-          <Player key={userData.nickname} skin="teal" userData={userData} />
+          <Player key={userData.nickname} skin="teal" userData={userData} isUser={true} />
           {others.map((otherUser) => {
-            return <Player key={otherUser.nickname} skin="teal" userData={otherUser} />;
+            return <Player key={otherUser.nickname} skin="teal" userData={otherUser} isUser={false} />;
           })}
           {projects.map((project) => (
             <div

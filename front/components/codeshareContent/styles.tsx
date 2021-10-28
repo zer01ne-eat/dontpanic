@@ -13,7 +13,7 @@ export const CodeSharePage = styled.div`
         margin: 2.9% 7.9% 0;
         display: flex;
         float: left;
-        background-color: pink;
+        background-color: black;
 
         & #codeshare {
             width: 70%;

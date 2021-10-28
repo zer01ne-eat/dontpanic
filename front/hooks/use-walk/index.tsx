@@ -10,8 +10,7 @@ export default function useWalk(maxSteps: number, initialPosiotn: { x: number; y
     right: 2,
     up: 3,
   };
-  const stepSize = 20;
-  console.log('user data : ', initialPosiotn);
+  const stepSize = 15;
 
   const modifier: any = {
     down: { x: 0, y: stepSize },
