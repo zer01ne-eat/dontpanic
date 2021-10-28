@@ -10,6 +10,7 @@ export const FullNavbar = styled.div `
   overflow: hidden;
   font-family: 'NSD-Black';
   position: absolute;
+  z-index: 100;
   & .back-selected-btn {
     height: 8%;
     cursor: pointer;
