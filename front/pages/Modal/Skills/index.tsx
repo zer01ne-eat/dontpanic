@@ -61,19 +61,19 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
     async (e) => {
       e.preventDefault();
 
-      const d = {
-        nickname: userData!.nickname,
-        slimeColor: userData!.slimeColor,
-        level: 0,
-        skills: selectedSkills,
-      };
+      // const d = {
+      //   nickname: userData!.nickname,
+      //   slimeColor: userData!.slimeColor,
+      //   level: 0,
+      //   skills: selectedSkills,
+      // };
       await axios({
         method: 'post',
         url: 'https://us-central1-dontpanic-zerone.cloudfunctions.net/loginUser',
         data: {
           nickname: userData?.nickname,
           slimeColor: userData?.slimeColor,
-          userSkill: ['html', 'css'],
+          userSkill: selectedSkills,
         },
       })
         .then((response) => {
