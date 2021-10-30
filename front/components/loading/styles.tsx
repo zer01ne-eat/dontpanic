@@ -20,7 +20,7 @@ export const LoadingPage = styled.div `
     & .loading-text {
         width: 128px;
         height: 30px;
-        font-family: AppleSDGothicNeo;
+        font-family: 'NSD-Black';
         font-size: 30px;
         font-weight: normal;
         font-stretch: normal;

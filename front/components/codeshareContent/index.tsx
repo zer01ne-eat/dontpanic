@@ -93,8 +93,9 @@ const CodeShareContent = () => {
                 id="local_video_element_id"
                 autoPlay
                 />
-                <div style={{width: "41px", height: "40px", borderRadius:"50px", backgroundColor:"white", position: "absolute"}}>
+                <div style={{width: "41px", height: "40px", borderRadius:"50px", backgroundColor:"white"}}>
                 <SlimeCharacter color={userData!.slimeColor} />
+                <div style={{position: "relative"}} >{userData.nickname}</div>
                 </div>
                 <div style={{position: "absolute", bottom: "50px", cursor: "pointer"}}>
                   <div className="exit-button">

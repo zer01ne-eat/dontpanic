@@ -32,7 +32,7 @@ export const CodeSharePage = styled.div`
         margin-left: 25px;
         & #participants {
             margin-top: 65px;
-            font-family: NotoSans-Regular;
+            font-family: NSD-Black;
             font-size: 21px;
             font-weight: 900;
             font-stretch: normal;
