@@ -31,7 +31,6 @@ export const UserCreationContent = styled.div`
         width: 100%;
       }
     }
-
   }
   & .user-creation-input-content {
     width: 90%;

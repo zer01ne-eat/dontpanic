@@ -2,12 +2,14 @@ import styled from '@emotion/styled';
 
 export const ProjectsContents = styled.div`
     color: #fff;
-    
     & .project-name {
-        padding: 3% 13%;
+        padding-top: 17px;
+        padding-left: 65px;
         padding-right: 0;
+        padding-bottom: 18px;
+        height: 68px;
         display: flex;
-        font-size: 1.6em;
+        font-size: 24px;
         align-items: center;
         &:hover {
             background-color: #5485ff;
@@ -18,13 +20,14 @@ export const ProjectsContents = styled.div`
         width: 15px;
         height: 15px;
         border-radius: 15px;
-        margin-left: 40%;
+        margin-left: 123px;
         background-color: #17b84c;
       }
     & .open-c {
-        width: 40px;
-        height: 40px;
-        margin-left: 7%;
+        width: 68px;
+        height: 68px;
+        float: right;
+        // margin-left: 7%;
     } 
     & img {
         width: 100%;
@@ -41,16 +44,18 @@ export const ProjectsContents = styled.div`
     }
     & .quiz-name {
         font-family: 'NS-Regular';
-        padding: 3% 20%;
+        padding-top: 8px;
+        padding-left: 85px;
         padding-right: 0;
+        padding-bottom: 9px;
         display: flex;
-        font-size: 1rem;
+        font-size: 15px;
         align-items: center;
     & .oval-quiz {
         width: 8px;
         height: 8px;
         border-radius: 8px;
-        margin-left: 55%;
         background-color: #1799b8;
+        margin-left: 160px;
         } 
 `;

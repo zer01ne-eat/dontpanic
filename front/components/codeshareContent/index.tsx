@@ -44,8 +44,9 @@ const CodeShareContent = () => {
             "remoteParticipantStreamStarted",
             (remoteParticipant: SendBirdCall.RemoteParticipant) => {
               const remoteMediaView = document.createElement("video");
-              remoteMediaView.setAttribute("width", "300px");
-              remoteMediaView.setAttribute("height", "200px");
+              remoteMediaView.setAttribute("width", "635px");
+              remoteMediaView.setAttribute("height", "378px");
+              remoteMediaView.setAttribute("border-radius", "30px");
               remoteMediaView.setAttribute("id", remoteParticipant.participantId);
               remoteMediaView.autoplay = true;
               remoteParticipant.setMediaView(remoteMediaView);
@@ -76,17 +77,26 @@ const CodeShareContent = () => {
         <>
         <CodeSharePage>
             <div className="codeshare-content">
-               <div id="codeshare"><CodeShare projectId={"TThQ2JDeLZvlkk4OZBtG"} /></div>
+               <div id="codeshare">
+                 <CodeShare projectId={"TThQ2JDeLZvlkk4OZBtG"} />
+                 </div>
                <div id="grading">
-                <button onClick={() => setProjectShow(true)}>취소</button>
                </div>
                <div id="video_container">
+                 <div id="participants">participants</div>
                 <video
-                width="300px"
-                height="200px"
+                width="635px"
+                height="378px"
+                style={{borderRadius: "30px"}}
                 id="local_video_element_id"
                 autoPlay
                 />
+                <div style={{position: "absolute", bottom: "50px", cursor: "pointer"}}>
+                  <div className="exit-button">
+                  <button onClick={() => setProjectShow(true)}>
+                    <div className="button-text">EXIT</div></button>
+                  </div>
+                </div>
                 </div>
            </div>
         </CodeSharePage>

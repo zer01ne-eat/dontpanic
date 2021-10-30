@@ -39,7 +39,7 @@ const colorCode:any = {
 const Skills: VFC<Props> = ({ userData, dispatchModalAction, dispatchModalBack }) => {
   // const {data, error} = useSWR('/api/users', fetcher);
   const [data, setData] = useRecoilState(userDataState);
-  const skills = ['html', 'css', 'javascript'];
+  const skills = ['HTML', 'CSS', 'Javascript'];
   const [selectedSkills, setSelectedSkills] = useState<Array<string>>([]);
   const [loading, setLoading] = useState(false);
   const GetClick = useCallback(
@@ -48,12 +48,12 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction, dispatchModalBack }
 
       if (e.target.className == 'selected') {
         e.target.className = 'unselected';
-        e.target.style.border = 'solid 9px #6c6c6c';
+        e.target.style.border = 'solid 4.5px #6c6c6c';
         e.target.style.color = '#6c6c6c';
         setSelectedSkills(selectedSkills.filter((skill) => e.target.id.indexOf(skill) === -1));
       } else if (e.target.className == 'unselected') {
         e.target.className = 'selected';
-        e.target.style.border = 'solid 9px #fff';
+        e.target.style.border = 'solid 4.5px #fff';
         e.target.style.color = '#fff';
         setSelectedSkills([...selectedSkills, e.target.id]);
       }
@@ -103,30 +103,27 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction, dispatchModalBack }
           <div className="slime">
           <Lottie
                     options={{animationData: colorCode[userData!.slimeColor],loop: true,        
-                    autoplay: true }}
+                    autoplay: true,
+                    rendererSettings: {
+                      className: 'add-class', // svg에 적용
+                      preserveAspectRatio: 'xMidYMid slice'
+                    } }}
                     isClickToPauseDisabled={false}
-                    style={{width: '300px', height: '300px'}}
+                    style={{width: '375px', height: '465px'}}
                 />
             {/* <SlimeCharacter color={userData!.slimeColor} /> */}
           </div>
         </div>
         <div className="skills-content">
-          <div className="skills-title">Preferred skills (select)</div>
-          <ul style={{ listStyle: 'none', display: 'flex' }}>
+          <div className="skills-title">Preferred skills (optional)</div>
+          <ul style={{ listStyle: 'none', display: 'flex', padding: "0", margin: "0" }}>
             {skills.map((skill) => (
-              <li key={skill} style={{ paddingRight: '10px' }}>
+              <li key={skill}>
                 <Skill>
                   <div
                     className="unselected"
                     id={skill}
                     onClick={GetClick}
-                    style={{
-                      padding: '15px 55px',
-                      borderRadius: '60.8px',
-                      cursor: 'pointer',
-                      border: 'solid 9px #6c6c6c',
-                      color: '#6c6c6c',
-                    }}
                   >
                     {skill}
                   </div>

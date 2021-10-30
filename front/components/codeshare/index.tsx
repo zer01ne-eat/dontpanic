@@ -70,27 +70,30 @@ const CodeShare: FC<Props> = ({ projectId }) => {
   
     return (
       <>
-        <div id='html' style={{ width: "30vw", float: "left" }}>
+        <div id='html' style={{ width: "546px", float: "left", overflow: "hidden"}}>
+          <div style={{color: "#fff", fontSize: "40px", textAlign: "center", fontFamily: "NSD-Regular"}}>HTML</div>
           <Editor
-            height="89.6vh"
+            height="95%"
             defaultLanguage="html"
             theme="vs-dark"
             defaultValue="// Welcome to My Editor"
             onMount={handleHtmlEditorDidMount}
           />
         </div>
-        <div id='css' style={{ width: "30vw", float: "left" }}>
+        <div id='css' style={{ width: "546px", float: "left" }}>
+        <div style={{color: "#fff", fontSize: "40px", textAlign: "center", fontFamily: "NSD-Regular"}}>CSS</div>
           <Editor
-            height="89.6vh"
+            height="95%"
             defaultLanguage="css"
             theme="vs-dark"
             defaultValue="// Welcome to My Editor"
             onMount={handleCssEditorDidMount}
           />
         </div>
-        <div id='js' style={{ width: "30vw", float: "left" }}>
+        <div id='js' style={{ width: "546px", float: "left" }}>
+        <div style={{color: "#fff", fontSize: "40px", textAlign: "center", fontFamily: "NSD-Regular"}}>Javascript</div>
           <Editor
-            height="89.6vh"
+            height="95%"
             defaultLanguage="javascript"
             theme="vs-dark"
             defaultValue="// Welcome to My Editor"

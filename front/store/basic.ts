@@ -44,14 +44,29 @@ export const currentProjectState = atom({
   default: '',
 });
 
+// export const userDataState = atom({
+//   key: 'data',
+//   default: new UserData({
+//     nickname: '',
+//     slimeColor: '',
+//     level: -1,
+//     isOnline: false,
+//     userSkill: [],
+//     projects: [],
+//     sendbirdAccessToken: '',
+//     positionX: 950,
+//     positionY: 700,
+//   }),
+// });
+
 export const userDataState = atom({
   key: 'data',
   default: new UserData({
-    nickname: '',
-    slimeColor: '',
-    level: -1,
+    nickname: 'sonu',
+    slimeColor: '#fea040',
+    level: 42,
     isOnline: false,
-    userSkill: [],
+    userSkill: ['html', 'css', 'javascript'],
     projects: [],
     sendbirdAccessToken: '',
     positionX: 950,
