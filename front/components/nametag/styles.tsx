@@ -6,6 +6,17 @@ export const NameTagContent = styled.div `
     border-radius: 67px;
     background-color: #272727;
     text-align: center;
+    margin-bottom: 20px;
+
+    & .triangle {
+            width: 11px;
+            height: 8px;
+            bottom: 0px;
+            border-top: 10px solid #272727;
+            opacity: 0.8;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+    }
     & .name-text {
         // width: 277px;
         // height: 30px;
@@ -19,3 +30,4 @@ export const NameTagContent = styled.div `
         color: #fff;
     }
     `;
+    

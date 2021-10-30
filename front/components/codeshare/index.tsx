@@ -64,7 +64,7 @@ const CodeShare: FC<Props> = ({ projectId }) => {
       cssFirePad.setUserName(userData.nickname);
       jsFirePad.setUserName(userData.nickname);
 
-    document.getElementById(currentProject)!.style.border = 'solid 3px white';
+    document.getElementById(currentProject)!.style.border = 'solid 3px #5485ff';
 
     }, [htmlEditorLoaded, cssEditorLoaded, jsEditorLoaded, userData.nickname, projectId]);
   

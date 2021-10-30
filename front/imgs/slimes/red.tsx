@@ -5,7 +5,7 @@ interface Props {
 
 const SlimeCharacter: VFC<Props> = ({ color }) => {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="104" height="133" viewBox="0 0 500 620">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 500 620">
     <g fill="none" fillRule="evenodd">
         <g>
             <g>

@@ -14,6 +14,7 @@ export const IconSVG = styled.svg`
 export const FullNavbar = styled.div `
   width: 600px;
   height: 1340px;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.5);
   border-radius: 30px;
   margin: 50px 1920px 50px 50px;
   display: inline-block;
@@ -41,11 +42,9 @@ export const FullNavbar = styled.div `
       height: 197px;
 
       & .slime {
-        // width: 104px;
+        width: 104px;
         float: left;
-        height: 100%;
-        // padding-top: 24px;
-        padding-left: 87px;
+        margin-left: 87px;
         & #slime-img {
           display: flex;
           position: relative;
@@ -149,6 +148,7 @@ export const FullNavbar = styled.div `
 export const ShrinkNavbar = styled.div `
   width: 103px;
   height: 1340px;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.5);
   border-radius: 30px;
   margin: 50px 2407px 50px 50px;
   display: inline-block;

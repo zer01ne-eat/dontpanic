@@ -44,6 +44,11 @@ export const currentProjectState = atom({
   default: '',
 });
 
+export const loadingState = atom({
+  key: 'loadingState',
+  default: false,
+});
+
 // export const userDataState = atom({
 //   key: 'data',
 //   default: new UserData({

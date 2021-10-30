@@ -45,7 +45,7 @@ const ModalPage: FC<Props> = ({ onCloseModal }) => {
               dispatchModalBack={() => dispatchModalBack(USER_CREATION)}
               dispatchModalAction={() => {
                 dispatchModalAction(CLOSE, null);
-                onCloseModal();
+                onCloseModal()
               }}
             />
           ),

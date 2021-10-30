@@ -5,6 +5,8 @@ import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { projectIconState, userDataState } from '../../store/basic';
 import SendBirdCall from "sendbird-calls";
 import axios from 'axios';
+import { BackGround } from '@layouts/styles';
+import SlimeCharacter from '@imgs/slimes/red';
 
 const CodeShareContent = () => {
     const setProjectShow = useSetRecoilState(projectIconState);
@@ -91,6 +93,9 @@ const CodeShareContent = () => {
                 id="local_video_element_id"
                 autoPlay
                 />
+                <div style={{width: "41px", height: "40px", borderRadius:"50px", backgroundColor:"white", position: "absolute"}}>
+                <SlimeCharacter color={userData!.slimeColor} />
+                </div>
                 <div style={{position: "absolute", bottom: "50px", cursor: "pointer"}}>
                   <div className="exit-button">
                   <button onClick={() => setProjectShow(true)}>

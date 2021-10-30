@@ -4,20 +4,11 @@ import styled from '@emotion/styled';
 export const Rectangle = styled.div`
     // display: flex;
     background-color: #272727;
-    border-radius: 3rem;
+    border-radius: 30px;
     width: 2000px;
     height: 1086px;
     // text-align: center;
     margin: 177px 280px;
-    // & > #intro {
-    //   display: flex;
-    //   width: 90%;
-    //   height: 70%;
-    //   // flex-direction: column;
-    //   // flex-grow: 1;
-    //   // border: 1px solid red;
-    //   margin: 3rem;
-    // }
 
     & button {
       width: 350px;

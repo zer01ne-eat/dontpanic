@@ -81,9 +81,6 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction, dispatchModalBack }
       } catch (error) {
         console.log(error);
       }
-
-      
-      // setData(userData!);
       dispatchModalAction();
       setLoading(false);
     },
