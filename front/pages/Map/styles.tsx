@@ -1,9 +1,18 @@
-// import styled from '@emotion/styled';
+import styled from '@emotion/styled';
 
-// export const BackGround = styled.div `
-//   background-image: url(../imgs/bg-001.jpg);
-//   background-size: cover;
-//   width: 100%;
-//   height: 100%;
-//   background-repeat:no-repeat;
-// `
+export const ProjectContent = styled.div `
+position: absolute;
+height: 100px;
+width: 100px;
+backgroundSize: contain;
+backgroundRepeat: no-repeat;
+`;
+
+export const ProjectIcon = styled.svg `
+
+    &:hover {
+        path {
+            stroke: white;
+        }
+    }
+`;

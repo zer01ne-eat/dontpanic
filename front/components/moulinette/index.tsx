@@ -1,10 +1,14 @@
+import MoulinetteIcon from "@imgs/projects/ai-machine";
 import React from "react";
-import { MoulinetteContainer } from "./styles";
+import { MoulinetteSVG, MoulinetteContainer } from "./styles";
 
 const Moulinette = () => {
     return(
         <MoulinetteContainer>
-            <img src='../../imgs/ai-machine.svg' />
+            {/* <img src='../../imgs/ai-machine.svg' /> */}
+            <MoulinetteSVG>
+                <MoulinetteIcon />
+            </MoulinetteSVG>
         </MoulinetteContainer>
     );
 }

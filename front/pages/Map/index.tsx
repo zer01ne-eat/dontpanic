@@ -8,8 +8,11 @@ import loadable from '@loadable/component';
 import axios from 'axios';
 import CodeShareContent from '@components/codeshareContent';
 import firebase from 'firebase';
-
-// import { BackGround } from './styles';
+import Moulinette from '@components/moulinette';
+import { ProjectContent, ProjectIcon } from './styles';
+import CSSIcon from '@imgs/projects/css-default';
+import HTMLIcon from '@imgs/projects/html-default';
+import JSIcon from '@imgs/projects/js-default';
 
 const colorCode:any = {
   "#06c1c1": "teal",
@@ -22,6 +25,12 @@ const colorCode:any = {
   "#fff7f1": "white",
   "#969696": "grey",
 }
+
+// const projectIcon:any = {
+//   'html': <HTMLIcon />,
+//   'css': <CSSIcon />,
+//   'js': <JSIcon />
+// }
 
 const Map = () => {
   const [userData, setUserData] = useRecoilState(userDataState);
@@ -85,6 +94,13 @@ const Map = () => {
     }
   }, [userData.nickname, setProjectList]);
 
+  const projectIcon = (projectName: string) => {
+    switch(projectName) {
+      case "html":   return <HTMLIcon />;
+      case "css":   return <CSSIcon />;
+      case "js": return <JSIcon />;
+    }
+  }
   const projects = [
     { name: 'project1', position: { x: 1550, y: 500 }, type: 'html' },
     { name: 'project2', position: { x: 850, y: 700 }, type: 'css' },
@@ -99,20 +115,14 @@ const Map = () => {
             return <Player key={otherUser.nickname} skin={colorCode[otherUser.slimeColor]} userData={otherUser} isUser={false} />;
           })}
           {projects.map((project) => (
-            <div
-              key={project.name}
-              style={{
-                position: 'absolute',
-                top: project.position.y,
-                left: project.position.x,
-                height: '100px',
-                width: '100px',
-                backgroundImage: `url(imgs/projects/${project.type}-default.svg)`,
-                backgroundSize: 'contain',
-                backgroundRepeat: 'no-repeat',
-              }}
-            />
+            <ProjectContent style={{ top: project.position.y, left: project.position.x }}>
+              {project.name}
+            <ProjectIcon key={project.name}>
+              { projectIcon(project.type)}
+          </ProjectIcon>
+          </ProjectContent>
           ))}
+          <Moulinette />
         </>
       ) : (
         <CodeShareContent />
