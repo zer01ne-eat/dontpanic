@@ -7,7 +7,7 @@ export const Contents = styled.div`
         margin-top: 11px;
         font-family: 'NSD-Bold';
         color: #b0b0b0;
-        font-size: 1rem;
+        // font-size: 1rem;
     }
 `;
 export const Skills = styled.div`
@@ -21,6 +21,11 @@ export const Skills = styled.div`
         font-family: 'NSD-Regular';
         color: #b0b0b0;
         font-size: 15px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
     }
 `;
 
@@ -31,7 +36,7 @@ export const Oval = styled.div`
     align-items: center;
     align-content: stretch;
     float: right;
-    margin: 22px 0 0 0;
+    margin: 22px 0 11px 0;
     padding-right: 29px;
     & .oval-descp {
         width: 8px;

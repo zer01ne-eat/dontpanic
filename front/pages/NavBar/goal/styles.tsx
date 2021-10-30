@@ -12,5 +12,10 @@ export const GoalContent = styled.div`
         font-family: 'NSD-Regular';
         color: #b0b0b0;
         font-size: 15px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
     }
 `;
