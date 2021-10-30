@@ -13,6 +13,7 @@ import { ProjectContent, ProjectIcon } from './styles';
 import CSSIcon from '@imgs/projects/css-default';
 import HTMLIcon from '@imgs/projects/html-default';
 import JSIcon from '@imgs/projects/js-default';
+import NameTag from '@components/nametag';
 
 const colorCode:any = {
   "#06c1c1": "teal",
@@ -116,7 +117,7 @@ const Map = () => {
           })}
           {projects.map((project) => (
             <ProjectContent style={{ top: project.position.y, left: project.position.x }}>
-              {project.name}
+              <NameTag name={project.name} />
             <ProjectIcon key={project.name}>
               { projectIcon(project.type)}
           </ProjectIcon>

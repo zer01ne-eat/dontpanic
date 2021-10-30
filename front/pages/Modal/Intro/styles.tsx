@@ -1,26 +1,26 @@
 import styled from '@emotion/styled';
 export const UserModalContent = styled.div `
     text-align: center;
-    & .user-modal-title {
-        padding-top: 10%;
-        font-size: 9em;
+    padding-top: 235px;
+    & > .user-modal-title {
+        width: 692px;
+        height: 171px;
+        margin: 0 655px 50px 653px;
+        font-size: 120px;
         color: #fff;
         font-family: 'NSD-Black';
     }
     & .user-modal-content {
         font-family: 'NS-Regular';
-        padding: 2%;
-        font-size: 2.5em;
+        font-size: 37.5px;
+        padding-bottom: 105px;
         color: #b0b0b0;
     }
     & .user-modal-footer {
         font-family: 'NS-Bold';
-        font-size: 2.5em;
-        padding: 2%;
+        font-size: 37.5px;
+        padding-bottom: 30px;
         color: #fff;
-    }
-    & .user-modal-button {
-
     }
 `;
 

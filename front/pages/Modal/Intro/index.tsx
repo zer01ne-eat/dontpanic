@@ -19,7 +19,7 @@ const Intro: VFC<Props> = ({ dispatchModalAction }) => {
             <div className="user-modal-footer">
                 Choose your own character
             </div>
-            <div className="user-modal-button"><button onClick={dispatchModalAction}>CONTINUE</button></div>
+            <div className="user-modal-button"><button style={{backgroundColor: '#5485ff'}} onClick={dispatchModalAction}>CONTINUE</button></div>
         </UserModalContent>
     );
 }

@@ -41,7 +41,7 @@ const App = () => {
 
     return (
         <RecoilRoot>
-            <div style={{"width":"100%","height":"100%","backgroundColor":"rgb(32, 37, 64)","WebkitBoxAlign":"center","alignItems":"center","WebkitBoxPack":"center","justifyContent":"center","overflowY":"auto","padding":"0px"}}>
+            <div style={{"width":"100%","height":"100%","backgroundColor":"#151515","WebkitBoxAlign":"center","alignItems":"center","WebkitBoxPack":"center","justifyContent":"center","overflowY":"auto","padding":"0px"}}>
             <ModalPage onCloseModal={onCloseModal} />
             { !showCreateWorkspaceModal &&
                 <BackGround>

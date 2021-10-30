@@ -1,3 +1,4 @@
+import NameTag from "@components/nametag";
 import { UserData } from "@store/basic";
 import React, { FC } from "react";
 
@@ -22,7 +23,7 @@ const Sprite: FC<Props> = ({ image, data, position, userData }) => {
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: `-${x}px -${y}px`,
             }}
-        >{userData.nickname}</div>
+        ><NameTag name={userData.nickname} /></div>
     );
 }
 

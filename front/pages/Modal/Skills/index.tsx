@@ -14,9 +14,13 @@ import DarkBlue from '@imgs/slimes/#3e579c.json';
 import White from '@imgs/slimes/#fff7f1.json';
 import Grey from '@imgs/slimes/#969696.json';
 import Loading from '@components/loading';
+import Intro from '../Intro';
+import { BackIconSVG } from '../UserCreation/styles';
+import BackIcon from '@imgs/back';
 
 interface Props {
   dispatchModalAction: () => void;
+  dispatchModalBack: () => void;
   userData: UserData | null;
 }
 
@@ -32,7 +36,7 @@ const colorCode:any = {
     "#969696": Grey,
 }
 
-const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
+const Skills: VFC<Props> = ({ userData, dispatchModalAction, dispatchModalBack }) => {
   // const {data, error} = useSWR('/api/users', fetcher);
   const [data, setData] = useRecoilState(userDataState);
   const skills = ['html', 'css', 'javascript'];
@@ -90,6 +94,10 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction }) => {
 
   return (
     <form onSubmit={onSubmit}>
+          <div style={{alignItems: "center", width: "100px", height: "100px", paddingTop: "65px", paddingBottom: '300px', marginLeft: '65px', cursor: 'pointer', position: 'absolute' }}
+               onClick={dispatchModalBack}>
+            <BackIconSVG><BackIcon /></BackIconSVG>
+          </div>
       <SkillsContent>
         <div className="skills-slime">
           <div className="slime">

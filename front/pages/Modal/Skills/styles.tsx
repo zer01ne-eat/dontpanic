@@ -5,12 +5,13 @@ export const SkillsContent = styled.div`
   color: #fff;
   margin: 10%;
   & .skills-slime {
-    width: 40%;
+    width: 250px;
+    height: 310px;
     & .slime {
       width: 50%;
-      margin-top: 115px;
-      padding: 20%;
-      padding-right: 0;
+      // margin-top: 115px;
+      // padding: 20%;
+      // padding-right: 0;
       & svg {
         width: 100%;
       }
