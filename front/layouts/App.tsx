@@ -6,7 +6,7 @@ const ModalPage = loadable(() => import('@pages/Modal'));
 const Map = loadable(() => import('@pages/Map'));
 const CodeShare = loadable(() => import('@pages/CodeShare'));
 const NavBar = loadable(() => import('@layouts/navbar'));
-import firebase from 'firebase/app';
+import firebase from 'firebase';
 import {
     RecoilRoot,
     atom,

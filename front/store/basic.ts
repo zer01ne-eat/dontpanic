@@ -39,6 +39,11 @@ export const projectIconState = atom({
   default: true,
 });
 
+export const currentProjectState = atom({
+  key: 'currentProject',
+  default: '',
+});
+
 export const userDataState = atom({
   key: 'data',
   default: new UserData({
@@ -52,7 +57,6 @@ export const userDataState = atom({
     positionX: 950,
     positionY: 700,
   }),
-  // default: {nickname: '', level: 0, slimeColor: '', skills: ['']}
 });
 
 export const projectListState = atom({

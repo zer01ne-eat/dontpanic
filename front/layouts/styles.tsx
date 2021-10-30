@@ -40,7 +40,7 @@ injectGlobal`
 `
 
 export const BackGround = styled.div `
-  background-image: url(../imgs/background.png);
+  background-image: url(../imgs/bg-001.jpg);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
