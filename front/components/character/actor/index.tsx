@@ -3,6 +3,8 @@ import CodeShare from "@components/codeshare";
 import Sprite from "@components/character/sprite";
 import { useSetRecoilState } from 'recoil';
 import { projectIconState, currentProjectState } from '@store/basic';
+import { UserData } from '@store/basic';
+
 
 interface Props {
     sprite: string,
@@ -10,10 +12,12 @@ interface Props {
     position: any,
     step: any,
     dir: any,
+    userData: UserData;
   }
   
 const Actor: FC<Props> = ({     sprite,
     data,
+    userData,
     position = {x: 0, y: 0},
     step = 0,
     dir = 0 }) => {
@@ -27,10 +31,10 @@ const Actor: FC<Props> = ({     sprite,
       {
         // return (<CodeShare projectId={"TThQ2JDeLZvlkk4OZBtG"} />)
         if ((position.x >= 804 && position.x <= 932) && (position.y >= 700 && position.y <= 764)) {
-          currentProject('html')
+          currentProject('css')
         }
         if ((position.x >= 1510 && position.x <= 1622) && (position.y >= 492 && position.y <= 588)) {
-          currentProject('css')
+          currentProject('html')
         }
         if ((position.x >= 1254 && position.x <= 1366) && (position.y >= 988 && position.y <= 1084)) {
           currentProject('js')
@@ -48,6 +52,7 @@ const Actor: FC<Props> = ({     sprite,
           w,
           h,
         }}
+        userData={userData}
         />
     );
 }

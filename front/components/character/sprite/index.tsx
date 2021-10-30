@@ -1,12 +1,14 @@
+import { UserData } from "@store/basic";
 import React, { FC } from "react";
 
 interface Props {
     image: string;
     data: any;
     position: any;
+    userData: UserData;
 }
 
-const Sprite: FC<Props> = ({ image, data, position }) => {
+const Sprite: FC<Props> = ({ image, data, position, userData }) => {
     const { y, x, h, w } = data;
     return(
         <div
@@ -20,7 +22,7 @@ const Sprite: FC<Props> = ({ image, data, position }) => {
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: `-${x}px -${y}px`,
             }}
-        />
+        >{userData.nickname}</div>
     );
 }
 
