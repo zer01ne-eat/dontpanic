@@ -11,6 +11,18 @@ import firebase from 'firebase';
 
 // import { BackGround } from './styles';
 
+const colorCode:any = {
+  "#06c1c1": "teal",
+  "#f9533b": "red",
+  "#fea040": "orange",
+  "#ffbf2b": "yellow",
+  "#06c17a": "green",
+  "#396bf6": "blue",
+  "#3e579c": "darkblue",
+  "#fff7f1": "white",
+  "#969696": "grey",
+}
+
 const Map = () => {
   const [userData, setUserData] = useRecoilState(userDataState);
   const projectShow = useRecoilValue(projectIconState);
@@ -82,9 +94,9 @@ const Map = () => {
     <>
       {projectShow ? (
         <>
-          <Player key={userData.nickname} skin="teal" userData={userData} isUser={true} />
+          <Player key={userData.nickname} skin={colorCode[userData.slimeColor]} userData={userData} isUser={true} />
           {others.map((otherUser) => {
-            return <Player key={otherUser.nickname} skin="teal" userData={otherUser} isUser={false} />;
+            return <Player key={otherUser.nickname} skin={colorCode[otherUser.slimeColor]} userData={otherUser} isUser={false} />;
           })}
           {projects.map((project) => (
             <div

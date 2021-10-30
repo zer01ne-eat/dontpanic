@@ -41,7 +41,7 @@ const Player: FC<Props> = ({ skin, userData, isUser }) => {
     e.preventDefault();
   });
 
-  return <Actor sprite={`../../../imgs/${skin}.png`} data={data} step={step} dir={dir} position={position} />;
+  return <Actor sprite={`../../../imgs/slimeMotion/${skin}.png`} data={data} step={step} dir={dir} position={position} />;
 };
 
 export default Player;
