@@ -5,7 +5,8 @@ export const LoadingPage = styled.div `
     height: 100%;
     background-color: #151515;
     border-radius: 30px;
-    padding: 300 900;
+    // padding: 300 900;
+    text-align: center;
 
     & .loading {
         width: 228px;
@@ -13,14 +14,15 @@ export const LoadingPage = styled.div `
         padding: 21px 50px;
         opacity: 0.8;
         border-radius: 67px;
-        margin-left: 40px;
+        // margin-left: 40px;
+        margin-left: 900px;
         background-color: #272727;
     }
 
     & .loading-text {
         width: 128px;
         height: 30px;
-        font-family: 'NSD-Black';
+        font-family: 'NSD-Regular';
         font-size: 30px;
         font-weight: normal;
         font-stretch: normal;

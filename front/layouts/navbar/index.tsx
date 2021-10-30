@@ -16,7 +16,7 @@ const NavBar = () => {
   const userData = useRecoilValue(userDataState);
   const setShowNavBar = useSetRecoilState(navbarState);
   const showNavBar = useRecoilValue(navbarState);
-  const [selected, setSelected] = useState('profile');
+  const [selected, setSelected] = useState('home');
 
   const onClickNavBar = useCallback(() => {
     setShowNavBar((prev) => !prev);
