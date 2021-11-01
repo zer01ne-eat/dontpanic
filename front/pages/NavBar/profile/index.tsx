@@ -16,14 +16,14 @@ const Profile = () => {
         gradient?.addColorStop(0.035, 'rgba(234, 25, 78, 1.000)');
         gradient?.addColorStop(0.225, 'rgba(0, 8, 249, 1.000)');
         gradient?.addColorStop(0.983, 'rgba(42, 255, 0, 1.000)');
-        if (ctx) {
+        if (ctx && !ref.current) {
             ref.current = new Chart(ctx, {
                 type: "radar",
                 data: {
                     labels: [
                         'HTML',
-                        'CSS',
                         'Javascript',
+                        'CSS',
                     ],
                     datasets: [{
                         data: [78, 87, 100],
@@ -31,7 +31,7 @@ const Profile = () => {
                     }]
                 },
                 options: { 
-                    
+                    responsive: false,
                         plugins: {
                             legend: {
                                 display: false,
@@ -45,7 +45,7 @@ const Profile = () => {
                                 pointLabels: {
                                     color: "white",
                                     font: {
-                                        size: 14,
+                                        size: 15,
                                     }
                                 },
                                 suggestedMin: 0,
@@ -75,18 +75,18 @@ const Profile = () => {
     return (
         <Contents>
             <Skills>
-                <div className="title">SKILLS</div>
-                <div className="description">
+                <div className="title" style={{padding: "42px 177px 1px 35px"}}>SKILLS</div>
+                <div className="description" style={{paddingLeft: "35px", paddingRight: "21px"}}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum turpis sed pretium sodales.
                 </div>
-                <div>
-            <canvas ref={skillChart}></canvas>
+                <div style={{paddingLeft: "50px"}}>
+            <canvas width="300" height="300" style={{margin: "0 0 80px 0"}} ref={skillChart}></canvas>
         </div>
             </Skills>
             <hr style={{ width: "100%", padding: '0', margin: '0', border: 'none', height: '1px', backgroundColor: 'black' }} />
             <Skills>
-                <div className="title">Marks</div>
-                <div className="description">
+                <div className="title" style={{padding: "25px 190px 1px 35px"}}>Marks</div>
+                <div className="description" style={{paddingLeft: "35px", paddingRight: "21px"}}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum turpis sed pretium sodales.
                 </div>
             </Skills>

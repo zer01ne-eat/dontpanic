@@ -8,8 +8,30 @@ import loadable from '@loadable/component';
 import axios from 'axios';
 import CodeShareContent from '@components/codeshareContent';
 import firebase from 'firebase';
+import Moulinette from '@components/moulinette';
+import { ProjectContent, ProjectIcon } from './styles';
+import CSSIcon from '@imgs/projects/css-default';
+import HTMLIcon from '@imgs/projects/html-default';
+import JSIcon from '@imgs/projects/js-default';
+import NameTag from '@components/nametag';
 
-// import { BackGround } from './styles';
+const colorCode:any = {
+  "#06c1c1": "teal",
+  "#f9533b": "red",
+  "#fea040": "orange",
+  "#ffbf2b": "yellow",
+  "#06c17a": "green",
+  "#396bf6": "blue",
+  "#3e579c": "darkblue",
+  "#fff7f1": "white",
+  "#969696": "grey",
+}
+
+// const projectIcon:any = {
+//   'html': <HTMLIcon />,
+//   'css': <CSSIcon />,
+//   'js': <JSIcon />
+// }
 
 const Map = () => {
   const [userData, setUserData] = useRecoilState(userDataState);
@@ -22,7 +44,6 @@ const Map = () => {
 
   useEffect(() => {
     const unloadCallback = (event: { preventDefault: () => void; returnValue: string }) => {
-      console.log(event);
       event.preventDefault();
       event.returnValue = '';
       return userRef.update({
@@ -73,6 +94,13 @@ const Map = () => {
     }
   }, [userData.nickname, setProjectList]);
 
+  const projectIcon = (projectName: string) => {
+    switch(projectName) {
+      case "html":   return <HTMLIcon />;
+      case "css":   return <CSSIcon />;
+      case "js": return <JSIcon />;
+    }
+  }
   const projects = [
     { name: 'project1', position: { x: 1550, y: 500 }, type: 'html' },
     { name: 'project2', position: { x: 850, y: 700 }, type: 'css' },
@@ -82,25 +110,19 @@ const Map = () => {
     <>
       {projectShow ? (
         <>
-          <Player key={userData.nickname} skin="teal" userData={userData} isUser={true} />
+          <Player key={userData.nickname} skin={colorCode[userData.slimeColor]} userData={userData} isUser={true} />
           {others.map((otherUser) => {
-            return <Player key={otherUser.nickname} skin="teal" userData={otherUser} isUser={false} />;
+            return <Player key={otherUser.nickname} skin={colorCode[otherUser.slimeColor]} userData={otherUser} isUser={false} />;
           })}
           {projects.map((project) => (
-            <div
-              key={project.name}
-              style={{
-                position: 'absolute',
-                top: project.position.y,
-                left: project.position.x,
-                height: '100px',
-                width: '100px',
-                backgroundImage: `url(imgs/projects/${project.type}-default.svg)`,
-                backgroundSize: 'contain',
-                backgroundRepeat: 'no-repeat',
-              }}
-            />
+            <ProjectContent style={{ top: project.position.y, left: project.position.x }}>
+              <div className="name-tag"><NameTag name={project.name} /></div>
+            <ProjectIcon key={project.name}>
+              { projectIcon(project.type)}
+          </ProjectIcon>
+          </ProjectContent>
           ))}
+          <Moulinette />
         </>
       ) : (
         <CodeShareContent />

@@ -13,7 +13,7 @@ interface Props {
 }
 
 const Player: FC<Props> = ({ skin, userData, isUser }) => {
-  const plyaer = useRecoilValue(userDataState);
+  const player = useRecoilValue(userDataState);
   const { dir, step, walk, position, warp } = useWalk(8, { x: userData.positionX, y: userData.positionY });
   const data = {
     h: 85,
@@ -27,7 +27,7 @@ const Player: FC<Props> = ({ skin, userData, isUser }) => {
 
   useKeyPress((e) => {
     if (e.key == 'ArrowRight' || e.key == 'ArrowLeft' || e.key == 'ArrowUp' || e.key == 'ArrowDown') {
-      if (userData.nickname === plyaer.nickname) {
+      if (userData.nickname === player.nickname) {
         walk(e.key.replace('Arrow', '').toLowerCase());
         firebase.firestore().collection('user').doc(userData.nickname).update({
           isOnline: true,
@@ -41,7 +41,7 @@ const Player: FC<Props> = ({ skin, userData, isUser }) => {
     e.preventDefault();
   });
 
-  return <Actor sprite={`../../../imgs/${skin}.png`} data={data} step={step} dir={dir} position={position} />;
+  return <Actor sprite={`../../../imgs/slimeMotion/${skin}.png`} data={data} step={step} dir={dir} position={position} userData={userData} />;
 };
 
 export default Player;

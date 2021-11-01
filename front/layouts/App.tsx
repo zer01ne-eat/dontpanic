@@ -6,7 +6,8 @@ const ModalPage = loadable(() => import('@pages/Modal'));
 const Map = loadable(() => import('@pages/Map'));
 const CodeShare = loadable(() => import('@pages/CodeShare'));
 const NavBar = loadable(() => import('@layouts/navbar'));
-import firebase from 'firebase/app';
+import firebase from 'firebase';
+
 import {
     RecoilRoot,
     atom,
@@ -41,14 +42,14 @@ const App = () => {
 
     return (
         <RecoilRoot>
-            <div style={{"width":"100%","height":"100%","backgroundColor":"rgb(32, 37, 64)","WebkitBoxAlign":"center","alignItems":"center","WebkitBoxPack":"center","justifyContent":"center","overflowY":"auto","padding":"0px"}}>
+            <div style={{"width":"100%","height":"100%","backgroundColor":"#151515","WebkitBoxAlign":"center","alignItems":"center","WebkitBoxPack":"center","justifyContent":"center","overflowY":"auto","padding":"0px"}}>
             <ModalPage onCloseModal={onCloseModal} />
             { !showCreateWorkspaceModal &&
                 <BackGround>
                     <NavBar />
                     <Map />
                 </BackGround>
-            }
+}
             </div>
         </RecoilRoot>
     );

@@ -1,7 +1,7 @@
 import React, { FC, useState, useRef, useEffect } from 'react';
 import Editor, { Monaco } from '@monaco-editor/react';
 import { useSetRecoilState } from 'recoil';
-import { userDataState, navbarState, projectIconState } from '@store/basic';
+import { userDataState, navbarState, projectIconState, currentProjectState } from '@store/basic';
 import firebase from 'firebase';
 import { useRecoilValue } from 'recoil';
 import { fromMonaco } from "@hackerrank/firepad";
@@ -17,7 +17,7 @@ const CodeShare: FC<Props> = ({ projectId }) => {
     const setShowNavBar = useSetRecoilState(navbarState);
     const setProjectShow = useSetRecoilState(projectIconState);
     const userData = useRecoilValue(userDataState);
-
+    const currentProject = useRecoilValue(currentProjectState);
     const htmlEditorRef = useRef(null);
     const cssEditorRef = useRef(null);
     const jsEditorRef = useRef(null);
@@ -63,31 +63,37 @@ const CodeShare: FC<Props> = ({ projectId }) => {
       htmlFirePad.setUserName(userData.nickname);
       cssFirePad.setUserName(userData.nickname);
       jsFirePad.setUserName(userData.nickname);
+
+    document.getElementById(currentProject)!.style.border = 'solid 3px #5485ff';
+
     }, [htmlEditorLoaded, cssEditorLoaded, jsEditorLoaded, userData.nickname, projectId]);
   
     return (
       <>
-        <div style={{ width: "30vw", float: "left" }}>
+        <div id='html' style={{ width: "546px", float: "left", overflow: "hidden"}}>
+          <div style={{color: "#fff", fontSize: "40px", textAlign: "center", fontFamily: "NSD-Regular"}}>HTML</div>
           <Editor
-            height="90vh"
+            height="95%"
             defaultLanguage="html"
             theme="vs-dark"
             defaultValue="// Welcome to My Editor"
             onMount={handleHtmlEditorDidMount}
           />
         </div>
-        <div style={{ width: "30vw", float: "left" }}>
+        <div id='css' style={{ width: "546px", float: "left" }}>
+        <div style={{color: "#fff", fontSize: "40px", textAlign: "center", fontFamily: "NSD-Regular"}}>CSS</div>
           <Editor
-            height="90vh"
+            height="95%"
             defaultLanguage="css"
             theme="vs-dark"
             defaultValue="// Welcome to My Editor"
             onMount={handleCssEditorDidMount}
           />
         </div>
-        <div style={{ width: "30vw", float: "left" }}>
+        <div id='js' style={{ width: "546px", float: "left" }}>
+        <div style={{color: "#fff", fontSize: "40px", textAlign: "center", fontFamily: "NSD-Regular"}}>Javascript</div>
           <Editor
-            height="90vh"
+            height="95%"
             defaultLanguage="javascript"
             theme="vs-dark"
             defaultValue="// Welcome to My Editor"

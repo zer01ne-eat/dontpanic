@@ -39,20 +39,29 @@ export const projectIconState = atom({
   default: true,
 });
 
+export const currentProjectState = atom({
+  key: 'currentProject',
+  default: '',
+});
+
+export const loadingState = atom({
+  key: 'loadingState',
+  default: false,
+});
+
 export const userDataState = atom({
   key: 'data',
   default: new UserData({
-    nickname: '',
-    slimeColor: '',
-    level: -1,
+    nickname: 'sonu',
+    slimeColor: '#fea040',
+    level: 42,
     isOnline: false,
-    userSkill: [],
+    userSkill: ['html', 'css', 'javascript'],
     projects: [],
     sendbirdAccessToken: '',
-    positionX: 950,
-    positionY: 700,
+    positionX: 1250,
+    positionY: 670,
   }),
-  // default: {nickname: '', level: 0, slimeColor: '', skills: ['']}
 });
 
 export const projectListState = atom({

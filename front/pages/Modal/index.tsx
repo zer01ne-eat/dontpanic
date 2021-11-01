@@ -28,6 +28,7 @@ const ModalPage: FC<Props> = ({ onCloseModal }) => {
           content: (
             <UserCreation
               data={action.data}
+              dispatchModalBack={() => dispatchModalBack(INTRO)}
               dispatchModalAction={(data) => {
                 dispatchModalAction(SKILL, data);
                 console.log(action.data);
@@ -41,9 +42,10 @@ const ModalPage: FC<Props> = ({ onCloseModal }) => {
           content: (
             <Skills
               userData={action.data}
+              dispatchModalBack={() => dispatchModalBack(USER_CREATION)}
               dispatchModalAction={() => {
                 dispatchModalAction(CLOSE, null);
-                onCloseModal();
+                onCloseModal()
               }}
             />
           ),
@@ -68,6 +70,12 @@ const ModalPage: FC<Props> = ({ onCloseModal }) => {
     modalDispatch({
       type: action,
       data: data,
+    });
+  };
+
+  const dispatchModalBack = (action: string) => {
+    modalDispatch({
+      type: action,
     });
   };
 
