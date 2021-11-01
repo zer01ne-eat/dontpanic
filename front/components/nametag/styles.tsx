@@ -1,12 +1,26 @@
 import styled from "@emotion/styled";
 
 export const NameTagContent = styled.div `
-    // padding: 21px 50px;
     opacity: 0.8;
     border-radius: 67px;
     background-color: #272727;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    position: relative;
+    
+    .speech-bubble:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border: 5px solid transparent;
+        border-top-color: #272727;
+        border-bottom: 0;
+        margin-left: -5px;
+        margin-bottom: -5px;
+    }
 
     & .triangle {
             width: 11px;
@@ -30,4 +44,6 @@ export const NameTagContent = styled.div `
         color: #fff;
     }
     `;
+
+
     

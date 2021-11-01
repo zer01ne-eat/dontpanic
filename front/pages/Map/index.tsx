@@ -111,13 +111,14 @@ const Map = () => {
     <>
       {projectShow ? (
         <>
+          <NameTag name={userData.nickname} />
           <Player key={userData.nickname} skin={colorCode[userData.slimeColor]} userData={userData} isUser={true} />
           {others.map((otherUser) => {
             return <Player key={otherUser.nickname} skin={colorCode[otherUser.slimeColor]} userData={otherUser} isUser={false} />;
           })}
           {projects.map((project) => (
             <ProjectContent style={{ top: project.position.y, left: project.position.x }}>
-              <NameTag name={project.name} />
+              <div className="name-tag"><NameTag name={project.name} /></div>
             <ProjectIcon key={project.name}>
               { projectIcon(project.type)}
           </ProjectIcon>

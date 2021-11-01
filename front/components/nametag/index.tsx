@@ -8,6 +8,7 @@ interface Props {
 const NameTag:VFC<Props> = ({name}) => {
     return(
         <NameTagContent>
+            <div className="speech-bubble" />
             {/* <div className="triangle" /> */}
             <span className='name-text'>{name}</span>
         </NameTagContent>
