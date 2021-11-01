@@ -2,7 +2,7 @@ import React from 'react';
 
 const HTMLIcon = () => {
     return (
-<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 258 343">
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 258 343">
     <g fill="none" fill-rule="evenodd">
         <g>
             <g transform="translate(-257.000000, -1307.000000) translate(261.000000, 1310.000000)">

@@ -44,7 +44,6 @@ const Map = () => {
 
   useEffect(() => {
     const unloadCallback = (event: { preventDefault: () => void; returnValue: string }) => {
-      console.log(event);
       event.preventDefault();
       event.returnValue = '';
       return userRef.update({
@@ -111,7 +110,6 @@ const Map = () => {
     <>
       {projectShow ? (
         <>
-          <NameTag name={userData.nickname} />
           <Player key={userData.nickname} skin={colorCode[userData.slimeColor]} userData={userData} isUser={true} />
           {others.map((otherUser) => {
             return <Player key={otherUser.nickname} skin={colorCode[otherUser.slimeColor]} userData={otherUser} isUser={false} />;

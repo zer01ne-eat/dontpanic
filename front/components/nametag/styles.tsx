@@ -5,9 +5,9 @@ export const NameTagContent = styled.div `
     border-radius: 67px;
     background-color: #272727;
     text-align: center;
-    margin-bottom: 15px;
     position: relative;
-    
+    top: -20px;
+    padding-bottom: 4px;
     .speech-bubble:after {
         content: '';
         position: absolute;
@@ -34,7 +34,7 @@ export const NameTagContent = styled.div `
     & .name-text {
         // width: 277px;
         // height: 30px;
-        font-family: AppleSDGothicNeo;
+        font-family: NS-Regular;
         // font-size: 30px;
         font-weight: normal;
         font-stretch: normal;

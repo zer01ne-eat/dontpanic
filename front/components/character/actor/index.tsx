@@ -25,23 +25,21 @@ const Actor: FC<Props> = ({     sprite,
     const projectShow = useSetRecoilState(projectIconState);
     const currentProject = useSetRecoilState(currentProjectState);
 
-      if ((position.x >= 804 && position.x <= 932) && (position.y >= 700 && position.y <= 764) ||
-      (position.x >= 1510 && position.x <= 1622) && (position.y >= 492 && position.y <= 588) ||
-      (position.x >= 1254 && position.x <= 1366) && (position.y >= 988 && position.y <= 1084))
+      if ((position.x >= 875 && position.x <= 1040) && (position.y >= 685 && position.y <= 805) ||
+      (position.x >= 1580 && position.x <= 1745) && (position.y >= 490 && position.y <= 625) ||
+      (position.x >= 1325 && position.x <= 1490) && (position.y >= 1000 && position.y <= 1105))
       {
-        // return (<CodeShare projectId={"TThQ2JDeLZvlkk4OZBtG"} />)
-        if ((position.x >= 804 && position.x <= 932) && (position.y >= 700 && position.y <= 764)) {
+        if ((position.x >= 875 && position.x <= 1040) && (position.y >= 685 && position.y <= 805)) {
           currentProject('css')
         }
-        if ((position.x >= 1510 && position.x <= 1622) && (position.y >= 492 && position.y <= 588)) {
+        if ((position.x >= 1580 && position.x <= 1745) && (position.y >= 490 && position.y <= 625)) {
           currentProject('html')
         }
-        if ((position.x >= 1254 && position.x <= 1366) && (position.y >= 988 && position.y <= 1084)) {
+        if ((position.x >= 1325 && position.x <= 1490) && (position.y >= 1000 && position.y <= 1105)) {
           currentProject('js')
         }
         projectShow(false);
       }
-    
     return (
         <Sprite
         image={ sprite }

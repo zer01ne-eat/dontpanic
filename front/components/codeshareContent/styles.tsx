@@ -1,5 +1,11 @@
 import styled from '@emotion/styled';
 
+export const SlimeSVG = styled.div`
+    width: 40px;
+    height: 40px;
+    margin-right: 6px;
+`;
+
 export const CodeSharePage = styled.div`
     width: 100%;
     height: 100%;
@@ -42,6 +48,13 @@ export const CodeSharePage = styled.div`
             color: #6c6c6c;
             margin-bottom: 27.5px;
         }
+        & .user-nickname {
+            width: 300px;
+            margin-right: -300px;
+            font-family: NS-Regular;
+            font-size: 17.3px;
+            color: #fff;
+        }
         & button { 
             outline: none;
             font-size: 40px;
@@ -60,7 +73,7 @@ export const CodeSharePage = styled.div`
             & .button-text {
                 width: 600px;
                 height: 122px;
-                font-family: NotoSans-Regular;
+                font-family: NS-Regular;
                 font-size: 40px;
                 font-weight: 900;
                 font-stretch: normal;
@@ -80,5 +93,14 @@ export const CodeSharePage = styled.div`
             }
 
         }
+    }
+    & .user-info {
+        width: 635px;
+        height: 65px;
+        padding: 9px 436px 15px 17px;
+        border-radius: 16px;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #2d2d2d);
+        position: relative;
+        top: -75px;
     }
 `;

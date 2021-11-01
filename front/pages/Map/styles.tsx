@@ -11,6 +11,8 @@ backgroundSize: contain;
 backgroundRepeat: no-repeat;
 .name-tag {
     opacity: 0;
+    width: 100px;
+    margin-left: 99px;
 }
 &:hover .name-tag {
     opacity: 1;

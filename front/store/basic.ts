@@ -49,21 +49,6 @@ export const loadingState = atom({
   default: false,
 });
 
-// export const userDataState = atom({
-//   key: 'data',
-//   default: new UserData({
-//     nickname: '',
-//     slimeColor: '',
-//     level: -1,
-//     isOnline: false,
-//     userSkill: [],
-//     projects: [],
-//     sendbirdAccessToken: '',
-//     positionX: 950,
-//     positionY: 700,
-//   }),
-// });
-
 export const userDataState = atom({
   key: 'data',
   default: new UserData({
@@ -74,8 +59,8 @@ export const userDataState = atom({
     userSkill: ['html', 'css', 'javascript'],
     projects: [],
     sendbirdAccessToken: '',
-    positionX: 950,
-    positionY: 700,
+    positionX: 1250,
+    positionY: 670,
   }),
 });
 
