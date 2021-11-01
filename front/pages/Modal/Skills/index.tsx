@@ -129,7 +129,7 @@ const Skills: VFC<Props> = ({ userData, dispatchModalAction, dispatchModalBack }
             ))}
           </ul>
           <div id="skills-button">
-            <button onClick={onSubmit}>START</button>
+            <button style={{backgroundColor: '#5485ff'}} onClick={onSubmit}>START</button>
           </div>
         </div>
       </SkillsContent>

@@ -122,7 +122,10 @@ const UserCreation: VFC<Props> = ({ dispatchModalAction, dispatchModalBack }) =>
                         <div onClick={GetClick} id="#fff7f1" className="color-circle" style={{backgroundColor: "rgb(255, 247, 241)"}} />
                         <div onClick={GetClick} id="#969696" className="color-circle" style={{backgroundColor: "rgb(150, 150, 150)"}} />
                     </div>
-                    <div id="user-creation-button"><button onClick={onSubmit}>NEXT</button></div>
+                    { (nickname && slimeColor) ? 
+                    <div id="user-creation-button"><button style={{backgroundColor: '#5485ff'}} onClick={onSubmit}>NEXT</button></div>
+                    : <div id="user-creation-button"><button style={{backgroundColor: '#6c6c6c'}} onClick={onSubmit}>NEXT</button></div>
+                  }
                 </div>
             </UserCreationContent>
         </>

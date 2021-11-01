@@ -26,9 +26,9 @@ export const Rectangle = styled.div`
       // font-weight: bold;
       letter-spacing: 3px;
 
-      &:hover {
-        background-color: #5485ff;
-        color: #fff;
-      }
+      // &:hover {
+      //   background-color: #5485ff;
+      //   color: #fff;
+      // }
     }
 `
