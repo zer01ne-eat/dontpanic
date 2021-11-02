@@ -9,6 +9,13 @@ height: 100px;
 width: 100px;
 backgroundSize: contain;
 backgroundRepeat: no-repeat;
+animation: motion 1.5s linear 0s infinite alternate;
+margin-top: 0;
+@keyframes motion {
+	0% {margin-top: 0px;}
+	100% {margin-top: 10px;}
+}
+
 .name-tag {
     opacity: 0;
     width: 100px;
