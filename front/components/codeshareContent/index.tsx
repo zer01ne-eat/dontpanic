@@ -7,12 +7,14 @@ import SendBirdCall from "sendbird-calls";
 import axios from 'axios';
 import { BackGround } from '@layouts/styles';
 import SlimeCharacter from '@imgs/slimes/red';
+import ReactDOM from 'react-dom';
 
 const CodeShareContent = () => {
   const setProjectShow = useSetRecoilState(projectIconState);
   const videoContainer = document.getElementById("video_container");
   const localMediaView = document.getElementById("local_video_element_id");
   const [videoRoom, setVideoRoom] = useState(null as any);
+  const [remoteUser, setRemoteUser] = useState('');
   const userData = useRecoilValue(userDataState);
 
   window.addEventListener("beforeunload", (event) => {
@@ -21,10 +23,10 @@ const CodeShareContent = () => {
     }
   });
 
-  const userSlime = () => {
+  const userSlime = (slimeColor:string) => {
     return (            <div style={{ width: "41px", height: "40px", borderRadius: "50px", backgroundColor: "white", display: "flex", alignItems: "center"}}>
-    <SlimeSVG><SlimeCharacter color={userData!.slimeColor} /></SlimeSVG>
-    <div style={{ width: "300px",marginRight: "-36px"}} >{userData.nickname}</div>
+    <SlimeSVG><SlimeCharacter color={slimeColor} /></SlimeSVG>
+    {/* <div style={{ width: "300px",marginRight: "-36px"}} >{userData.nickname}</div> */}
   </div>)
   }
   // Calls
@@ -51,16 +53,42 @@ const CodeShareContent = () => {
         videoRoom.on(
           "remoteParticipantStreamStarted",
           (remoteParticipant: SendBirdCall.RemoteParticipant) => {
+            console.log(remoteParticipant.user);
+              axios({        method: 'GET',
+              url: 'https://us-central1-dontpanic-zerone.cloudfunctions.net/getProjectList?name=' + userData.nickname,
+            })
+              .then((response) => {
+                setRemoteUser(response.data.slimeColor);
+              })
+              .catch((error) => {
+                console.error(error);})
             const remoteMediaView = document.createElement("video");
-            const userInfo = document.createElement('div');
-            userInfo.setAttribute("class", "user-info");
             remoteMediaView.setAttribute("width", "635px");
             remoteMediaView.setAttribute("height", "378px");
-            remoteMediaView.setAttribute("border-radius", "30px");
+            remoteMediaView.setAttribute("border-radius", "50px");
             remoteMediaView.setAttribute("id", remoteParticipant.participantId);
-            remoteMediaView.appendChild(userInfo);
             remoteMediaView.autoplay = true;
             remoteParticipant.setMediaView(remoteMediaView);
+            const userInfo = document.createElement('div');
+            userInfo.setAttribute('id', 'user-info-remote');
+            const styleElement = document.createElement('div');
+            styleElement.setAttribute(
+              'style',
+              'display: flex; align-items: center; width: 41px; height: 40px; border-radius: 50px; backgroundColor: white;',
+            );
+          const nicknameElement = document.createElement('div');
+          nicknameElement.setAttribute('id', 'user-nickname-remote');
+          nicknameElement.setAttribute(
+            'style',
+            '  width: 300px; margin-right: -300px; font-family: NS-Regular; font-size: 17.3px; color: #fff;',
+          );
+          nicknameElement.appendChild(document.createTextNode(remoteParticipant.user.userId));
+          ReactDOM.render(userSlime(remoteUser), styleElement);
+          styleElement.appendChild(nicknameElement);
+
+          userInfo.appendChild(styleElement);
+          videoContainer?.appendChild(remoteMediaView);
+          videoContainer?.appendChild(userInfo);
             videoContainer?.appendChild(remoteMediaView);
           }
         );
@@ -68,6 +96,8 @@ const CodeShareContent = () => {
           "remoteParticipantExited",
           (remoteParticipant: SendBirdCall.RemoteParticipant) => {
             document.getElementById(remoteParticipant.participantId)?.remove();
+            document.getElementById('user-info-remote')?.remove();
+            document.getElementById('user-nickname-remote')?.remove();
           }
         );
       }
@@ -83,6 +113,8 @@ const CodeShareContent = () => {
     videoRoom,
     localMediaView,
     videoContainer,
+    setRemoteUser,
+    // remoteUser
   ]);
   return (
     <>

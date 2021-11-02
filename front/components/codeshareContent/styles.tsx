@@ -103,4 +103,13 @@ export const CodeSharePage = styled.div`
         position: relative;
         top: -75px;
     }
+    & #user-info-remote {
+        width: 635px;
+        height: 65px;
+        padding: 9px 436px 15px 17px;
+        border-radius: 16px;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #2d2d2d);
+        position: relative;
+        top: 380px;
+    }
 `;
