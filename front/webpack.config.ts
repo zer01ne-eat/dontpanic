@@ -5,9 +5,10 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 // import 'webpack-dev-server';
 import { Configuration as WebpackConfiguration } from "webpack";
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
-
 const isDevelopment = process.env.NODE_ENV !== 'production';
+import dotenv from 'dotenv';
 
+dotenv.config();
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
 }
@@ -17,7 +18,7 @@ const config: Configuration = {
   mode: isDevelopment ? 'development' : 'production',
   devtool: isDevelopment ? 'hidden-source-map' : 'eval', //'inline-source-map'
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css'],
     alias: {
       '@hooks': path.resolve(__dirname, 'hooks'),
       '@components': path.resolve(__dirname, 'components'),
@@ -25,6 +26,8 @@ const config: Configuration = {
       '@pages': path.resolve(__dirname, 'pages'),
       '@utils': path.resolve(__dirname, 'utils'),
       '@typings': path.resolve(__dirname, 'typings'),
+      '@store': path.resolve(__dirname, 'store'),
+      '@imgs': path.resolve(__dirname, 'imgs'),
     },
   },
   entry: {
@@ -49,19 +52,32 @@ const config: Configuration = {
           ],
           env: {
             development: {
-              plugins: [require.resolve('react-refresh/babel')],
+              // plugins: [require.resolve('react-refresh/babel')],
+              plugins: [['@emotion', { sourceMap: true}], require.resolve('react-refresh/babel')],
             },
+            production: {
+              plugins: ['@emotion'],
+            }
           },
         },
         exclude: path.join(__dirname, 'node_modules'),
       },
-      {
-        test: /\.css?$/,
-        use: ['style-loader', 'css-loader'],
-      },
+      { test: /\.css$/, use: [ 
+        { loader: "style-loader" },
+        { loader: "css-loader"},
+       
+    ] },
+    {
+      test: /\.(eot|ttf|woff|woff2)$/,
+      exclude: /node_modules/,
+      loader: "file-loader"
+  }
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(process.env)
+    }),
     new ForkTsCheckerWebpackPlugin({
       async: false,
       // eslint: {
@@ -79,6 +95,12 @@ const config: Configuration = {
     historyApiFallback: true,
     port: 4200,
     publicPath: '/dist/',
+    // proxy: {
+    //   '/api/': {
+    //     target: 'http://localhost:4242',
+    //     changeOrigin: true,
+    //   }
+    // }
   },
 };
 
